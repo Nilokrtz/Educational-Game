@@ -1,0 +1,7 @@
+{
+  "name": "Language adventure",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
