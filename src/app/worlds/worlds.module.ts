@@ -8,6 +8,8 @@ import { WorldsPageRoutingModule } from './worlds-routing.module';
 
 import { WorldsPage } from './worlds.page';
 
+import { SettingsComponent } from '../settings/settings.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,6 @@ import { WorldsPage } from './worlds.page';
     IonicModule,
     WorldsPageRoutingModule
   ],
-  declarations: [WorldsPage]
+  declarations: [WorldsPage, SettingsComponent]
 })
 export class WorldsPageModule {}

@@ -11,25 +11,5 @@
     <image x="70%" y="30%" xlink:href="../../assets/Planets/Lava.png" id="vulkan" />
     <image x="13%" y="15%" xlink:href="../../assets/Planets/Black_hole.png" id="black_hole" />
   </svg>
-
-  <ion-fab>
-    <ion-fab-button size="small" id="open-settigns" expand="block">
-      <ion-icon name="settings-sharp"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-modal id="settigns-modal" #modal trigger="open-settigns">
-    <ng-template>
-      <div class="wrapper">
-        <h1>Settigns</h1>
-        <ion-fab-button
-          size="small"
-          button="true"
-          detail="false"
-          (click)="modal.dismiss()"
-        >
-          <ion-icon name="close"></ion-icon>
-        </ion-fab-button>
-      </div>
-    </ng-template>
-  </ion-modal>
+  <app-settings></app-settings>
 </ion-content>
