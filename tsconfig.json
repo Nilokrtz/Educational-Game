@@ -20,12 +20,7 @@
     "module": "es2020",
     "lib": [
       "es2018", 
-<<<<<<< HEAD
-      "dom",
-      "scripthost",
-=======
       "dom"
->>>>>>> 996b995988921b100b84e11c3f9e36e52e5cd538
     ],
     "useDefineForClassFields": false
   },
