@@ -25,3 +25,78 @@
 #container a {
   text-decoration: none;
 }
+
+ion-content::part(background) {
+  background-image: url("../../assets/mainMenuAssets/background/MainBG.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; /* Opcional: centraliza a imagem */
+  filter: brightness(50%);
+}
+
+.playBtn {
+  --background: url("../../assets/mainMenuAssets/button/PLAY.png") no-repeat;
+  
+  min-width: 200px;
+  min-height: 48px;
+  margin-top: 450px;
+
+  --border-radius: 7px;
+  box-shadow: rgb(255, 208, 0) 2px 2px 23px -13px;
+}
+
+.designOfMenu {
+  width: 100%;
+  height: 50%;
+
+  margin-top: 100px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  & ion-img {
+    width: 200px;
+  }
+  & #title {
+    margin-bottom: 30px;
+
+    filter: brightness(170%);
+  }
+}
+
+.designOfMenu {
+  width: 100%;
+  height: 50%;
+  margin-top: 100px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+  top: 50px;
+  position: relative;
+}
+
+ion-img {
+  width: 200px;
+}
+
+#lamp {
+  position: relative;
+  z-index: 2;
+}
+
+.shadow-mask {
+  position: absolute;
+  top: 40px;
+  left: 5px;
+  width: 90%;
+  height: 90%;
+  background-image: url('../../assets/mainMenuAssets/design/');
+  background-size: cover;
+  background-position: center center;
+  filter: brightness(100);
+  filter: blur(10px);
+  z-index: 1;
+}
