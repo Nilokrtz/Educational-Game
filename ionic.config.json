@@ -1,5 +1,5 @@
 {
-  "name": "Jogo",
+  "name": "game",
   "integrations": {
     "capacitor": {}
   },

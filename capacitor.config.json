@@ -1,0 +1,8 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Language adventure",
+	"webDir": "www",
+	"server": {
+		"androidScheme": "https"
+	}
+}
