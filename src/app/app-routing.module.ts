@@ -8,9 +8,14 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'level-selection',
     pathMatch: 'full'
   },
+  {
+    path: 'level-selection',
+    loadChildren: () => import('./level-selection/level-selection.module').then( m => m.LevelSelectionPageModule)
+  },
+  
 ];
 
 @NgModule({
