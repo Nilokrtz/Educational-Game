@@ -1,0 +1,16 @@
+div{
+    width: 100vw;
+    position: absolute;
+    top: 73vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    ion-button{
+    --background: center / 90% 100% no-repeat url("../../assets/settignsAssets/BTN-EMPTY2.png");
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+}
+    

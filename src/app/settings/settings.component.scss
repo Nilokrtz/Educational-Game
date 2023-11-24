@@ -24,15 +24,13 @@ ion-fab{
     text-transform: uppercase;
     color: rgb(255, 217, 0);
     position: absolute;
-    top: 1.5em;
+    top: 1.7em;
 
   }
   #container{
     width: 100%;
-    height: 100%;
-    background-image:  url('../../assets/settignsAssets/Settings-BG2.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 105%;
+    background:  center /100% 100% no-repeat url('../../assets/settignsAssets/Settings-BG2.png');
     display: flex;
     flex-direction: column;
     justify-content: center;
