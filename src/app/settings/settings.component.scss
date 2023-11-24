@@ -6,7 +6,7 @@ ion-fab{
   }
 
   ion-modal {
-    --height: 75vh;
+    --height: 85vh;
     --width: 75vw;
     --border-radius: 16px;
     --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -29,7 +29,7 @@ ion-fab{
   }
   #container{
     width: 100%;
-    height: 105%;
+    height: 100%;
     background:  center /100% 100% no-repeat url('../../assets/settignsAssets/Settings-BG2.png');
     display: flex;
     flex-direction: column;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-choices',
@@ -6,9 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./choices.component.scss'],
 })
 export class ChoicesComponent  implements OnInit {
+  
+  @Input() escolha1?: string;
+  @Input() escolha2?: string;
+  @Input() escolha3?: string;
+  @Input() escolha4?: string;
+  @Input() pergunta?: string;
 
-  constructor() { }
 
+  checkTheValue(){
+
+  }
+  
   ngOnInit() {}
 
 }

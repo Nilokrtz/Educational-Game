@@ -9,6 +9,7 @@ ion-content::part(background){
     filter: brightness(0.8);
   }
   ion-content{
+    overflow-y: hidden;
     .game-container{
       width:100%; 
       height:100%;
