@@ -1,7 +1,7 @@
-<ion-card>{{pergunta}}</ion-card>
-<div>
-  <ion-button>{{escolha1}}</ion-button>
-  <ion-button>{{escolha2}}</ion-button>
-  <ion-button>{{escolha3}}</ion-button>
-  <ion-button>{{escolha4}}</ion-button>
+<ion-card *ngIf="exibirComponente">{{ pergunta }}</ion-card>
+<div *ngIf="exibirComponente">
+  <ion-button (click)="checkTheValue('A')">{{ escolha1 }}</ion-button>
+  <ion-button (click)="checkTheValue('B')">{{ escolha2 }}</ion-button>
+  <ion-button (click)="checkTheValue('C')">{{ escolha3 }}</ion-button>
+  <ion-button (click)="checkTheValue('D')">{{ escolha4 }}</ion-button>
 </div>
