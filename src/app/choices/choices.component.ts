@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, Input, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef, HostListener } from '@angular/core';
 import { ResultComponent } from '../result/result.component';
 
 @Component({
@@ -19,7 +18,9 @@ export class ChoicesComponent implements OnInit {
 
   exibirComponente = true;
 
-  constructor(private modalController: ModalController) {}
+  @ViewChild('resultContainer', { read: ViewContainerRef }) resultContainer!: ViewContainerRef;
+
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private el: ElementRef) {}
 
   async checkTheValue(answer: string) { 
     console.log(answer);
@@ -34,30 +35,40 @@ export class ChoicesComponent implements OnInit {
       message = `Parabéns! \n Você acertou.`;
       image = '../../assets/Dino.png';
     } else {
-      message = `A resposta correta é a: ${this.respostaCorreta} + \n + ${this.explicacao}`;
+      message = `A resposta correta é a: ${this.respostaCorreta} \n ${this.explicacao}`;
       image = '../../assets/cowboy.png';
     }
 
-    await this.openModal(message, image);
+    this.openResultComponent(message, image);
     this.exibirComponente = false;
   }
 
-  async openModal(message: string, image: string) {
-    const modal = await this.modalController.create({
-      component: ResultComponent,
-      componentProps: {
-        message: message,
-        image: image,
-      }
-    });
-    
-    return await modal.present();
+  openResultComponent(message: string, image: string) {
+    this.resultContainer.clear();  
+    const factory = this.componentFactoryResolver.resolveComponentFactory(ResultComponent);    
+    const resultComponentRef = this.resultContainer.createComponent(factory);    
+    resultComponentRef.instance.message = message;
+    resultComponentRef.instance.image = image;
+
+    const closeOnClick = (event: Event) => {
+      this.resultContainer.clear(); 
+      document.removeEventListener('click', closeOnClick); 
+    };
+    document.addEventListener('click', closeOnClick);
   }
-  
+
   ngOnDestroy() {
     console.log('Componente destruído');
   }
 
   ngOnInit() {}
 
+  ngAfterViewInit() {
+    
+  }
+
+  @HostListener('click', ['$event'])
+  handleClick(event: Event) {
+    event.stopPropagation(); 
+  }
 }

@@ -11,12 +11,14 @@ div{
     display: flex;
     justify-content: center;
     align-items: center;
+    --box-shadow:0;
     }
 }
 
 ion-card{
     position: absolute;
     top: 60vh;
+    box-shadow:none;
     --background: center / 95% 100% no-repeat url("../../assets/settignsAssets/BTN-EMPTY2.png");
     height: 5em;
     width: 100%;
