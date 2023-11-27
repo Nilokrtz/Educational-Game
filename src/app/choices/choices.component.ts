@@ -33,10 +33,10 @@ export class ChoicesComponent implements OnInit {
 
     if (answer == this.respostaCorreta) {
       message = `Parabéns! \n Você acertou.`;
-      image = '../../assets/Dino.png';
+      image = '../../assets/Reactions/Right.png';
     } else {
       message = `A resposta correta é a: ${this.respostaCorreta} \n ${this.explicacao}`;
-      image = '../../assets/cowboy.png';
+      image = '../../assets/Reactions/Wrong.png';
     }
 
     this.openResultComponent(message, image);

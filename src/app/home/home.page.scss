@@ -30,7 +30,7 @@ ion-content::part(background) {
   background-image: url("../../assets/mainMenuAssets/background/MainBG.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center; /* Opcional: centraliza a imagem */
+  background-position: center center; 
   filter: brightness(50%);
 }
 
@@ -59,7 +59,6 @@ ion-content::part(background) {
   }
   & #title {
     margin-bottom: 30px;
-
     filter: brightness(170%);
   }
 }
