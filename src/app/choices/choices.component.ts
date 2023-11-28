@@ -32,10 +32,10 @@ export class ChoicesComponent implements OnInit {
     let image = '';
 
     if (answer == this.respostaCorreta) {
-      message = `Parabéns, você acertou!`;
+      message = `Parabéns! \n Você acertou.`;
       image = '../../assets/Reactions/Right.png';
     } else {
-      message = `A resposta correta é a: ${this.respostaCorreta} \n${this.explicacao}`;
+      message = `A resposta correta é a: ${this.respostaCorreta} \n ${this.explicacao}`;
       image = '../../assets/Reactions/Wrong.png';
     }
 
