@@ -5,13 +5,45 @@
   }
   
   #container{
+    position: absolute;
+    top: 67vh;
     display: flex;
-    align-items: center; 
-    height: 16vh;
-    background-image: url("../../assets/Reactions/dialogue_box.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    ion-img{
-      width: 70%;
+    width: 100vw;
+    #dialogue-box{
+      flex: 2;
+      background-image: url("../../assets/Reactions/dialogue_block.png");
+      background-repeat: no-repeat;
+      background-size: cover;
     }
+
+    p {
+      font-family:  Poppins;
+      font-weight: bold;
+      padding-left: 40px;
+      color: #000; 
+      width: 100%;
+      height: 100%; 
+      white-space: pre-wrap;
+      display: flex;
+      align-items: center;
+      }
+
+    #person-box{
+      flex: 1;
+      background-image: url("../../assets/Reactions/person_block.png");
+      background-repeat: no-repeat;
+      background-size: cover; 
+      text-align: center;
+    ion-img{
+      width: 152px;      
+      visibility: hidden;
+    &:first-child{
+      width: 132px;
+      position: fixed;
+      top: 68.5vh;
+      right: 16px;
+      visibility: visible;
+      }
+    }
+  }
 }
