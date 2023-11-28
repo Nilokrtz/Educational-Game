@@ -1,0 +1,28 @@
+ion-content::part(background){
+    background-image: url('../../../assets/space.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+    filter: brightness(0.8);
+  }
+  ion-content{
+    overflow-y: hidden;
+    .game-container{
+      width:100%; 
+      height:100%;
+      #moon,#black_hole,#freeze,#vulkan,#earth{
+        width: 20vw;
+        filter: brightness(0.7);   
+      }
+     #earth{
+      filter: brightness(1.1);
+     }
+      #black_hole{
+        width: 25vw;
+      } 
+    }
+  }
+  

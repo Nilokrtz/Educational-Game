@@ -9,34 +9,34 @@ const routes: Routes = [
   },
   {
     path: 'worlds',
-    loadChildren: () => import('./worlds/worlds.module').then(m => m.WorldsPageModule)
+    loadChildren: () => import('./pages/worlds/worlds.module').then(m => m.WorldsPageModule)
   },{
     path: 'prehistoric-scenery',
-    loadChildren: () => import('./prehistoric-scenery/prehistoric-scenery.module').then( m => m.PrehistoricSceneryPageModule)
+    loadChildren: () => import('./pages/prehistoric-scenery/prehistoric-scenery.module').then( m => m.PrehistoricSceneryPageModule)
   },
   {
     path: 'pirates-scenery',
-    loadChildren: () => import('./pirates-scenery/pirates-scenery.module').then( m => m.PiratesSceneryPageModule)
+    loadChildren: () => import('./pages/pirates-scenery/pirates-scenery.module').then( m => m.PiratesSceneryPageModule)
   },
   {
     path: 'old-west-scenery',
-    loadChildren: () => import('./old-west-scenery/old-west-scenery.module').then( m => m.OldWestSceneryPageModule)
+    loadChildren: () => import('./pages/old-west-scenery/old-west-scenery.module').then( m => m.OldWestSceneryPageModule)
   },
   {
     path: 'moon-scenery',
-    loadChildren: () => import('./moon-scenery/moon-scenery.module').then( m => m.MoonSceneryPageModule)
+    loadChildren: () => import('./pages/moon-scenery/moon-scenery.module').then( m => m.MoonSceneryPageModule)
   },
   {
     path: 'middle-age-scenery',
-    loadChildren: () => import('./middle-age-scenery/middle-age-scenery.module').then( m => m.MiddleAgeSceneryPageModule)
+    loadChildren: () => import('./pages/middle-age-scenery/middle-age-scenery.module').then( m => m.MiddleAgeSceneryPageModule)
   },
   {
     path: 'level-selection',
-    loadChildren: () => import('./level-selection/level-selection.module').then( m => m.LevelSelectionPageModule)
+    loadChildren: () => import('./pages/level-selection/level-selection.module').then( m => m.LevelSelectionPageModule)
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },]
 ;
   

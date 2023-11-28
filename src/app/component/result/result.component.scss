@@ -1,0 +1,57 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#container{
+  position: absolute;
+  top: 67vh;
+  display: flex;
+  width: 100vw;
+  #dialogue-box{
+    flex: 2;
+    background-image: url("../../../assets/Reactions/dialogue_block.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  p{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;   
+    color: #000;
+    white-space:pre-line;
+    padding-left:40px;
+    padding-right: 10px;
+    font-size: 1em;
+    font-family: Poppins,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 400px) {
+    p{
+      font-size: 0.83em;
+    }
+  }
+
+  #person-box{
+    flex: 1;
+    background-image: url("../../../assets/Reactions/person_block.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    text-align: center;
+  ion-img{
+    width: 152px;      
+    visibility: hidden;
+  &:first-child{
+    width: 132px;
+    position: fixed;
+    top: 68.5vh;
+    right: 16px;
+    visibility: visible;
+    }
+  }
+}
+}
