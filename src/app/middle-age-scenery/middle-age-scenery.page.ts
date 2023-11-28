@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as Phaser from 'phaser';
+import { GameScene } from './game-scene';
 
 @Component({
   selector: 'app-middle-scenery',
@@ -8,29 +9,23 @@ import * as Phaser from 'phaser';
 })
 export class MiddleAgeSceneryPage implements OnInit, OnDestroy {
   private game!: Phaser.Game;
-  private music!: Phaser.Sound.BaseSound;
 
   ngOnInit() {
     this.game = new Phaser.Game({
-      // Configurações do jogo...
-      scene: {
-        preload: () => this.preload(),
-        create: () => this.create(),
+      type: Phaser.AUTO,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 }
+        }
       },
+      scene: [GameScene],
     });
   }
 
   ngOnDestroy() {
     this.game.destroy(true);
-  }
-
-  preload() {
-    this.game.scene.scenes[0].load.audio('maniac', 'assets/music/maniac.mp3');
-  }
-
-  create() {
-    // Criando a música e iniciando a reprodução automaticamente
-    this.music = this.game.scene.scenes[0].sound.add('maniac', { loop: true });
-    this.music.play();
   }
 }

@@ -3,13 +3,16 @@ import 'phaser';
 export class GameScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
   private nextButton!: HTMLButtonElement;
+  private music!: Phaser.Sound.BaseSound;
 
   constructor() {
     super({ key: 'game' });
   }
 
   preload() {
-    this.load.image('ground', 'assets/scenerys/CenarioLua.jpg');
+    this.load.audio('maniac', 'assets/music/maniac.ogg');
+
+    this.load.image('cenario', 'assets/scenerys/CenarioLua.jpg');
     this.load.spritesheet('player', 'assets/SpritesProtagonista/7.png', {
       frameWidth: 32,
       frameHeight: 48,
@@ -17,9 +20,17 @@ export class GameScene extends Phaser.Scene {
   }
 
   create() {
+
+    // Criando a música
+    this.music = this.sound.add('maniac', { loop: true });
+    // Iniciando a reprodução automaticamente
+    // this.music.play();
+
     // Add ground
-    const ground = this.physics.add.staticGroup();
-    ground.create(window.innerWidth / 2, window.innerHeight - 20, 'ground').setScale(2).refreshBody();
+    // const ground = this.physics.add.staticGroup();
+    // ground.create(window.innerWidth / 2, window.innerHeight - 20, 'ground').setScale(2).refreshBody();
+
+    this.add.image(400, 300, 'cenario');
 
     // Add player
     this.player = this.physics.add.sprite(100, window.innerHeight - 100, 'player');
@@ -34,8 +45,8 @@ export class GameScene extends Phaser.Scene {
     this.nextButton.addEventListener('click', () => this.nextButtonClick());
     document.body.appendChild(this.nextButton);
 
-    // Set up collisions
-    this.physics.add.collider(this.player, ground);
+    // // Set up collisions
+    // this.physics.add.collider(this.player, ground);
   }
 
   private nextButtonClick() {
