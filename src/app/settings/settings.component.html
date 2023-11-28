@@ -8,10 +8,10 @@
       <ion-content>
         <div id="container">
         <ion-toolbar>
-          <ion-title>Settigns</ion-title>
+          <ion-title>Settings</ion-title>
         </ion-toolbar>
         <ion-label >
-          <ion-checkbox>Música</ion-checkbox>
+          <ion-checkbox (ionChange)="toggleMusic($event)">Música</ion-checkbox>
       </ion-label>
       <ion-label>
         <ion-checkbox>Som</ion-checkbox>

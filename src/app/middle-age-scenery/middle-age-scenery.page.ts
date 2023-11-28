@@ -1,35 +1,36 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as Phaser from 'phaser';
-import { GameScene } from '../middle-age-scenery/game-scene';
 
 @Component({
   selector: 'app-middle-scenery',
   templateUrl: './middle-age-scenery.page.html',
   styleUrls: ['./middle-age-scenery.page.scss'],
 })
-export class MiddleAgeSceneryPage implements OnInit {
-  private phaserGame!: Phaser.Game;
-
-  constructor(private zone: NgZone) {}
+export class MiddleAgeSceneryPage implements OnInit, OnDestroy {
+  private game!: Phaser.Game;
+  private music!: Phaser.Sound.BaseSound;
 
   ngOnInit() {
-    this.initializeGame();
+    this.game = new Phaser.Game({
+      // Configurações do jogo...
+      scene: {
+        preload: () => this.preload(),
+        create: () => this.create(),
+      },
+    });
   }
 
-  private initializeGame() {
-    const config: Phaser.Types.Core.GameConfig = {
-      type: Phaser.AUTO,
-      width: 800,
-      height: 600,
-      physics: {
-        default: 'arcade',
-        arcade: {
-          gravity: { y: 0 },
-        },
-      },
-      scene: [GameScene], // Use an array to include multiple scenes if needed
-    };
+  ngOnDestroy() {
+    this.game.destroy(true);
+  }
 
-    this.phaserGame = new Phaser.Game(config);
+  preload() {
+    this.game.scene.scenes[0].load.audio('maniac', 'assets/music/maniac.mp3');
+  }
+
+  create() {
+    // Criando a música e iniciando a reprodução automaticamente
+    this.music = this.game.scene.scenes[0].sound.add('maniac', { loop: true });
+    this.music.play();
   }
 }
