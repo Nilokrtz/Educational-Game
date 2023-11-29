@@ -25,12 +25,12 @@ export class LevelSelectionPage implements OnInit, OnDestroy {
   }
 
   preload() {
-    this.game.scene.scenes[0].load.audio('going-up', '../../../assets/music/going-up.ogg');
+    this.game.scene.scenes[0].load.audio('level-selection', '../../../assets/music/level-selection.ogg');
   }
 
   create() {
     // Criando a música e iniciando a reprodução automaticamente
-    this.music = this.game.scene.scenes[0].sound.add('going-up', { loop: true });
+    this.music = this.game.scene.scenes[0].sound.add('level-selection', { loop: true });
     this.music.play();
   }
 }

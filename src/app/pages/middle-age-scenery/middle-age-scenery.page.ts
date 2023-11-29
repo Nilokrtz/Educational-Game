@@ -9,6 +9,7 @@ import { GameScene } from './game-scene';
 })
 export class MiddleAgeSceneryPage implements OnInit, OnDestroy {
   private game!: Phaser.Game;
+  private music!: Phaser.Sound.BaseSound;
 
   ngOnInit() {
     this.game = new Phaser.Game({
@@ -28,4 +29,15 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.game.destroy(true);
   }
+
+  preload() {
+    this.game.scene.scenes[0].load.audio('going-up', '../../../assets/music/going-up.ogg');
+  }
+
+  create() {
+    // Criando a música e iniciando a reprodução automaticamente
+    this.music = this.game.scene.scenes[0].sound.add('going-up', { loop: true });
+    this.music.play();
+  }
+
 }

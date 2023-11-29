@@ -25,12 +25,12 @@ export class OldWestSceneryPage implements OnInit, OnDestroy {
   }
 
   preload() {
-    this.game.scene.scenes[0].load.audio('happywalking', '../../../assets/music/happywalking.ogg');
+    this.game.scene.scenes[0].load.audio('old-west', '../../../assets/music/old-west.ogg');
   }
 
   create() {
     // Criando a música e iniciando a reprodução automaticamente
-    this.music = this.game.scene.scenes[0].sound.add('happywalking', { loop: true });
+    this.music = this.game.scene.scenes[0].sound.add('old-west', { loop: true });
     this.music.play();
   }
 }

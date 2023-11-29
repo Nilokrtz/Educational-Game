@@ -25,12 +25,12 @@ export class WorldsPage implements OnInit, OnDestroy {
   }
 
   preload() {
-    this.game.scene.scenes[0].load.audio('up-and-right', '../../../assets/music/up-and-right.ogg');
+    this.game.scene.scenes[0].load.audio('worlds', '../../../assets/music/worlds.ogg');
   }
 
   create() {
     // Criando a música e iniciando a reprodução automaticamente
-    this.music = this.game.scene.scenes[0].sound.add('up-and-right', { loop: true });
+    this.music = this.game.scene.scenes[0].sound.add('worlds', { loop: true });
     this.music.play();
   }
 }
