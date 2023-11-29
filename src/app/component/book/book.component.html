@@ -1,3 +1,23 @@
-<p>
-  book works!
-</p>
+  <ion-button id="background-icon"></ion-button>
+  <ion-img id="open-modal" src="../../../assets/possiveis imgs/book-icon.png"></ion-img>
+  <ion-modal #modal trigger="open-modal">
+    <ng-template>
+      <ion-content>
+        <div id="container">
+          <div>
+          <ion-toolbar>
+            <ion-title>Rules</ion-title>
+          </ion-toolbar>    
+          <p>Welcome to my channel</p>
+        </div>
+        <div>
+          <ion-toolbar>
+            <ion-title>Help</ion-title>
+          </ion-toolbar>
+          <p>Today we will learn C#</p>
+        </div>
+<!--         <ion-button (click)="modal.dismiss()"></ion-button>
+ -->      </div>          
+      </ion-content>
+    </ng-template>
+  </ion-modal>

@@ -10,6 +10,7 @@ import { MoonSceneryPage } from './moon-scenery.page';
 
 import { ChoicesComponent } from '../../component/choices/choices.component';
 import { ResultComponent } from '../../component/result/result.component';
+import { BookComponent } from '../../component/book/book.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { ResultComponent } from '../../component/result/result.component';
     IonicModule,
     MoonSceneryPageRoutingModule
   ],
-  declarations: [MoonSceneryPage, ChoicesComponent, ResultComponent]
+  declarations: [MoonSceneryPage, ChoicesComponent, ResultComponent,BookComponent ]
 })
 export class MoonSceneryPageModule {}
