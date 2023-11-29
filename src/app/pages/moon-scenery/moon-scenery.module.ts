@@ -8,17 +8,16 @@ import { MoonSceneryPageRoutingModule } from './moon-scenery-routing.module';
 
 import { MoonSceneryPage } from './moon-scenery.page';
 
-import { ChoicesComponent } from '../../component/choices/choices.component';
-import { ResultComponent } from '../../component/result/result.component';
-import { BookComponent } from '../../component/book/book.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MoonSceneryPageRoutingModule
+    MoonSceneryPageRoutingModule,
+    SharedModule
   ],
-  declarations: [MoonSceneryPage, ChoicesComponent, ResultComponent,BookComponent ]
+  declarations: [MoonSceneryPage]
 })
 export class MoonSceneryPageModule {}
