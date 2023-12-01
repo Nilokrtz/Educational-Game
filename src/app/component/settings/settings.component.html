@@ -7,8 +7,9 @@
           <ion-title>Settings</ion-title>
         </ion-toolbar>
         <ion-label >
-          <ion-button id="sound-button" (ionChange)="toggleMusic($event)"></ion-button>
-          <ion-button id="music-button" (ionChange)="toggleMusic($event)"></ion-button>
+          <ion-button id="sound-button" (click)="toggleMusic()">
+            {{ isMusicPlaying ? 'Pausar Música' : 'Retomar Música' }}
+          </ion-button>
       </ion-label>
       <ion-label>
         <ion-button routerLink="/level-selection" id="home-button"></ion-button>          
