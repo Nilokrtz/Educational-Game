@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-settings',
@@ -6,6 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent  implements OnInit {
+  
+  constructor(private platform: Platform, private location: Location) {}
+
+  refreshPage() {
+    if (this.platform.is('cordova')) {
+      window.location.reload();
+    } else {
+      window.location.reload();
+    }
+  }
+  
 
   private game!: Phaser.Game;
   private music!: Phaser.Sound.BaseSound;
@@ -27,8 +40,8 @@ export class SettingsComponent  implements OnInit {
 
   create() {
     // Criando a música e iniciando a reprodução automaticamente
-    this.music = this.game.scene.scenes[0].sound.add('prehistoric', { loop: true });
-    this.music.play();
+/*     this.music = this.game.scene.scenes[0].sound.add('prehistoric', { loop: true });
+ */    this.music.play();
   }
 
   toggleMusic(event: any) {

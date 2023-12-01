@@ -26,8 +26,8 @@ export class MoonSceneryPage implements OnInit, OnDestroy {
   }
 
   preload() {
-     this.game.scene.scenes[0].load.audio('moon', '../../../assets/music/moon.ogg');
-   }
+/*      this.game.scene.scenes[0].load.audio('moon', '../../../assets/music/moon.ogg');
+ */   }
 
   create() {
     // Criando a música e iniciando a reprodução automaticamente

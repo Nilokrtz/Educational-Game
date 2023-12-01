@@ -1,10 +1,9 @@
 <ng-container #resultContainer></ng-container>
 
-<ion-card *ngIf="exibirComponente">{{ pergunta }}</ion-card>
-<div *ngIf="exibirComponente">
+<ion-card [style.display]="exibirComponente ? 'flex' : 'none'">{{ pergunta }}</ion-card>
+<div [style.display]="exibirComponente ? 'grid' : 'none'">
   <ion-button (click)="checkTheValue('A')">{{ escolha1 }}</ion-button>
   <ion-button (click)="checkTheValue('B')">{{ escolha2 }}</ion-button>
   <ion-button (click)="checkTheValue('C')">{{ escolha3 }}</ion-button>
   <ion-button (click)="checkTheValue('D')">{{ escolha4 }}</ion-button>
 </div>
-
