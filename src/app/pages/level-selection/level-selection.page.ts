@@ -1,24 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MusicService } from 'src/app/component/settings/MusicService';
-import { IonicSlides } from '@ionic/angular';
+import { AudioService } from 'src/app/component/settings/AudioService';
+
 
 @Component({
   selector: 'app-level-selection',
   templateUrl: './level-selection.page.html',
   styleUrls: ['./level-selection.page.scss'],
 })
-export class LevelSelectionPage implements OnInit, OnDestroy {
-  audio: any;
+export class LevelSelectionPage {
+  constructor(private audioService: AudioService) {}
 
-  constructor(private musicService: MusicService) {}
-  swiperModules = [IonicSlides];
-
-  ngOnInit() {
-    const audioSrc = '../../../assets/music/level-selection.ogg'; // Caminho do arquivo de música da página "Worlds"
-    this.musicService.playMusic(audioSrc);
+  ionViewDidEnter() {
+    this.audioService.playMusic('../../../assets/music/level-selection.ogg');
   }
-  
-  ngOnDestroy() {
-    this.musicService.pauseMusic();
+
+  ionViewWillLeave() {
+    this.audioService.stopMusic();
   }
 }

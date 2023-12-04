@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
-import { MusicService } from 'src/app/component/settings/MusicService';
+import { AudioService } from 'src/app/component/settings/AudioService';
 
 @Component({
   selector: 'app-settings',
@@ -9,9 +9,8 @@ import { MusicService } from 'src/app/component/settings/MusicService';
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent{
-  isMusicPlaying: boolean = true;
-
-constructor(private platform: Platform, private location: Location, private musicService: MusicService) {}
+ 
+constructor(private platform: Platform, private location: Location, private audioService: AudioService) {}
 
   refreshPage() {
     if (this.platform.is('cordova')) {
@@ -22,6 +21,11 @@ constructor(private platform: Platform, private location: Location, private musi
   }
 
   toggleMusic() {
-    this.musicService.toggleMusic();
+    this.audioService.toggleMusic();
   }
+
+  isMusicPlaying() {
+    return this.audioService.isPlaying();
+  }
+
 }

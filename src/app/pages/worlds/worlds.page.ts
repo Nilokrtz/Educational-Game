@@ -1,22 +1,21 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MusicService } from 'src/app/component/settings/MusicService';
+import { Component} from '@angular/core';
+import { AudioService } from 'src/app/component/settings/AudioService';
 
 @Component({
   selector: 'app-worlds',
   templateUrl: './worlds.page.html',
   styleUrls: ['./worlds.page.scss'],
 })
-export class WorldsPage implements OnInit, OnDestroy {
-  audio: any;
+export class WorldsPage {
 
-  constructor(private musicService: MusicService) {}
+  constructor(private audioService: AudioService) {}
 
-  ngOnInit() {
-    const audioSrc = '../../../assets/music/worlds.ogg'; // Caminho do arquivo de música da página "Worlds"
-    this.musicService.playMusic(audioSrc);
+  ionViewDidEnter() {
+    this.audioService.playMusic('../../../assets/music/worlds.ogg');
   }
-  
-  ngOnDestroy() {
-    this.musicService.pauseMusic();
+
+  ionViewWillLeave() {
+    this.audioService.stopMusic();
   }
+
 }

@@ -1,22 +1,21 @@
 // middle-age-scenery.page.ts
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MusicService } from 'src/app/component/settings/MusicService';
+import { AudioService } from 'src/app/component/settings/AudioService';
 
 @Component({
   selector: 'app-moon-scenery',
   templateUrl: './middle-age-scenery.page.html',
   styleUrls: ['./middle-age-scenery.page.scss'],
 })
-export class MiddleAgeSceneryPage implements OnInit, OnDestroy {
-  audio: any;
+export class MiddleAgeSceneryPage {
 
-  constructor(private musicService: MusicService) {}
+  constructor(private audioService: AudioService) {}
 
-  ngOnInit() {
-    this.musicService.playMusic('../../../assets/music/middle-age.ogg');
+  ionViewDidEnter() {
+    this.audioService.playMusic('../../../assets/music/middle-age.ogg');
   }
-  
-  ngOnDestroy() {
-    this.musicService.pauseMusic();
+
+  ionViewWillLeave() {
+    this.audioService.stopMusic();
   }
 }

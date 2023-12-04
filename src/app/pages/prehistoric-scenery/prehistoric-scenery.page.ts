@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MusicService } from 'src/app/component/settings/MusicService';
+import { AudioService } from 'src/app/component/settings/AudioService';
 
 
 @Component({
@@ -7,12 +7,15 @@ import { MusicService } from 'src/app/component/settings/MusicService';
   templateUrl: './prehistoric-scenery.page.html',
   styleUrls: ['./prehistoric-scenery.page.scss'],
 })
-export class PrehistoricSceneryPage implements OnInit {
-  audio: any;
+export class PrehistoricSceneryPage {
 
-  constructor(private musicService: MusicService) {}
+  constructor(private audioService: AudioService) {}
 
-  ngOnInit() {
-    this.musicService.playMusic('../../../assets/music/worlds.ogg');
+  ionViewDidEnter() {
+    this.audioService.playMusic('../../../assets/music/pre-historic.ogg');
+  }
+
+  ionViewWillLeave() {
+    this.audioService.stopMusic();
   }
 }

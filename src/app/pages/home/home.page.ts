@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MusicService } from 'src/app/component/settings/MusicService';
+import { Component, OnInit } from '@angular/core';
+import { AudioService } from 'src/app/component/settings/AudioService';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +7,18 @@ import { MusicService } from 'src/app/component/settings/MusicService';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  audio: any;
 
-  constructor(private musicService: MusicService) {}
+  constructor(private audioService: AudioService) {}
 
-  ngOnInit() {
-    this.musicService.playMusic('../../../assets/music/worlds.ogg');
+  ionViewDidEnter() {
+    this.audioService.playMusic('../../../assets/music/home.ogg');
+  }
+
+  ionViewWillLeave() {
+    this.audioService.stopMusic();
+  }
+
+  OnInit(){
+
   }
 }
