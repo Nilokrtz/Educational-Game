@@ -1,6 +1,11 @@
-// ion-content::part(background){
-//     /* background-image: url('../../../assets/scenerys/.jpg');  falta a imagem*/ 
-//     background-size: cover;
-//     width: 100vw;
-//     height: 100vh;
-//   }
+* {
+  margin: 0;
+  padding: 0;
+}
+ion-content::part(background){
+    background: #ffffff00;
+    // background: url("../../../assets/scenerys/CenarioMedieval.jpg");
+    // background-size: cover;
+    // width: 100vw;
+    // height: 100vh;
+  }
