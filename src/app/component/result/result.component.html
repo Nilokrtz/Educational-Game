@@ -1,4 +1,4 @@
-<div *ngIf="exibirComponente" id="container">
+<div [style.display]="exibirComponente ? 'flex' : 'none'" id="container">
     <div id="dialogue-box">
         <p>{{ message }}</p>
     </div>

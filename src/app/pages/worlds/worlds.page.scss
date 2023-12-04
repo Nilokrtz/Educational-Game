@@ -1,5 +1,5 @@
 ion-content::part(background){
-    background-image: url('../../../assets/space.jpg');
+    background-image: url('../../../assets/background_worlds.jpg');
     background-size: cover;
     background-position: center;
     width: 100vw;
@@ -17,12 +17,17 @@ ion-content::part(background){
         width: 20vw;
         filter: brightness(0.7);   
       }
-     #earth{
-      filter: brightness(1.1);
-     }
       #black_hole{
         width: 25vw;
       } 
     }
   }
   
+  #earth{
+    position: absolute;
+    top: 60vh;
+    width: 17vw;
+    left: 78vw;
+    opacity: 0; 
+    pointer-events: auto;
+  }

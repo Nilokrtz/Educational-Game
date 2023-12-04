@@ -1,7 +1,6 @@
 // middle-age-scenery.page.ts
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import * as Phaser from 'phaser';
-import { MyScene } from './scene'; // Import the custom scene
+import { MusicService } from 'src/app/component/settings/MusicService';
 
 @Component({
   selector: 'app-moon-scenery',
@@ -9,24 +8,15 @@ import { MyScene } from './scene'; // Import the custom scene
   styleUrls: ['./middle-age-scenery.page.scss'],
 })
 export class MiddleAgeSceneryPage implements OnInit, OnDestroy {
-  private game!: Phaser.Game;
+  audio: any;
+
+  constructor(private musicService: MusicService) {}
 
   ngOnInit() {
-    this.game = new Phaser.Game({
-      type: Phaser.AUTO,
-      width: window.innerWidth,
-      height: window.innerHeight,
-      physics: {
-        default: 'arcade',
-        arcade: {
-          gravity: { y: 0 },
-        },
-      },
-      scene: [MyScene], // Use your custom scene here
-    });
+    this.musicService.playMusic('../../../assets/music/middle-age.ogg');
   }
-
+  
   ngOnDestroy() {
-    this.game.destroy(true);
+    this.musicService.pauseMusic();
   }
 }

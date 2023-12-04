@@ -1,24 +1,24 @@
-<ion-fab>
-  <ion-fab-button size="small" id="open-modal" expand="block">
-    <ion-icon name="settings-sharp"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
-  <ion-modal #modal trigger="open-modal">
+  <ion-fab-button size="small" id="settings-modal" expand="block"></ion-fab-button>
+  <ion-modal #modal trigger="settings-modal">
     <ng-template>
       <ion-content>
         <div id="container">
         <ion-toolbar>
           <ion-title>Settings</ion-title>
         </ion-toolbar>
-        <ion-label >
-          <ion-checkbox (ionChange)="toggleMusic($event)">Música</ion-checkbox>
+        <ion-label>
+          <ion-button id="sound-button" (click)="toggleMusic()">
+            <!-- {{ isMusicPlaying ? 'Pausar Música' : 'Retomar Música' }} -->
+          </ion-button>
+          <ion-button id="music-button" (click)="toggleMusic()">
+            <!-- {{ isMusicPlaying ? 'Pausar Música' : 'Retomar Música' }} -->
+          </ion-button>
       </ion-label>
       <ion-label>
-        <ion-checkbox>Som</ion-checkbox>
+        <ion-button routerLink="/level-selection" id="home-button"></ion-button>          
+        <ion-button id="play-button" (click)="modal.dismiss()"></ion-button>          
+        <ion-button id="reset-button" (click)="refreshPage()"></ion-button>
       </ion-label>
-        <ion-button>Recomecar</ion-button>          
-        <ion-button>Sair</ion-button>          
-        <ion-button (click)="modal.dismiss()">OK</ion-button>
       </div>          
       </ion-content>
     </ng-template>

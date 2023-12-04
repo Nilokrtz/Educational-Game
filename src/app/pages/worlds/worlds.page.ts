@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import * as Phaser from 'phaser';
+import { MusicService } from 'src/app/component/settings/MusicService';
 
 @Component({
   selector: 'app-worlds',
@@ -7,30 +7,16 @@ import * as Phaser from 'phaser';
   styleUrls: ['./worlds.page.scss'],
 })
 export class WorldsPage implements OnInit, OnDestroy {
-  private game!: Phaser.Game;
-  private music!: Phaser.Sound.BaseSound;
+  audio: any;
+
+  constructor(private musicService: MusicService) {}
 
   ngOnInit() {
-    this.game = new Phaser.Game({
-      // Configurações do jogo...
-      scene: {
-        preload: () => this.preload(),
-        create: () => this.create(),
-      },
-    });
+    const audioSrc = '../../../assets/music/worlds.ogg'; // Caminho do arquivo de música da página "Worlds"
+    this.musicService.playMusic(audioSrc);
   }
-
+  
   ngOnDestroy() {
-    this.game.destroy(true);
-  }
-
-  preload() {
-    this.game.scene.scenes[0].load.audio('worlds', '../../../assets/music/worlds.ogg');
-  }
-
-  create() {
-    // Criando a música e iniciando a reprodução automaticamente
-    this.music = this.game.scene.scenes[0].sound.add('worlds', { loop: true });
-    this.music.play();
+    this.musicService.pauseMusic();
   }
 }

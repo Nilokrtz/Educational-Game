@@ -1,17 +1,30 @@
 
-ion-fab{
+#settings-modal{
     position: absolute;
-    left: 82vw;
-    top: 1vh;
+    left: 83vw;
+    top: 3vh;
+    --background:  center /100% 100% no-repeat url('../../../assets/settignsAssets/config-button.png');
+    width:12vw;
   }
+  @media screen and (min-width: 360px) {
+    #settings-modal{
+      width: 11vw;
+    }
+}
+  @media screen and (min-width: 400px) {
+    #settings-modal{
+      width: 9vw;
+    }
+}
+  
 
   ion-modal {
-    --height: 85vh;
-    --width: 75vw;
+    --ion-background-color: transparent;
+    --height: 65vh;
+    --width: 90vw;
     --border-radius: 16px;
-    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  }
-  
+    --box-shadow:0; 
+  }  
   ion-modal::part(backdrop) {
     opacity: 1;
     
@@ -30,36 +43,13 @@ ion-fab{
   #container{
     width: 100%;
     height: 100%;
-    background:  center /100% 100% no-repeat url('../../../assets/settignsAssets/Settings-BG2.png');
+    background:  center /100% 100% no-repeat url('../../../assets/settignsAssets/background-settings2.png');
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
-
   }
-
-ion-button {
-    width: 172px;
-    height: 74px;
-    --background: center /cover no-repeat url('../../../assets/settignsAssets/BTN-EMPTY2.png') ;
-    color: rgb(255, 217, 0);
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    align-self: center;
-  }
-
-ion-checkbox {
-  --size: 32px;
-  --checkbox-background-checked: #6815ec;
-    width: 100%;
-    height: 68px;
-    color: rgb(255, 217, 0);
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: bold;
-}
 
 ion-checkbox::part(container) {
   border-radius: 6px;
@@ -70,5 +60,35 @@ ion-checkbox::part(container) {
 }
 
 ion-label{
-  width: 40vw;
+  width: 35vw;
+  position: relative;
+  &:last-of-type{
+    width: auto;
+    top: 15vh;
+    #home-button{
+      --background:  center /100% 100% no-repeat url('../../../assets/settignsAssets/home-button.png');
+          
+    }
+    #play-button{
+      --background:  center /100% 100% no-repeat url('../../../assets/settignsAssets/play-button.png');
+      position: relative;
+      bottom:6vh
+  
+    }
+    #reset-button{
+      --background:  center /100% 100% no-repeat url('../../../assets/settignsAssets/reset-button.png');
+    }
+  }
+  #home-button, #play-button ,#reset-button,#sound-button,#music-button{
+    width: 13vw;
+    --box-shadow:none;
+  }
+  #sound-button{
+    --background:  center /100% 100% no-repeat url('../../../assets/settignsAssets/sound-button.png');
+  }
+  #music-button{
+    --background:  center /100% 100% no-repeat url('../../../assets/settignsAssets/music-button.png');
+  }
 }
+
+

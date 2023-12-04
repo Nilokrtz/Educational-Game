@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import * as Phaser from 'phaser';
+import { MusicService } from 'src/app/component/settings/MusicService';
+import { IonicSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-level-selection',
@@ -7,30 +8,17 @@ import * as Phaser from 'phaser';
   styleUrls: ['./level-selection.page.scss'],
 })
 export class LevelSelectionPage implements OnInit, OnDestroy {
-  private game!: Phaser.Game;
-  private music!: Phaser.Sound.BaseSound;
+  audio: any;
+
+  constructor(private musicService: MusicService) {}
+  swiperModules = [IonicSlides];
 
   ngOnInit() {
-    this.game = new Phaser.Game({
-      // Configurações do jogo...
-      scene: {
-        preload: () => this.preload(),
-        create: () => this.create(),
-      },
-    });
+    const audioSrc = '../../../assets/music/level-selection.ogg'; // Caminho do arquivo de música da página "Worlds"
+    this.musicService.playMusic(audioSrc);
   }
-
+  
   ngOnDestroy() {
-    this.game.destroy(true);
-  }
-
-  preload() {
-    this.game.scene.scenes[0].load.audio('level-selection', '../../../assets/music/level-selection.ogg');
-  }
-
-  create() {
-    // Criando a música e iniciando a reprodução automaticamente
-    this.music = this.game.scene.scenes[0].sound.add('level-selection', { loop: true });
-    this.music.play();
+    this.musicService.pauseMusic();
   }
 }
