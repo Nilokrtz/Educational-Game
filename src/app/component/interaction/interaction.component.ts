@@ -1,3 +1,4 @@
+// interaction.component.ts
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -5,13 +6,18 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './interaction.component.html',
   styleUrls: ['./interaction.component.scss'],
 })
-export class InteractionComponent  implements OnInit {
+export class InteractionComponent implements OnInit {
   
   @Input() message?: string;
   @Input() image?: string;
+
+  exibirComponente = true;
 
   constructor() { }
 
   ngOnInit() {}
 
+  closeComponent() {
+    this.exibirComponente = false;
+  }
 }
