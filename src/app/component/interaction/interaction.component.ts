@@ -1,4 +1,3 @@
-// interaction.component.ts
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

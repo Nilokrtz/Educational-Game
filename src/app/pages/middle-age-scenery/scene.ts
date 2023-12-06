@@ -35,7 +35,7 @@ export class MyScene extends Phaser.Scene {
     const movePlayerTween = this.tweens.add({
       targets: this.player,
       x: this.game.canvas.width, // Mova para o final da tela
-      duration: 5000, // Duração em milissegundos (ajuste conforme necessário)
+      duration: 1000, // Duração em milissegundos (ajuste conforme necessário)
       ease: 'Power', // Efeito de easing (ajuste conforme necessário)
       onComplete: () => {
         // Chamado quando a animação do jogador é concluída
