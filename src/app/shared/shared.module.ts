@@ -5,6 +5,7 @@ import { ResultComponent } from '../component/result/result.component';
 import { SettingsComponent } from '../component/settings/settings.component';
 import { ChoicesComponent } from '../component/choices/choices.component';
 import { InteractionComponent } from '../component/interaction/interaction.component';
+import { ConclusionComponent } from '../component/conclusion/conclusion.component';
 
 @NgModule({
   imports: [IonicModule],
@@ -13,14 +14,16 @@ import { InteractionComponent } from '../component/interaction/interaction.compo
     ResultComponent,
     ChoicesComponent,
     SettingsComponent,
-    InteractionComponent
+    InteractionComponent,
+    ConclusionComponent
   ],
   exports: [
     BookComponent,
     ResultComponent,
     ChoicesComponent,
     SettingsComponent,
-    InteractionComponent
+    InteractionComponent,
+    ConclusionComponent
   ],
 })
 export class SharedModule {}
