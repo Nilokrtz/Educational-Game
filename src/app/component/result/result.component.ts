@@ -16,4 +16,7 @@ export class ResultComponent  implements OnInit {
 
   ngOnInit() {}
 
+  closeComponent() {
+    this.exibirComponente = false;
+  }
 }
