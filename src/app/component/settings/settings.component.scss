@@ -35,7 +35,7 @@
     text-align: center;
     --background: transparent;
     text-transform: uppercase;
-    font-family: cursive;
+    font-family: fantasy, cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bolder;
     color: #232125;
     position: fixed;
@@ -43,6 +43,7 @@
     right: 2vw;
     ion-title{
       font-size: x-large;
+      letter-spacing: 0.25em;
     }
   }
 
