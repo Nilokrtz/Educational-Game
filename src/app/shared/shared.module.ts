@@ -15,7 +15,7 @@ import { ConclusionComponent } from '../component/conclusion/conclusion.componen
     ChoicesComponent,
     SettingsComponent,
     InteractionComponent,
-    ConclusionComponent
+    ConclusionComponent,
   ],
   exports: [
     BookComponent,
@@ -23,7 +23,7 @@ import { ConclusionComponent } from '../component/conclusion/conclusion.componen
     ChoicesComponent,
     SettingsComponent,
     InteractionComponent,
-    ConclusionComponent
+    ConclusionComponent,
   ],
 })
 export class SharedModule {}

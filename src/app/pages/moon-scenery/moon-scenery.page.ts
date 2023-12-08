@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/services/AudioService/AudioService';
+import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoService';
 
 
 @Component({
@@ -8,8 +9,9 @@ import { AudioService } from 'src/app/services/AudioService/AudioService';
   styleUrls: ['./moon-scenery.page.scss'],
 })
 export class MoonSceneryPage {
-
-  constructor(private audioService: AudioService) {}
+  totalPerguntas = 5;
+  
+  constructor(private pontuacaoService: PontuacaoService, private audioService: AudioService) {}
 
   ionViewDidEnter() {
     this.audioService.playMusic('../../../assets/music/moon.ogg');
@@ -17,5 +19,9 @@ export class MoonSceneryPage {
 
   ionViewWillLeave() {
     this.audioService.stopMusic();
+  }
+
+  todasPerguntasRespondidas(): boolean {
+    return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
   }
 }

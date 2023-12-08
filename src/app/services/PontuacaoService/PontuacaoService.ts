@@ -10,10 +10,15 @@ export class PontuacaoService {
 
   private pontuacao = 0;
   private estrelas = 0;
+  private respondido = 0;
 
   adicionarPontos(pontos: number) {
     this.pontuacao += pontos;
     this.pontuacaoSubject.next(this.pontuacao);
+  }
+
+  adicionarRespondido(respondido: number) {
+    this.respondido += respondido;
   }
   
     getPontuacao(): number {
@@ -26,5 +31,13 @@ export class PontuacaoService {
   
     getEstrelas(): number {
       return this.estrelas;
+    }
+
+    getRespondido(): number{
+      return this.respondido;
+    }
+
+    todasPerguntasRespondidas(perguntasTotais: number): boolean {
+      return this.getRespondido() === perguntasTotais;
     }
 }

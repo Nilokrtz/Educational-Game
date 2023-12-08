@@ -8,8 +8,7 @@ import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoSer
   styleUrls: ['./choices.component.scss'],
 })
 export class ChoicesComponent implements OnInit {
-  
-  pontuacao: number = 0;
+  perguntasRespondidas = 0;
   @Input() escolha1?: string;
   @Input() escolha2?: string;
   @Input() escolha3?: string;
@@ -37,9 +36,10 @@ export class ChoicesComponent implements OnInit {
       message = `Parabéns, você acertou!`;
       image = '../../../assets/Reactions/Right.png';
       this.pontuacaoService.adicionarPontos(1);
-
+      this.pontuacaoService.adicionarRespondido(1);
+  
       const pontuacaoAtual = this.pontuacaoService.getPontuacao();
-
+      this.perguntasRespondidas++;
       let estrelas = 0;
     if (pontuacaoAtual >= 5) {
       estrelas = 3;
@@ -54,8 +54,10 @@ export class ChoicesComponent implements OnInit {
     console.log('Pontuação final:', this.pontuacaoService.getPontuacao());
     
     } else {
+      this.pontuacaoService.adicionarRespondido(1);
       message = `A resposta correta é a: ${this.respostaCorreta} \n${this.explicacao}`;
       image = '../../../assets/Reactions/Wrong.png';
+      
     }
 
     this.openResultComponent(message, image);
