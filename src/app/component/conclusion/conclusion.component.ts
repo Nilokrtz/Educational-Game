@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PontuacaoService } from 'src/app/component/conclusion/PontuacaoService';
+import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoService';
 
 @Component({
   selector: 'app-conclusion',

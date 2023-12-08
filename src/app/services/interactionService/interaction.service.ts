@@ -1,5 +1,5 @@
 import { Injectable, ComponentFactoryResolver, Injector, ApplicationRef, ComponentRef } from '@angular/core';
-import { InteractionComponent } from '../component/interaction/interaction.component';
+import { InteractionComponent } from '../../component/interaction/interaction.component';
 
 @Injectable({
   providedIn: 'root',

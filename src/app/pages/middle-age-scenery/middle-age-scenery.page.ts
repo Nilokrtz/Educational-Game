@@ -1,6 +1,6 @@
 // middle-age-scenery.page.ts
 import { Component, ComponentFactoryResolver, Injector, ApplicationRef, EmbeddedViewRef, OnDestroy, OnInit } from '@angular/core';
-import { AudioService } from 'src/app/component/settings/AudioService';
+import { AudioService } from 'src/app/services/AudioService/AudioService';
 import * as Phaser from 'phaser';
 import { MyScene } from './scene'; // Import the custom scene
 import { InteractionComponent } from '../../component/interaction/interaction.component';

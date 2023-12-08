@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
-import { AudioService } from 'src/app/component/settings/AudioService';
+import { AudioService } from 'src/app/services/AudioService/AudioService';
 
 @Component({
   selector: 'app-settings',
