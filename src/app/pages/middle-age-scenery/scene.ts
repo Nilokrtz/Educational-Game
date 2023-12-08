@@ -5,50 +5,117 @@ export class MyScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
   private currentPart = 1; // A parte inicial do cenário
   private background!: Phaser.GameObjects.Image; // Adicione esta linha para manter a referência ao plano de fundo
+  private npc1!: Phaser.Physics.Arcade.Sprite;
 
   constructor() {
     super({ key: 'my-scene' });
   }
 
   preload() {
+    this.load.spritesheet('walkPlayerSheet', 'assets/SpritesProtagonista/spritsheet_walk.png', {
+        frameWidth: 32,
+        frameHeight: 32,
+        startFrame: 0,
+        endFrame: 7,
+    });
+    this.load.spritesheet('deathPlayerSheet', 'assets/SpritesProtagonista/spritsheet_death.png', {
+        frameWidth: 32,
+        frameHeight: 32,
+        startFrame: 0,
+        endFrame: 7,
+    });
+    this.load.spritesheet('attackPlayerSheet', 'assets/SpritesProtagonista/spritsheet_attack.png', {
+        frameWidth: 32,
+        frameHeight: 32,
+        startFrame: 0,
+        endFrame: 7,
+    });
+    this.load.spritesheet('staticPlayerSheet', 'assets/SpritesProtagonista/spritsheet_static.png', {
+        frameWidth: 32,
+        frameHeight: 32,
+        startFrame: 0,
+        endFrame: 1,
+    });
     this.load.audio('middleage', 'assets/music/old-west.ogg');
-    this.load.image('player', 'assets/SpritesProtagonista/7.png');
-
+    this.load.image('npc1', 'assets/Npcs/npc1.png');
+    
     // Carregue todas as partes do cenário
     for (let i = 1; i <= 6; i++) {
       this.load.image(`background${i}`, `assets/scenerys/cenariomedieval/part${i}.jpg`);
     }
   }
-
+  
   create() {
     const music = this.sound.add('middleage', { loop: true });
     music.play();
-  
-    // Adicione o cenário ao fundo
+
+    // Add the background
     this.addBackground();
-  
-    // Adicione o jogador com uma posição inicial ajustada
-    this.player = this.physics.add.sprite(50, this.game.canvas.height / 2, 'player');
-    this.player.setScale(3);
-  
-    // Adicione uma animação de movimento ao jogador
+    // Add the player with an initial position adjustment
+    this.player = this.physics.add.sprite(50, this.game.canvas.height / 1.54, 'player');
+    this.player.setScale(2.5);
+
+    // Create player animations
+    this.anims.create({
+        key: 'walkAnimation',
+        frames: this.anims.generateFrameNumbers('walkPlayerSheet', {
+            start: 0,
+            end: 7,
+        }),
+        frameRate: 8,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: 'deathAnimation',
+        frames: this.anims.generateFrameNumbers('deathPlayerSheet', {
+            start: 0,
+            end: 7,
+        }),
+        frameRate: 8,
+        repeat: 0,
+    });
+    this.anims.create({
+        key: 'attackAnimation',
+        frames: this.anims.generateFrameNumbers('attackPlayerSheet', {
+            start: 0,
+            end: 7,
+        }),
+        frameRate: 8,
+        repeat: 0,
+    });
+    this.anims.create({
+        key: 'staticAnimation',
+        frames: this.anims.generateFrameNumbers('staticPlayerSheet', {
+            start: 0,
+            end: 1,
+        }),
+        frameRate: 2,
+        repeat: -1,
+    });
+
+    // Play the player animation
+    this.player.play('walkAnimation');    
+    // Add a movement animation to the player
     const movePlayerTween = this.tweens.add({
       targets: this.player,
-      x: this.game.canvas.width, // Mova para o final da tela
-      duration: 1000, // Duração em milissegundos (ajuste conforme necessário)
-      ease: 'Power', // Efeito de easing (ajuste conforme necessário)
+      x: this.game.canvas.width,
+      duration: 5000,
+      ease: 'Power',
       onComplete: () => {
-        // Chamado quando a animação do jogador é concluída
-        this.changeBackground();
-        
-        // Após a mudança de cenário, mova o jogador de volta para a posição inicial
-        this.player.x = 50;  // ou a posição inicial desejada
-      },
+            this.changeBackground();
+            this.player.x = 50;
+            this.player.play('walkAnimation');
+            if (this.player.x = 50) {
+              this.player.anims.stop();
+              this.player.play('statickAnimation');
+              /* função para chamar o component */
+          }
+
+        },
     });
-  
-    // Adiciona um ouvinte de evento para redimensionamento da janela
+
     window.addEventListener('resize', () => this.handleResize());
-  }
+}
   
 
   override update() {
@@ -79,9 +146,13 @@ export class MyScene extends Phaser.Scene {
     this.background.displayWidth = this.game.canvas.width;
     this.background.displayHeight = this.game.canvas.height;
 
+    this.npc1 = this.physics.add.sprite(200, this.game.canvas.height / 1.5, 'npc1');
+    this.npc1.setFlipX(true);
+    this.npc1.setScale(2.5);
+
     // Mantém o jogador centralizado vertical e horizontalmente
-    this.player.x = this.game.canvas.width / 2;
-    this.player.y = this.game.canvas.height / 2;
+    this.player.x = this.game.canvas.width / 1.5;
+    this.player.y = this.game.canvas.height / 1.54;
   }
 
   private handleResize() {
