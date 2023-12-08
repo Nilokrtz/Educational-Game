@@ -8,13 +8,15 @@ import { LevelSelectionPageRoutingModule } from './level-selection-routing.modul
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { LevelSelectionPage } from './level-selection.page';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LevelSelectionPageRoutingModule
+    LevelSelectionPageRoutingModule,
+    SharedModule
   ],
   declarations: [LevelSelectionPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

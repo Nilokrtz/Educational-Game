@@ -1,4 +1,4 @@
-<div [style.display]="exibirComponente ? 'flex' : 'none'" id="container">
+<div id="container" [style.display]="exibirComponente ? 'flex' : 'none'" (click)="closeComponent()">
     <div id="dialogue-box">
         <p>{{ message }}</p>
     </div>

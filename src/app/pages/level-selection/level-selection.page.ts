@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AudioService } from 'src/app/component/settings/AudioService';
+import { AudioService } from 'src/app/services/AudioService/AudioService';
 
 
 @Component({

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef, HostListener } from '@angular/core';
 import { ResultComponent } from '../result/result.component';
+import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoService';
 
 @Component({
   selector: 'app-choices',
@@ -7,7 +8,8 @@ import { ResultComponent } from '../result/result.component';
   styleUrls: ['./choices.component.scss'],
 })
 export class ChoicesComponent implements OnInit {
-
+  
+  pontuacao: number = 0;
   @Input() escolha1?: string;
   @Input() escolha2?: string;
   @Input() escolha3?: string;
@@ -20,7 +22,7 @@ export class ChoicesComponent implements OnInit {
 
   @ViewChild('resultContainer', { read: ViewContainerRef }) resultContainer!: ViewContainerRef;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private el: ElementRef) {}
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private el: ElementRef, private pontuacaoService: PontuacaoService) {}
 
   async checkTheValue(answer: string) { 
     console.log(answer);
@@ -34,6 +36,23 @@ export class ChoicesComponent implements OnInit {
     if (answer == this.respostaCorreta) {
       message = `Parabéns, você acertou!`;
       image = '../../../assets/Reactions/Right.png';
+      this.pontuacaoService.adicionarPontos(1);
+
+      const pontuacaoAtual = this.pontuacaoService.getPontuacao();
+
+      let estrelas = 0;
+    if (pontuacaoAtual >= 5) {
+      estrelas = 3;
+    } else if (pontuacaoAtual >= 3) {
+      estrelas = 2;
+    } else if (pontuacaoAtual >= 1) {
+      estrelas = 1;
+    }
+    this.pontuacaoService.adicionarEstrelas(estrelas); // Adicionar estrelas com base na pontuação
+
+    console.log(`Estrelas: ${estrelas}`);
+    console.log('Pontuação final:', this.pontuacaoService.getPontuacao());
+    
     } else {
       message = `A resposta correta é a: ${this.respostaCorreta} \n${this.explicacao}`;
       image = '../../../assets/Reactions/Wrong.png';

@@ -1,33 +1,74 @@
-ion-content::part(background){
-    background-image: url('../../../assets/background_worlds.jpg');
-    background-size: cover;
-    background-position: center;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    z-index: -1;
-    filter: brightness(0.8);
-  }
-  ion-content{
-    overflow-y: hidden;
-    .game-container{
-      width:100%; 
-      height:100%;
-      #moon,#black_hole,#freeze,#vulkan,#earth{
-        width: 20vw;
-        filter: brightness(0.7);   
-      }
-      #black_hole{
-        width: 25vw;
-      } 
+ion-content::part(background) {
+  background-image: url("../../../assets/background_worlds.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(0.8);
+}
+ion-content {
+  overflow-y: hidden;
+  .game-container {
+    width: 100%;
+    height: 100%;
+    #moon,
+    #black_hole,
+    #freeze,
+    #vulkan,
+    #earth {
+      width: 20vw;
+      filter: brightness(0.7);
+    }
+    #black_hole {
+      width: 25vw;
     }
   }
-  
-  #earth{
-    position: absolute;
-    top: 60vh;
-    width: 17vw;
-    left: 78vw;
-    opacity: 0; 
-    pointer-events: auto;
+}
+
+#earth {
+  position: absolute;
+  top: 60vh;
+  width: 17vw;
+  left: 78vw;
+  opacity: 0;
+  pointer-events: auto;
+}
+
+ion-button {
+  width: 20vw;
+  height: 10vh;
+  opacity: 0;
+  pointer-events: auto;
+  position: absolute;
+  &#alert1 {
+    top: 4vh;
+    left: 1vw;
   }
+  &#alert2 {
+    top: 30.5vh;
+    left: 2vw;
+  }
+  &#alert3 {
+    top: 52.5vh;
+    left: 2vw;
+    width: 31vw;
+    height: 14vh;
+  }
+  &#alert4 {
+    top: 16.5vh;
+    right: 11vw;
+    width: 43vw;
+    height: 21vh;
+  }
+  &#alert5 {
+    top: 36.5vh;
+    right: 4vw;
+    width: 16vw;
+    height: 10vh;
+  }
+}
+ion-alert {
+  padding-bottom: 60vh;
+}
