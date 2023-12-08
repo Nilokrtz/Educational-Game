@@ -13,13 +13,14 @@ export class MyScene extends Phaser.Scene {
   preload() {
     this.load.audio('middleage', 'assets/music/old-west.ogg');
     this.load.image('player', 'assets/SpritesProtagonista/7.png');
-
+    this.load.image('npc', 'assets/npcs/middleage1.gif');  // Adicione esta linha para carregar a imagem do NPC
+  
     // Carregue todas as partes do cenário
     for (let i = 1; i <= 6; i++) {
       this.load.image(`background${i}`, `assets/scenerys/cenariomedieval/part${i}.jpg`);
     }
   }
-
+  
   create() {
     const music = this.sound.add('middleage', { loop: true });
     music.play();
@@ -31,16 +32,20 @@ export class MyScene extends Phaser.Scene {
     this.player = this.physics.add.sprite(50, this.game.canvas.height / 2, 'player');
     this.player.setScale(3);
   
+    // Adicione um NPC idle no centro da tela
+    const npc = this.physics.add.sprite(this.game.canvas.width / 2, this.game.canvas.height / 2, 'npc');
+    npc.setScale(2);  // Ajuste o tamanho conforme necessário
+  
     // Adicione uma animação de movimento ao jogador
     const movePlayerTween = this.tweens.add({
       targets: this.player,
       x: this.game.canvas.width, // Mova para o final da tela
-      duration: 5000, // Duração em milissegundos (ajuste conforme necessário)
-      ease: 'Power', // Efeito de easing (ajuste conforme necessário)
+      duration: 5000,
+      ease: 'Power',
       onComplete: () => {
         // Chamado quando a animação do jogador é concluída
         this.changeBackground();
-        
+  
         // Após a mudança de cenário, mova o jogador de volta para a posição inicial
         this.player.x = 50;  // ou a posição inicial desejada
       },
