@@ -38,19 +38,19 @@ export class MyScene extends Phaser.Scene {
         startFrame: 0,
         endFrame: 1,
     });
-    this.load.spritesheet('hurtBossSheet', 'assets/NightBorne/spritsheetHurtBoss', {
+    this.load.spritesheet('hurtBossSheet', 'assets/NightBorne/spritsheetHurtBoss.png', {
         frameWidth: 80,
         frameHeight: 80,
         startFrame: 0,
         endFrame: 5,
     });
-    this.load.spritesheet('deathBossSheet', 'assets/NightBorne/spritsheetDeathBoss', {
+    this.load.spritesheet('deathBossSheet', 'assets/NightBorne/spritsheetDeathBoss.png', {
         frameWidth: 80,
         frameHeight: 80,
         startFrame: 0,
         endFrame: 22,
     });
-    this.load.spritesheet('attackBossSheet', 'assets/NightBorne/spritsheetAttackBoss', {
+    this.load.spritesheet('attackBossSheet', 'assets/NightBorne/spritsheetAttackBoss.png', {
         frameWidth: 80,
         frameHeight: 80,
         startFrame: 0,
@@ -282,7 +282,7 @@ export class MyScene extends Phaser.Scene {
         this.boss = this.physics.add.sprite(250, this.game.canvas.height / 1.7, 'boss');
         this.boss.setFlipX(true);
         this.boss.setScale(3.5);
-        this.boss.play('staticBossAnimation');
+        this.boss.play('deathBossAnimation');
     }
 
     // Keep the player centered vertically and horizontally
