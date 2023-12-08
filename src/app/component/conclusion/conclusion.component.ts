@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PontuacaoService } from 'src/app/component/conclusion/PontuacaoService';
 
 @Component({
   selector: 'app-conclusion',
@@ -6,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./conclusion.component.scss'],
 })
 export class ConclusionComponent  implements OnInit {
+  pontuacao: number = 0;
 
-  constructor() { }
+  constructor(private pontuacaoService: PontuacaoService) {}
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    // Obtém a pontuação do serviço
+    this.pontuacao = this.pontuacaoService.getPontuacao();
+  }
 }
