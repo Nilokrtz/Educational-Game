@@ -172,34 +172,7 @@ export class MyScene extends Phaser.Scene {
             this.player.setVelocityX(200);
             this.changeBackground();
             this.player.play('walkPlayerAnimation');
-    
-            // Use === for equality comparison instead of =
-            if (this.player.x === 50) {
-                this.player.anims.stop();
-                this.player.play('staticPlayerAnimation');
-                this.player.setVelocityX(0);
-    
-                this.time.delayedCall(2000, () => {
-                    this.player.setVelocityX(200);
-                    this.player.play('walkPlayerAnimation');
-                });
-            }
-    
-            /* função para chamar o component */
-    
-            // Use === for equality comparison instead of =
-            if (this.player.x === 50) {
-                this.player.anims.stop();
-                this.player.play('staticPlayerAnimation');
-                this.player.setVelocityX(0);
-    
-                this.time.delayedCall(2000, () => {
-                    this.player.setVelocityX(200);
-                    this.player.play('walkPlayerAnimation');
-                });
-    
-                /* função para chamar o component */
-            }
+
         }
     });
     
@@ -223,24 +196,30 @@ export class MyScene extends Phaser.Scene {
     this.background.displayWidth = this.game.canvas.width;
     this.background.displayHeight = this.game.canvas.height;
   }
-
   private changeBackground() {
-    // Check if we have reached the maximum number of backgrounds
-    if (this.currentPart === 4) {
-        // Stop the player's movement
-        if (this.player.x = 50) {
-          this.player.anims.stop();
-          this.player.play('staticPlayerAnimation');
-          this.player.setVelocityX(0);
+    if (this.player && this.player.body && this.player.body.velocity.x !== 0) {
+        this.player.anims.stop();
+        this.player.play('staticPlayerAnimation');
+        this.player.setVelocityX(0);
+    
+        if (this.player.x !== 50 && this.currentPart < 3) {
+            /* função para chamar o componente */
+            this.time.delayedCall(2000, () => {
+                this.player.setVelocityX(200);
+                this.player.play('walkPlayerAnimation');
+            });
         }
-        
-        // No need to change the background further
-        return;
     }
+    
+    if (this.player.x = 50) {
+        }
 
+ 
     // Load and display the next part of the background
     this.currentPart++;
 
+   // Verifique se há uma parte de cenário correspondente
+   this.textures.exists(`background${this.currentPart}`);
     // Update the texture
     this.background.setTexture(`background${this.currentPart}`);
 
@@ -282,7 +261,7 @@ export class MyScene extends Phaser.Scene {
         this.boss = this.physics.add.sprite(250, this.game.canvas.height / 1.7, 'boss');
         this.boss.setFlipX(true);
         this.boss.setScale(3.5);
-        this.boss.play('deathBossAnimation');
+        this.boss.play('staticBossAnimation');
     }
 
     // Keep the player centered vertically and horizontally
