@@ -69,7 +69,7 @@ export class MyScene extends Phaser.Scene {
     
     // Carregue todas as partes do cenário
     for (let i = 1; i <= 6; i++) {
-      this.load.image(`background${i}`, `assets/scenerys/cenariodino/part${i}.jpg`);
+      this.load.image(`background${i}`, `assets/scenerys/cenariolua/part${i}.jpg`);
     }
   }
   
@@ -80,7 +80,7 @@ export class MyScene extends Phaser.Scene {
     // Add the background
     this.addBackground();
     // Add the player with an initial position adjustment
-    this.player = this.physics.add.sprite(50, this.game.canvas.height / 1.54, 'player');
+    this.player = this.physics.add.sprite(50, this.game.canvas.height / 1.2, 'player');
     this.player.setScale(2.5);
     
 
@@ -233,7 +233,7 @@ export class MyScene extends Phaser.Scene {
 
     // Create NPC1 only in the second scenario
     if (this.currentPart === 2) {
-        this.npc1 = this.physics.add.sprite(200, this.game.canvas.height / 1.5, 'npc1');
+        this.npc1 = this.physics.add.sprite(230, this.game.canvas.height / 1.18, 'npc1');
         this.npc1.setFlipX(true);
         this.npc1.setScale(2.5);
     }
@@ -245,7 +245,7 @@ export class MyScene extends Phaser.Scene {
 
     // Create NPC2 only in the third scenario
     if (this.currentPart === 3) {
-        this.npc2 = this.physics.add.sprite(200, this.game.canvas.height / 1.7, 'npc2');
+        this.npc2 = this.physics.add.sprite(230, this.game.canvas.height / 1.34, 'npc2');
         this.npc2.setFlipX(true);
         this.npc2.setScale(2.5);
     }
@@ -257,7 +257,7 @@ export class MyScene extends Phaser.Scene {
 
     // Create the boss only in the fourth scenario
     if (this.currentPart === 4) {
-        this.boss = this.physics.add.sprite(250, this.game.canvas.height / 1.7, 'boss');
+        this.boss = this.physics.add.sprite(250, this.game.canvas.height / 1.3, 'boss');
         this.boss.setFlipX(true);
         this.boss.setScale(3.5);
         this.boss.play('staticBossAnimation');
@@ -265,7 +265,7 @@ export class MyScene extends Phaser.Scene {
 
     // Keep the player centered vertically and horizontally
     this.player.x = 50;
-    this.player.y = this.game.canvas.height / 1.54;
+    this.player.y = this.game.canvas.height / 1.2;
 }
 
   private handleResize() {

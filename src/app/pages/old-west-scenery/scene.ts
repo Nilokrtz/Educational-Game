@@ -69,7 +69,7 @@ export class MyScene extends Phaser.Scene {
     
     // Carregue todas as partes do cenário
     for (let i = 1; i <= 6; i++) {
-      this.load.image(`background${i}`, `assets/scenerys/cenariodino/part${i}.jpg`);
+      this.load.image(`background${i}`, `assets/scenerys/cenariocowboy/part${i}.jpg`);
     }
   }
   

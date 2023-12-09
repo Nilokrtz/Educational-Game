@@ -171,7 +171,6 @@ export class MyScene extends Phaser.Scene {
         onComplete: () => {
             this.player.setVelocityX(200);
             this.changeBackground();
-            this.player.play('walkPlayerAnimation');
 
         }
     });
@@ -206,7 +205,7 @@ export class MyScene extends Phaser.Scene {
             /* função para chamar o componente */
             this.time.delayedCall(2000, () => {
                 this.player.setVelocityX(200);
-                this.player.play('walkPlayerAnimation');
+                this.player.play('deathPlayerAnimation');
             });
         }
     }
@@ -234,7 +233,7 @@ export class MyScene extends Phaser.Scene {
 
     // Create NPC1 only in the second scenario
     if (this.currentPart === 2) {
-        this.npc1 = this.physics.add.sprite(200, this.game.canvas.height / 1.5, 'npc1');
+        this.npc1 = this.physics.add.sprite(200, this.game.canvas.height / 1.52, 'npc1');
         this.npc1.setFlipX(true);
         this.npc1.setScale(2.5);
     }
@@ -246,7 +245,7 @@ export class MyScene extends Phaser.Scene {
 
     // Create NPC2 only in the third scenario
     if (this.currentPart === 3) {
-        this.npc2 = this.physics.add.sprite(200, this.game.canvas.height / 1.7, 'npc2');
+        this.npc2 = this.physics.add.sprite(200, this.game.canvas.height / 1.78, 'npc2');
         this.npc2.setFlipX(true);
         this.npc2.setScale(2.5);
     }
