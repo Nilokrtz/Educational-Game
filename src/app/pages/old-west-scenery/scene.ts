@@ -63,7 +63,6 @@ export class MyScene extends Phaser.Scene {
         endFrame: 8,
     });
 
-    this.load.audio('middleage', 'assets/music/old-west.ogg');
     this.load.image('npc1', 'assets/Npcs/npc1.png');
     this.load.image('npc2', 'assets/Npcs/npc2.png');
     
@@ -74,8 +73,6 @@ export class MyScene extends Phaser.Scene {
   }
   
   create() {
-    const music = this.sound.add('middleage', { loop: true });
-    music.play();
 
     // Add the background
     this.addBackground();
