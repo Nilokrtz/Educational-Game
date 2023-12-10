@@ -1,4 +1,80 @@
 <ion-content>
+    <app-interaction
+      [style.display]="interactionVisible1 ? 'flex' : 'none'"
+      [message]="'Tchau mundo'"
+      [image]="'../../../assets/Reactions/interaction1.png'"
+    ></app-interaction>
+    <app-interaction
+      [style.display]="interactionVisible2 ? 'flex' : 'none'"
+      [message]="'Tchau mundo'"
+      [image]="'../../../assets/Reactions/interaction1.png'"
+    ></app-interaction>
+    <app-interaction
+      [style.display]="interactionVisible3 ? 'flex' : 'none'"
+      [message]="'Tchau mundo'"
+      [image]="'../../../assets/Reactions/interaction2.png'"
+    ></app-interaction>
+    <app-interaction
+      [style.display]="interactionVisible4 ? 'flex' : 'none'"
+      [message]="'Tchau mundo'"
+      [image]="'../../../assets/Reactions/interaction3.png'"
+    ></app-interaction>
+    <app-interaction
+      [style.display]="interactionVisible5 ? 'flex' : 'none'"
+      [message]="'Tchau mundo'"
+      [image]="'../../../assets/Reactions/interaction4.png'"
+    ></app-interaction>
+    <app-choices
+      [style.display]="choicesVisible1 ? 'flex' : 'none'"
+      [escolha1]="'200'"
+      [escolha2]="'150'"
+      [escolha3]="'100'"
+      [escolha4]="'50'"
+      [pergunta]="'Quantos anos tem um bicentenário?'"
+      [respostaCorreta]="'A'"
+      [explicacao]="'Um bicentenário tem 200 anos.'"
+    ></app-choices>
+    <app-choices
+      [style.display]="choicesVisible2 ? 'flex' : 'none'"
+      [escolha1]="'200'"
+      [escolha2]="'150'"
+      [escolha3]="'100'"
+      [escolha4]="'50'"
+      [pergunta]="'Quantos anos tem um bicentenário?'"
+      [respostaCorreta]="'A'"
+      [explicacao]="'Um bicentenário tem 200 anos.'"
+    ></app-choices>
+    <app-choices
+      [style.display]="choicesVisible3 ? 'flex' : 'none'"
+      [escolha1]="'200'"
+      [escolha2]="'150'"
+      [escolha3]="'100'"
+      [escolha4]="'50'"
+      [pergunta]="'Quantos anos tem um bicentenário?'"
+      [respostaCorreta]="'A'"
+      [explicacao]="'Um bicentenário tem 200 anos.'"
+    ></app-choices>
+    <app-choices
+      [style.display]="choicesVisible4 ? 'flex' : 'none'"
+      [escolha1]="'200'"
+      [escolha2]="'150'"
+      [escolha3]="'100'"
+      [escolha4]="'50'"
+      [pergunta]="'Quantos anos tem um bicentenário?'"
+      [respostaCorreta]="'A'"
+      [explicacao]="'Um bicentenário tem 200 anos.'"
+    ></app-choices>
+    <app-choices
+      [style.display]="choicesVisible5 ? 'flex' : 'none'"
+      [escolha1]="'200'"
+      [escolha2]="'150'"
+      [escolha3]="'100'"
+      [escolha4]="'50'"
+      [pergunta]="'Quantos anos tem um bicentenário?'"
+      [respostaCorreta]="'A'"
+      [explicacao]="'Um bicentenário tem 200 anos.'"
+    ></app-choices>
     <app-book></app-book>
     <app-settings></app-settings>
-</ion-content>
+  </ion-content>
+  

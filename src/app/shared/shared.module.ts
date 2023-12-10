@@ -6,6 +6,7 @@ import { SettingsComponent } from '../component/settings/settings.component';
 import { ChoicesComponent } from '../component/choices/choices.component';
 import { InteractionComponent } from '../component/interaction/interaction.component';
 import { ConclusionComponent } from '../component/conclusion/conclusion.component';
+import { InteractionService } from '../services/interactionService/interaction.service';
 
 @NgModule({
   imports: [IonicModule],
@@ -15,7 +16,7 @@ import { ConclusionComponent } from '../component/conclusion/conclusion.componen
     ChoicesComponent,
     SettingsComponent,
     InteractionComponent,
-    ConclusionComponent,
+    ConclusionComponent, 
   ],
   exports: [
     BookComponent,
@@ -23,7 +24,8 @@ import { ConclusionComponent } from '../component/conclusion/conclusion.componen
     ChoicesComponent,
     SettingsComponent,
     InteractionComponent,
-    ConclusionComponent,
+    ConclusionComponent, 
   ],
+  providers: [InteractionService]
 })
 export class SharedModule {}

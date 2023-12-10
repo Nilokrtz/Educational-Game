@@ -1,5 +1,6 @@
 // scene.ts
 import * as Phaser from 'phaser';
+import { SceneCommunication } from './comunication.interface';
 
 export class MyScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
@@ -8,9 +9,11 @@ export class MyScene extends Phaser.Scene {
   private npc1!: Phaser.Physics.Arcade.Sprite;
   private npc2!: Phaser.Physics.Arcade.Sprite;
   private boss!: Phaser.Physics.Arcade.Sprite;
+  private communication: SceneCommunication;
 
-  constructor() {
+  constructor(communication: SceneCommunication) {
     super({ key: 'my-scene' });
+    this.communication = communication;
   }
 
   preload() {
@@ -199,7 +202,7 @@ export class MyScene extends Phaser.Scene {
         this.player.setVelocityX(0);
     
         if (this.player.x !== 50 && this.currentPart < 3) {
-            /* função para chamar o componente */
+            this.communication.showChoices1();
             this.time.delayedCall(2000, () => {
                 this.player.setVelocityX(200);
                 this.player.play('walkPlayerAnimation');

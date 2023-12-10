@@ -20,7 +20,7 @@ export class ChoicesComponent implements OnInit {
   exibirComponente = true;
 
   @ViewChild('resultContainer', { read: ViewContainerRef }) resultContainer!: ViewContainerRef;
-
+  
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private el: ElementRef, private pontuacaoService: PontuacaoService) {}
 
   async checkTheValue(answer: string) { 
