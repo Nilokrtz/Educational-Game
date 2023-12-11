@@ -1,12 +1,14 @@
 import { Component, Input, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef, HostListener } from '@angular/core';
 import { ResultComponent } from '../result/result.component';
 import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoService';
+import { SharedDataService } from '../../services/answerSharedService/shared-data.service';
 
 @Component({
   selector: 'app-choices',
   templateUrl: './choices.component.html',
   styleUrls: ['./choices.component.scss'],
 })
+
 export class ChoicesComponent implements OnInit {
   perguntasRespondidas = 0;
   @Input() escolha1?: string;
@@ -21,7 +23,7 @@ export class ChoicesComponent implements OnInit {
 
   @ViewChild('resultContainer', { read: ViewContainerRef }) resultContainer!: ViewContainerRef;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private el: ElementRef, private pontuacaoService: PontuacaoService) { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private el: ElementRef, private pontuacaoService: PontuacaoService, private sharedDataService: SharedDataService) { }
 
   async checkTheValue(answer: string) {
     console.log(answer);
@@ -67,6 +69,9 @@ export class ChoicesComponent implements OnInit {
 
     this.openResultComponent(message, image);
     this.exibirComponente = false;
+
+    this.sharedDataService.setAnswers(answer, this.respostaCorreta || '');
+    this.sharedDataService.clearAnswers();
   }
 
   openResultComponent(message: string, image: string) {
