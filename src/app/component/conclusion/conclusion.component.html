@@ -1,6 +1,18 @@
-<ion-content class="conclusion-container">
-    <div class="conclusion-container">
-      <h2>Pontuação: {{ pontuacao }}</h2>
-      <h2>Estrelas: {{ estrelas }}</h2>
-    </div>
+<ion-content>
+  <div>
+  <ion-toolbar>
+    <ion-title>Parabens</ion-title>
+  </ion-toolbar>
+<ion-label>
+  <div class="estrelas">
+    <img src="../../../assets/conclusionAssets/1STAR.png" class="estrela1" [hidden]="!mostrarUmaEstrela">
+    <img src="../../../assets/conclusionAssets/2STARS.png" class="estrela2" [hidden]="!mostrarDuasEstrelas">
+    <img src="../../../assets/conclusionAssets/3STARS.png" class="estrela3" [hidden]="!mostrarTresEstrelas">
+  </div>
+  
+</ion-label>
+<ion-label>
+  <h2 id="pontuacao">Pontuação: {{ pontuacao }}</h2>
+</ion-label>
+</div>          
 </ion-content>

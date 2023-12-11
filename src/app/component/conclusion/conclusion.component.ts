@@ -9,13 +9,17 @@ import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoSer
 export class ConclusionComponent implements OnInit {
   pontuacao: number = 0;
   estrelas: number = 0;
+  mostrarUmaEstrela: boolean = false;
+  mostrarDuasEstrelas: boolean = false;
+  mostrarTresEstrelas: boolean = false;
 
   constructor(private pontuacaoService: PontuacaoService) {}
 
   ngOnInit() {
     this.pontuacaoService.pontuacao$.subscribe(pontuacao => {
       this.pontuacao = pontuacao;
-      this.estrelas = this.calcularEstrelas(pontuacao); // Adicione sua lógica para calcular estrelas aqui
+      this.estrelas = this.calcularEstrelas(pontuacao);
+      this.mostrarEstrelas(this.estrelas);
     });
   }
 
@@ -29,5 +33,11 @@ export class ConclusionComponent implements OnInit {
       estrelas = 1;
     }
     return estrelas;
+  }
+
+  mostrarEstrelas(estrelas: number): void {
+    this.mostrarUmaEstrela = estrelas >= 1;
+    this.mostrarDuasEstrelas = estrelas >= 2;
+    this.mostrarTresEstrelas = estrelas >= 3;
   }
 }
