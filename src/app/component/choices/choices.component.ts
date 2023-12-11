@@ -34,7 +34,7 @@ export class ChoicesComponent implements OnInit {
 
     if (answer == this.respostaCorreta) {
       message = `Parabéns, você acertou!`;
-      image = '../../../assets/Reactions/Right.png';
+      image = '../../../assets/interactionAssets/Right.png';
       this.pontuacaoService.adicionarPontos(1);
       this.pontuacaoService.adicionarRespondido(1);
   
@@ -56,7 +56,7 @@ export class ChoicesComponent implements OnInit {
     } else {
       this.pontuacaoService.adicionarRespondido(1);
       message = `A resposta correta é a: ${this.respostaCorreta} \n${this.explicacao}`;
-      image = '../../../assets/Reactions/Wrong.png';
+      image = '../../../assets/interactionAssets/Wrong.png';
       
     }
 

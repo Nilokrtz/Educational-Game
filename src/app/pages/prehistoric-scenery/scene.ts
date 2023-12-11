@@ -19,7 +19,7 @@ export class MyScene extends Phaser.Scene {
   preload() {
     this.load.spritesheet(
       'walkPlayerSheet',
-      'assets/SpritesProtagonista/spritsheet_walk.png',
+      'assets/sprites/Protagonista/spritsheet_walk.png',
       {
         frameWidth: 32,
         frameHeight: 32,
@@ -29,7 +29,7 @@ export class MyScene extends Phaser.Scene {
     );
     this.load.spritesheet(
       'deathPlayerSheet',
-      'assets/SpritesProtagonista/spritsheet_death.png',
+      'assets/sprites/Protagonista/spritsheet_death.png',
       {
         frameWidth: 32,
         frameHeight: 32,
@@ -39,7 +39,7 @@ export class MyScene extends Phaser.Scene {
     );
     this.load.spritesheet(
       'attackPlayerSheet',
-      'assets/SpritesProtagonista/spritsheet_attack.png',
+      'assets/sprites/Protagonista/spritsheet_attack.png',
       {
         frameWidth: 32,
         frameHeight: 32,
@@ -49,7 +49,7 @@ export class MyScene extends Phaser.Scene {
     );
     this.load.spritesheet(
       'staticPlayerSheet',
-      'assets/SpritesProtagonista/spritsheet_static.png',
+      'assets/sprites/Protagonista/spritsheet_static.png',
       {
         frameWidth: 32,
         frameHeight: 32,
@@ -98,8 +98,8 @@ export class MyScene extends Phaser.Scene {
       }
     );
 
-    this.load.image('npc1', 'assets/Npcs/npc1.png');
-    this.load.image('npc2', 'assets/Npcs/npc2.png');
+    this.load.image('npc1', 'assets/sprites/Npcs/npc1.png');
+    this.load.image('npc2', 'assets/sprites/Npcs/npc2.png');
 
     // Carregue todas as partes do cenário
     for (let i = 1; i <= 6; i++) {
@@ -307,7 +307,19 @@ export class MyScene extends Phaser.Scene {
       );
       this.boss.setFlipX(true);
       this.boss.setScale(3.5);
-      this.boss.play('staticBossAnimation');
+      this.boss.play('attackBossAnimation');
+      this.time.delayedCall(1000, () => {
+        this.boss.play('attack2BossAnimation');
+        this.time.delayedCall(1000, () => {
+          this.boss.play('staticBossAnimation');
+          this.time.delayedCall(1000, () => {
+            this.boss.play('hurtBossAnimation');
+            this.time.delayedCall(1000, () => {
+              this.boss.play('deathBossAnimation');
+            });
+          });
+        });
+      });
     }
 
     // Keep the player centered vertically and horizontally

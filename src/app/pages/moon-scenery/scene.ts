@@ -17,167 +17,259 @@ export class MyScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.spritesheet('walkPlayerSheet', 'assets/SpritesProtagonista/spritsheet_walk.png', {
+    this.load.spritesheet(
+      'walkPlayerSheet',
+      'assets/sprites/Protagonista/spritsheet_walk.png',
+      {
         frameWidth: 32,
         frameHeight: 32,
         startFrame: 0,
         endFrame: 7,
-    });
-    this.load.spritesheet('deathPlayerSheet', 'assets/SpritesProtagonista/spritsheet_death.png', {
+      }
+    );
+    this.load.spritesheet(
+      'deathPlayerSheet',
+      'assets/sprites/Protagonista/spritsheet_death.png',
+      {
         frameWidth: 32,
         frameHeight: 32,
         startFrame: 0,
         endFrame: 7,
-    });
-    this.load.spritesheet('attackPlayerSheet', 'assets/SpritesProtagonista/spritsheet_attack.png', {
+      }
+    );
+    this.load.spritesheet(
+      'attackPlayerSheet',
+      'assets/sprites/Protagonista/spritsheet_attack.png',
+      {
         frameWidth: 32,
         frameHeight: 32,
         startFrame: 0,
         endFrame: 7,
-    });
-    this.load.spritesheet('staticPlayerSheet', 'assets/SpritesProtagonista/spritsheet_static.png', {
+      }
+    );
+    this.load.spritesheet(
+      'staticPlayerSheet',
+      'assets/sprites/Protagonista/spritsheet_static.png',
+      {
         frameWidth: 32,
         frameHeight: 32,
         startFrame: 0,
         endFrame: 1,
-    });
-    this.load.spritesheet('hurtBossSheet', 'assets/NightBorne/spritsheetHurtBoss.png', {
-        frameWidth: 80,
-        frameHeight: 80,
+      }
+    );
+    this.load.spritesheet(
+      'staticNpc1Sheet',
+      'assets/sprites/Npcs/Lua/npc1.png',
+      {
+        frameWidth: 126,
+        frameHeight: 39,
+        startFrame: 0,
+        endFrame: 4,
+      }
+    );
+    this.load.spritesheet(
+      'staticNpc2Sheet',
+      'assets/sprites/Npcs/Lua/npc2.png',
+      {
+        frameWidth: 120,
+        frameHeight: 120,
         startFrame: 0,
         endFrame: 5,
-    });
-    this.load.spritesheet('deathBossSheet', 'assets/NightBorne/spritsheetDeathBoss.png', {
-        frameWidth: 80,
-        frameHeight: 80,
+      }
+    );
+    this.load.spritesheet(
+      'hurtBossSheet',
+      'assets/sprites/Boss/Medieval/spritsheetHurtBoss.png',
+      {
+        frameWidth: 250,
+        frameHeight: 250,
         startFrame: 0,
-        endFrame: 22,
-    });
-    this.load.spritesheet('attackBossSheet', 'assets/NightBorne/spritsheetAttackBoss.png', {
-        frameWidth: 80,
-        frameHeight: 80,
+        endFrame: 2,
+      }
+    );
+    this.load.spritesheet(
+      'deathBossSheet',
+      'assets/sprites/Boss/Medieval/spritsheetDeathBoss.png',
+      {
+        frameWidth: 250,
+        frameHeight: 250,
         startFrame: 0,
-        endFrame: 11,
-    });
-    this.load.spritesheet('staticBossSheet', 'assets/NightBorne/spritsheetStaticBoss.png', {
-        frameWidth: 80,
-        frameHeight: 80,
+        endFrame: 6,
+      }
+    );
+    this.load.spritesheet(
+      'attackBossSheet',
+      'assets/sprites/Boss/Medieval/spritsheetAttackBoss.png',
+      {
+        frameWidth: 250,
+        frameHeight: 250,
         startFrame: 0,
-        endFrame: 8,
-    });
+        endFrame: 7,
+      }
+    );
+    this.load.spritesheet(
+      'attack2BossSheet',
+      'assets/sprites/Boss/Medieval/spritsheetAttack2Boss.png',
+      {
+        frameWidth: 250,
+        frameHeight: 250,
+        startFrame: 0,
+        endFrame: 7,
+      }
+    );
+    this.load.spritesheet(
+      'staticBossSheet',
+      'assets/sprites/Boss/Medieval/spritsheetStaticBoss.png',
+      {
+        frameWidth: 250,
+        frameHeight: 250,
+        startFrame: 0,
+        endFrame: 7,
+      }
+    );
 
-    this.load.image('npc1', 'assets/Npcs/npc1.png');
-    this.load.image('npc2', 'assets/Npcs/npc2.png');
-    
     // Carregue todas as partes do cenário
     for (let i = 1; i <= 6; i++) {
-      this.load.image(`background${i}`, `assets/scenerys/cenariolua/part${i}.jpg`);
+      this.load.image(
+        `background${i}`,
+        `assets/scenerys/cenariolua/part${i}.jpg`
+      );
     }
   }
-  
-  create() {
 
+  create() {
     // Add the background
     this.addBackground();
     // Add the player with an initial position adjustment
-    this.player = this.physics.add.sprite(50, this.game.canvas.height / 1.2, 'player');
+    this.player = this.physics.add.sprite(
+      50,
+      this.game.canvas.height / 1.2,
+      'player'
+    );
     this.player.setScale(2.5);
-    
 
     // Create player animations
     this.anims.create({
-        key: 'walkPlayerAnimation',
-        frames: this.anims.generateFrameNumbers('walkPlayerSheet', {
-            start: 0,
-            end: 7,
-        }),
-        frameRate: 8,
-        repeat: -1,
+      key: 'walkPlayerAnimation',
+      frames: this.anims.generateFrameNumbers('walkPlayerSheet', {
+        start: 0,
+        end: 7,
+      }),
+      frameRate: 8,
+      repeat: -1,
     });
     this.anims.create({
-        key: 'deathPlayerAnimation',
-        frames: this.anims.generateFrameNumbers('deathPlayerSheet', {
-            start: 0,
-            end: 7,
-        }),
-        frameRate: 8,
-        repeat: 0,
+      key: 'deathPlayerAnimation',
+      frames: this.anims.generateFrameNumbers('deathPlayerSheet', {
+        start: 0,
+        end: 7,
+      }),
+      frameRate: 8,
+      repeat: 0,
     });
     this.anims.create({
-        key: 'attackPlayerAnimation',
-        frames: this.anims.generateFrameNumbers('attackPlayerSheet', {
-            start: 0,
-            end: 7,
-        }),
-        frameRate: 8,
-        repeat: 0,
+      key: 'attackPlayerAnimation',
+      frames: this.anims.generateFrameNumbers('attackPlayerSheet', {
+        start: 0,
+        end: 7,
+      }),
+      frameRate: 8,
+      repeat: 0,
     });
     this.anims.create({
-        key: 'staticPlayerAnimation',
-        frames: this.anims.generateFrameNumbers('staticPlayerSheet', {
-            start: 0,
-            end: 1,
-        }),
-        frameRate: 2,
-        repeat: -1,
-    });
-    
-    // Create boss animations
-    this.anims.create({
-        key: 'hurtBossAnimation',
-        frames: this.anims.generateFrameNumbers('hurtBossSheet', {
-            start: 0,
-            end: 5,
-        }),
-        frameRate: 5,
-        repeat: 0,
-    });
-    this.anims.create({
-        key: 'deathBossAnimation',
-        frames: this.anims.generateFrameNumbers('deathBossSheet', {
-            start: 0,
-            end: 22,
-        }),
-        frameRate: 22,
-        repeat: 0,
-    });
-    this.anims.create({
-        key: 'attackBossAnimation',
-        frames: this.anims.generateFrameNumbers('attackBossSheet', {
-            start: 0,
-            end: 11,
-        }),
-        frameRate: 11,
-        repeat: 0,
-    });
-    this.anims.create({
-        key: 'staticBossAnimation',
-        frames: this.anims.generateFrameNumbers('staticBossSheet', {
-            start: 0,
-            end: 8,
-        }),
-        frameRate: 8,
-        repeat: -1,
+      key: 'staticPlayerAnimation',
+      frames: this.anims.generateFrameNumbers('staticPlayerSheet', {
+        start: 0,
+        end: 1,
+      }),
+      frameRate: 2,
+      repeat: -1,
     });
 
-    
+    // Create npcs animations
+
+    this.anims.create({
+      key: 'staticNpc1Animation',
+      frames: this.anims.generateFrameNumbers('staticNpc1Sheet', {
+        start: 0,
+        end: 4,
+      }),
+      frameRate: 5,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: 'staticNpc2Animation',
+      frames: this.anims.generateFrameNumbers('staticNpc2Sheet', {
+        start: 0,
+        end: 5,
+      }),
+      frameRate: 6,
+      repeat: -1,
+    });
+
+
+    // Create boss animations
+    this.anims.create({
+      key: 'hurtBossAnimation',
+      frames: this.anims.generateFrameNumbers('hurtBossSheet', {
+        start: 0,
+        end: 2,
+      }),
+      frameRate: 3,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: 'deathBossAnimation',
+      frames: this.anims.generateFrameNumbers('deathBossSheet', {
+        start: 0,
+        end: 6,
+      }),
+      frameRate: 7,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: 'attackBossAnimation',
+      frames: this.anims.generateFrameNumbers('attackBossSheet', {
+        start: 0,
+        end: 7,
+      }),
+      frameRate: 8,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: 'attack2BossAnimation',
+      frames: this.anims.generateFrameNumbers('attack2BossSheet', {
+        start: 0,
+        end: 7,
+      }),
+      frameRate: 8,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: 'staticBossAnimation',
+      frames: this.anims.generateFrameNumbers('staticBossSheet', {
+        start: 0,
+        end: 7,
+      }),
+      frameRate: 8,
+      repeat: -1,
+    });
+
     this.player.play('walkPlayerAnimation');
 
     // Add a movement animation to the player
     const movePlayerTween = this.tweens.add({
-        targets: this.player,
-        x: this.game.canvas.width,
-        ease: 'Power',
-        onComplete: () => {
-            this.player.setVelocityX(200);
-            this.changeBackground();
-
-        }
+      targets: this.player,
+      x: this.game.canvas.width,
+      ease: 'Power',
+      onComplete: () => {
+        this.player.setVelocityX(200);
+        this.changeBackground();
+      },
     });
-    
+
     window.addEventListener('resize', () => this.handleResize());
-}
-  
+  }
 
   override update() {
     // Verifique se o jogador atingiu os limites da tela
@@ -190,35 +282,36 @@ export class MyScene extends Phaser.Scene {
 
   private addBackground() {
     // Adicione a parte inicial do cenário
-    this.background = this.add.image(0, 0, `background${this.currentPart}`).setOrigin(0, 0);
+    this.background = this.add
+      .image(0, 0, `background${this.currentPart}`)
+      .setOrigin(0, 0);
     // Ajusta o tamanho do cenário para cobrir toda a tela
     this.background.displayWidth = this.game.canvas.width;
     this.background.displayHeight = this.game.canvas.height;
   }
   private changeBackground() {
     if (this.player && this.player.body && this.player.body.velocity.x !== 0) {
-        this.player.anims.stop();
-        this.player.play('staticPlayerAnimation');
-        this.player.setVelocityX(0);
-    
-        if (this.player.x !== 50 && this.currentPart < 3) {
-            this.communication.showChoices1();
-            this.time.delayedCall(2000, () => {
-                this.player.setVelocityX(200);
-                this.player.play('walkPlayerAnimation');
-            });
-        }
-    }
-    
-    if (this.player.x = 50) {
-        }
+      this.player.anims.stop();
+      this.player.play('staticPlayerAnimation');
+      this.player.setVelocityX(0);
 
- 
+      if (this.player.x !== 50 && this.currentPart < 3) {
+        this.communication.showChoices1();
+        this.time.delayedCall(2000, () => {
+          this.player.setVelocityX(200);
+          this.player.play('walkPlayerAnimation');
+        });
+      }
+    }
+
+    if ((this.player.x = 50)) {
+    }
+
     // Load and display the next part of the background
     this.currentPart++;
 
-   // Verifique se há uma parte de cenário correspondente
-   this.textures.exists(`background${this.currentPart}`);
+    // Verifique se há uma parte de cenário correspondente
+    this.textures.exists(`background${this.currentPart}`);
     // Update the texture
     this.background.setTexture(`background${this.currentPart}`);
 
@@ -228,45 +321,70 @@ export class MyScene extends Phaser.Scene {
 
     // Remove NPC1 if it exists
     if (this.npc1) {
-        this.npc1.destroy();
+      this.npc1.destroy();
     }
 
     // Create NPC1 only in the second scenario
     if (this.currentPart === 2) {
-        this.npc1 = this.physics.add.sprite(230, this.game.canvas.height / 1.18, 'npc1');
-        this.npc1.setFlipX(true);
-        this.npc1.setScale(2.5);
+      this.npc1 = this.physics.add.sprite(
+        230,
+        this.game.canvas.height / 1.18,
+        'npc1'
+      );
+      this.npc1.setFlipX(true);
+      this.npc1.setScale(2.5);
+      this.npc1.play('staticNpc1Animation');
     }
 
     // Remove NPC2 if it exists
     if (this.npc2) {
-        this.npc2.destroy();
+      this.npc2.destroy();
     }
 
     // Create NPC2 only in the third scenario
     if (this.currentPart === 3) {
-        this.npc2 = this.physics.add.sprite(230, this.game.canvas.height / 1.34, 'npc2');
-        this.npc2.setFlipX(true);
-        this.npc2.setScale(2.5);
+      this.npc2 = this.physics.add.sprite(
+        230,
+        this.game.canvas.height / 1.28,
+        'npc2'
+      );
+      this.npc2.setFlipX(true);
+      this.npc2.setScale(2.5);
+      this.npc2.play('staticNpc2Animation');
     }
 
     // Remove the boss if it exists
     if (this.boss) {
-        this.boss.destroy();
+      this.boss.destroy();
     }
 
     // Create the boss only in the fourth scenario
     if (this.currentPart === 4) {
-        this.boss = this.physics.add.sprite(250, this.game.canvas.height / 1.3, 'boss');
-        this.boss.setFlipX(true);
-        this.boss.setScale(3.5);
-        this.boss.play('staticBossAnimation');
+      this.boss = this.physics.add.sprite(
+        250,
+        this.game.canvas.height / 1.35,
+        'boss'
+      );
+      this.boss.setFlipX(true);
+      this.boss.setScale(2.5);
+      this.boss.play('attackBossAnimation');
+      this.time.delayedCall(1000, () => {
+        this.boss.play('attack2BossAnimation');
+        this.time.delayedCall(1000, () => {
+          this.boss.play('staticBossAnimation');
+          this.time.delayedCall(1000, () => {
+            this.boss.play('hurtBossAnimation');
+            this.time.delayedCall(1000, () => {
+              this.boss.play('deathBossAnimation');
+            });
+          });
+        });
+      });
     }
 
     // Keep the player centered vertically and horizontally
     this.player.x = 50;
-    this.player.y = this.game.canvas.height / 1.2;
-}
+  }
 
   private handleResize() {
     // Atualiza o cenário quando a janela é redimensionada
@@ -275,7 +393,9 @@ export class MyScene extends Phaser.Scene {
 
   private scaleBackground() {
     // Ajusta o tamanho do cenário para cobrir toda a tela
-    const background = this.add.image(0, 0, `background${this.currentPart}`).setOrigin(0, 0);
+    const background = this.add
+      .image(0, 0, `background${this.currentPart}`)
+      .setOrigin(0, 0);
     background.displayWidth = this.game.canvas.width;
     background.displayHeight = this.game.canvas.height;
     background.destroy(); // Remove a imagem temporária

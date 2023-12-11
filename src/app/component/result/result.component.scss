@@ -11,7 +11,7 @@
   width: 100vw;
   #dialogue-box{
     flex: 2;
-    background-image: url("../../../assets/Reactions/dialogue_block.png");
+    background-image: url("../../../assets/interactionAssets/dialogue_block.png");
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -38,7 +38,7 @@
 
   #person-box{
     flex: 1;
-    background-image: url("../../../assets/Reactions/person_block.png");
+    background-image: url("../../../assets/interactionAssets/person_block.png");
     background-repeat: no-repeat;
     background-size: cover; 
     text-align: center;

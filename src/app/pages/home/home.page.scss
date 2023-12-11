@@ -27,7 +27,7 @@
 }
 
 ion-content::part(background) {
-  background-image: url("../../../assets/mainMenuAssets/background/MainBG.jpg");
+  background-image: url("../../../assets/homePageAssets/MainBG.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center; 
@@ -35,7 +35,7 @@ ion-content::part(background) {
 }
 
 .playBtn {
-  --background: url("../../../assets/mainMenuAssets/button/PLAY.png") no-repeat;
+  --background: url("../../../assets/homePageAssets/PLAY.png") no-repeat;
   
   min-width: 200px;
   min-height: 48px;
@@ -92,7 +92,7 @@ ion-img {
   left: 5px;
   width: 90%;
   height: 90%;
-  background-image: url('../../../assets/mainMenuAssets/design/lampada2.png');
+  background-image: url('../../../assets/homePageAssets/lampada2.png');
   background-size: cover;
   background-position: center center;
   filter: brightness(100);

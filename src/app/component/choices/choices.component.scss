@@ -11,7 +11,7 @@ div{
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     ion-button{
-    --background: center / 90% 100% no-repeat url("../../../assets/Reactions/BTN-EMPTY2.png");
+    --background: center / 90% 100% no-repeat url("../../../assets/interactionAssets/BTN-EMPTY2.png");
     height: 5em;
     display: flex;
     justify-content: center;
@@ -24,7 +24,7 @@ ion-card{
     position: absolute;
     top: 60vh;
     box-shadow:none;
-    --background: center / 95% 100% no-repeat url("../../../assets/Reactions/BTN-EMPTY2.png");
+    --background: center / 95% 100% no-repeat url("../../../assets/interactionAssets/BTN-EMPTY2.png");
     height: 5em;
     width: 100%;
     display: flex;

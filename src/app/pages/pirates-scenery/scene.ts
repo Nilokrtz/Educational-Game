@@ -19,7 +19,7 @@ export class MyScene extends Phaser.Scene {
   preload() {
     this.load.spritesheet(
       'walkPlayerSheet',
-      'assets/SpritesProtagonista/spritsheet_walk.png',
+      'assets/sprites/Protagonista/spritsheet_walk.png',
       {
         frameWidth: 32,
         frameHeight: 32,
@@ -29,7 +29,7 @@ export class MyScene extends Phaser.Scene {
     );
     this.load.spritesheet(
       'deathPlayerSheet',
-      'assets/SpritesProtagonista/spritsheet_death.png',
+      'assets/sprites/Protagonista/spritsheet_death.png',
       {
         frameWidth: 32,
         frameHeight: 32,
@@ -39,7 +39,7 @@ export class MyScene extends Phaser.Scene {
     );
     this.load.spritesheet(
       'attackPlayerSheet',
-      'assets/SpritesProtagonista/spritsheet_attack.png',
+      'assets/sprites/Protagonista/spritsheet_attack.png',
       {
         frameWidth: 32,
         frameHeight: 32,
@@ -49,12 +49,32 @@ export class MyScene extends Phaser.Scene {
     );
     this.load.spritesheet(
       'staticPlayerSheet',
-      'assets/SpritesProtagonista/spritsheet_static.png',
+      'assets/sprites/Protagonista/spritsheet_static.png',
       {
         frameWidth: 32,
         frameHeight: 32,
         startFrame: 0,
         endFrame: 1,
+      }
+    );
+    this.load.spritesheet(
+      'staticNpc1Sheet',
+      'assets/sprites/Npcs/Pirata/npc1.png',
+      {
+        frameWidth: 32,
+        frameHeight: 48,
+        startFrame: 0,
+        endFrame: 4,
+      }
+    );
+    this.load.spritesheet(
+      'staticNpc2Sheet',
+      'assets/sprites/Npcs/Pirata/npc2.png',
+      {
+        frameWidth: 32,
+        frameHeight: 32,
+        startFrame: 0,
+        endFrame: 4,
       }
     );
     this.load.spritesheet(
@@ -98,9 +118,6 @@ export class MyScene extends Phaser.Scene {
       }
     );
 
-    this.load.image('npc1', 'assets/Npcs/npc1.png');
-    this.load.image('npc2', 'assets/Npcs/npc2.png');
-
     // Carregue todas as partes do cenário
     for (let i = 1; i <= 6; i++) {
       this.load.image(
@@ -116,7 +133,7 @@ export class MyScene extends Phaser.Scene {
     // Add the player with an initial position adjustment
     this.player = this.physics.add.sprite(
       50,
-      this.game.canvas.height / 1.54,
+      this.game.canvas.height / 1.2,
       'player'
     );
     this.player.setScale(2.5);
@@ -159,7 +176,29 @@ export class MyScene extends Phaser.Scene {
       repeat: -1,
     });
 
+    // Create npcs animations
+
+    this.anims.create({
+      key: 'staticNpc1Animation',
+      frames: this.anims.generateFrameNumbers('staticNpc1Sheet', {
+        start: 0,
+        end: 4,
+      }),
+      frameRate: 5,
+      repeat: 0,
+    });
+    this.anims.create({
+      key: 'staticNpc2Animation',
+      frames: this.anims.generateFrameNumbers('staticNpc2Sheet', {
+        start: 0,
+        end: 4,
+      }),
+      frameRate: 5,
+      repeat: -1,
+    });
+
     // Create boss animations
+
     this.anims.create({
       key: 'hurtBossAnimation',
       frames: this.anims.generateFrameNumbers('hurtBossSheet', {
@@ -270,11 +309,12 @@ export class MyScene extends Phaser.Scene {
     if (this.currentPart === 2) {
       this.npc1 = this.physics.add.sprite(
         200,
-        this.game.canvas.height / 1.5,
+        this.game.canvas.height / 1.21,
         'npc1'
       );
       this.npc1.setFlipX(true);
-      this.npc1.setScale(2.5);
+      this.npc1.setScale(2);
+      this.npc1.play('staticNpc1Animation');
     }
 
     // Remove NPC2 if it exists
@@ -286,11 +326,12 @@ export class MyScene extends Phaser.Scene {
     if (this.currentPart === 3) {
       this.npc2 = this.physics.add.sprite(
         200,
-        this.game.canvas.height / 1.7,
+        this.game.canvas.height / 1.21,
         'npc2'
       );
       this.npc2.setFlipX(true);
-      this.npc2.setScale(2.5);
+      this.npc2.setScale(3);
+      this.npc2.play('staticNpc2Animation');
     }
 
     // Remove the boss if it exists
@@ -302,17 +343,28 @@ export class MyScene extends Phaser.Scene {
     if (this.currentPart === 4) {
       this.boss = this.physics.add.sprite(
         250,
-        this.game.canvas.height / 1.7,
+        this.game.canvas.height / 1.28,
         'boss'
       );
       this.boss.setFlipX(true);
       this.boss.setScale(3.5);
-      this.boss.play('staticBossAnimation');
+      this.boss.play('attackBossAnimation');
+      this.time.delayedCall(1000, () => {
+        this.boss.play('attack2BossAnimation');
+        this.time.delayedCall(1000, () => {
+          this.boss.play('staticBossAnimation');
+          this.time.delayedCall(1000, () => {
+            this.boss.play('hurtBossAnimation');
+            this.time.delayedCall(1000, () => {
+              this.boss.play('deathBossAnimation');
+            });
+          });
+        });
+      });
     }
 
     // Keep the player centered vertically and horizontally
     this.player.x = 50;
-    this.player.y = this.game.canvas.height / 1.54;
   }
 
   private handleResize() {
