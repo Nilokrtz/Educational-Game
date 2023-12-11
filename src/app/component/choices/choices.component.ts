@@ -20,14 +20,14 @@ export class ChoicesComponent implements OnInit {
   exibirComponente = true;
 
   @ViewChild('resultContainer', { read: ViewContainerRef }) resultContainer!: ViewContainerRef;
-  
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private el: ElementRef, private pontuacaoService: PontuacaoService) {}
 
-  async checkTheValue(answer: string) { 
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private el: ElementRef, private pontuacaoService: PontuacaoService) { }
+
+  async checkTheValue(answer: string) {
     console.log(answer);
-    console.log(typeof(answer));
+    console.log(typeof (answer));
     console.log(this.respostaCorreta);
-    console.log(answer == this.respostaCorreta ? "correto" : "errado" );
+    console.log(answer == this.respostaCorreta ? "correto" : "errado");
 
     let message = '';
     let image = '';
@@ -36,28 +36,33 @@ export class ChoicesComponent implements OnInit {
       message = `Parabéns, você acertou!`;
       image = '../../../assets/Reactions/Right.png';
       this.pontuacaoService.adicionarPontos(1);
-      this.pontuacaoService.adicionarRespondido(1);
-  
+
+      setTimeout(() => {
+        this.pontuacaoService.adicionarRespondido(1);
+      }, 1500);
+
       const pontuacaoAtual = this.pontuacaoService.getPontuacao();
       this.perguntasRespondidas++;
       let estrelas = 0;
-    if (pontuacaoAtual >= 5) {
-      estrelas = 3;
-    } else if (pontuacaoAtual >= 3) {
-      estrelas = 2;
-    } else if (pontuacaoAtual >= 1) {
-      estrelas = 1;
-    }
-    this.pontuacaoService.adicionarEstrelas(estrelas); // Adicionar estrelas com base na pontuação
+      if (pontuacaoAtual >= 5) {
+        estrelas = 3;
+      } else if (pontuacaoAtual >= 3) {
+        estrelas = 2;
+      } else if (pontuacaoAtual >= 1) {
+        estrelas = 1;
+      }
+      this.pontuacaoService.adicionarEstrelas(estrelas); // Adicionar estrelas com base na pontuação
 
-    console.log(`Estrelas: ${estrelas}`);
-    console.log('Pontuação final:', this.pontuacaoService.getPontuacao());
-    
+      console.log(`Estrelas: ${estrelas}`);
+      console.log('Pontuação final:', this.pontuacaoService.getPontuacao());
+
     } else {
-      this.pontuacaoService.adicionarRespondido(1);
+      setTimeout(() => {
+        this.pontuacaoService.adicionarRespondido(1);
+      }, 1500);
       message = `A resposta correta é a: ${this.respostaCorreta} \n${this.explicacao}`;
       image = '../../../assets/Reactions/Wrong.png';
-      
+
     }
 
     this.openResultComponent(message, image);
@@ -65,15 +70,15 @@ export class ChoicesComponent implements OnInit {
   }
 
   openResultComponent(message: string, image: string) {
-    this.resultContainer.clear();  
-    const factory = this.componentFactoryResolver.resolveComponentFactory(ResultComponent);    
-    const resultComponentRef = this.resultContainer.createComponent(factory);    
+    this.resultContainer.clear();
+    const factory = this.componentFactoryResolver.resolveComponentFactory(ResultComponent);
+    const resultComponentRef = this.resultContainer.createComponent(factory);
     resultComponentRef.instance.message = message;
     resultComponentRef.instance.image = image;
 
     const closeOnClick = (event: Event) => {
-      this.resultContainer.clear(); 
-      document.removeEventListener('click', closeOnClick); 
+      this.resultContainer.clear();
+      document.removeEventListener('click', closeOnClick);
     };
     document.addEventListener('click', closeOnClick);
   }
@@ -82,14 +87,15 @@ export class ChoicesComponent implements OnInit {
     console.log('Componente destruído');
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit() {
-    
+
   }
 
   @HostListener('click', ['$event'])
   handleClick(event: Event) {
-    event.stopPropagation(); 
+    event.stopPropagation();
   }
+
 }
