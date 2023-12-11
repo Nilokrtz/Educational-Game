@@ -294,16 +294,20 @@ export class MyScene extends Phaser.Scene {
       this.player.anims.stop();
       this.player.play('staticPlayerAnimation');
       this.player.setVelocityX(0);
-      if (this.currentPart === 4) {
+
+      if (this.currentPart === 3) {
         this.communication.showChoices1();
-        var playerAnswer = this.sharedDataService.playerAnswer;
-        var correctAnswer = this.sharedDataService.correctAnswer;
-        if (playerAnswer == correctAnswer) {
-      /*         this.player.play('attackPlayerAnimation');
-      */      } else {
-      /*         this.boss.play('attackBossAnimation');
-      */      }
-        this.sharedDataService.clearAnswers();
+        if (this.sharedDataService && this.sharedDataService.playerAnswer && this.sharedDataService.correctAnswer) {
+          var playerAnswer = this.sharedDataService.playerAnswer;
+          var correctAnswer = this.sharedDataService.correctAnswer;
+          if (playerAnswer === correctAnswer) {
+            
+            this.player.play('attackPlayerAnimation');
+          } else {
+            this.boss.play('attackBossAnimation');
+          }
+          this.sharedDataService.clearAnswers();
+        }
       }
       
       if (this.player.x !== 50 && this.currentPart < 3) {
