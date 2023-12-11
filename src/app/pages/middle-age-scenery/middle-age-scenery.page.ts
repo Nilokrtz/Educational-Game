@@ -8,6 +8,7 @@ import { AudioService } from 'src/app/services/AudioService/AudioService';
 import * as Phaser from 'phaser';
 import { MyScene } from './scene';
 import { SceneCommunication } from './comunication.interface';
+import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoService';
 
 @Component({
   selector: 'app-middle-age-scenery',
@@ -16,7 +17,7 @@ import { SceneCommunication } from './comunication.interface';
 })
 export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunication{
   private game!: Phaser.Game;
-
+  totalPerguntas = 5;  
   interactionVisible1 = false;
   interactionVisible2 = false;
   interactionVisible3 = false;
@@ -68,8 +69,12 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
   showInteraction5() {
     this.interactionVisible5 = true;
   }
+
+  todasPerguntasRespondidas(): boolean {
+    return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
+  }
   
-  constructor(private audioService: AudioService) {}
+  constructor(private audioService: AudioService, private pontuacaoService: PontuacaoService,) {}
 
   ionViewDidEnter() {
     this.audioService.playMusic('../../../assets/music/middle-age.ogg');

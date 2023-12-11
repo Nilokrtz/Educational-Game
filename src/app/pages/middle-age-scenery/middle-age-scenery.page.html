@@ -56,13 +56,7 @@
   ></app-choices>
   <app-choices
     [style.display]="choicesVisible4 ? 'flex' : 'none'"
-    [escolha1]="'200'"
-    [escolha2]="'150'"
-    [escolha3]="'100'"
-    [escolha4]="'50'"
-    [pergunta]="'Quantos anos tem um bicentenário?'"
-    [respostaCorreta]="'A'"
-    [explicacao]="'Um bicentenário tem 200 anos.'"
+    [escolha1]="'Um bicentenário tem 200 anos.'"
   ></app-choices>
   <app-choices
     [style.display]="choicesVisible5 ? 'flex' : 'none'"
@@ -76,4 +70,5 @@
   ></app-choices>
   <app-book></app-book>
   <app-settings></app-settings>
+  <app-conclusion *ngIf="todasPerguntasRespondidas()"></app-conclusion>
 </ion-content>

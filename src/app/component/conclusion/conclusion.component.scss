@@ -44,13 +44,14 @@ ion-content ion-toolbar {
   ion-title {
     font-size: x-large;
     letter-spacing: 0.25em;
+    
   }
 }
 
 
 @media screen and (min-width: 360px) {
   ion-content ion-toolbar {
-    top: 28vh;
+    top: 29.5vh;
     left: 2vw;
 
     ion-title {
@@ -59,6 +60,18 @@ ion-content ion-toolbar {
     }
   }
 }
+
+@media screen and (max-width: 400px){
+  ion-content ion-toolbar {
+    top: 29.5vh;
+    left: 2vw;
+  }
+    #pontuacao {
+      position: fixed;
+      top: 54.5vh;
+  }
+}
+
 
 @media screen and (min-width: 400px) {
   ion-content ion-toolbar {
@@ -84,7 +97,7 @@ ion-content ion-toolbar {
 @media screen and (min-width: 360px) {
   #pontuacao {
     position: fixed;
-    top: 52vh;
+    top: 58vh;
     left: 36vw;
     font-size: 18px;
     letter-spacing: 0.25em;
