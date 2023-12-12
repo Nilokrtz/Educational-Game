@@ -74,7 +74,18 @@
     [respostaCorreta]="'C'"
     [explicacao]="'Porque captain em inglês significa capitão'"
   ></app-choices>
-  <app-book></app-book>
+  <app-book
+    [palavra1]="'oceano'"
+    [palavra2]="'espada'"
+    [palavra3]="'navio'"
+    [palavra4]="'pirata'"
+    [palavra5]="'capitão'"
+    [word1]="'ocean'"
+    [word2]="'sword'"
+    [word3]="'ship'"
+    [word4]="'pirate'"
+    [word5]="'captain'"
+  ></app-book>
   <app-settings></app-settings>
   <app-conclusion *ngIf="todasPerguntasRespondidas()"></app-conclusion>
 </ion-content>

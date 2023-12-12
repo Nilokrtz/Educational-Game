@@ -74,7 +74,18 @@
     [respostaCorreta]="'B'"
     [explicacao]="'Porque key em inglês significa chave'"
   ></app-choices>
-  <app-book></app-book>
+  <app-book
+    [palavra1]="'espada'"
+    [palavra2]="'armadura'"
+    [palavra3]="'castelo'"
+    [palavra4]="'porta'"
+    [palavra5]="'chave'"
+    [word1]="'sword'"
+    [word2]="'armor'"
+    [word3]="'castle'"
+    [word4]="'door'"
+    [word5]="'key'"
+  ></app-book>
   <app-settings></app-settings>
   <app-conclusion *ngIf="todasPerguntasRespondidas()"></app-conclusion>
 </ion-content>

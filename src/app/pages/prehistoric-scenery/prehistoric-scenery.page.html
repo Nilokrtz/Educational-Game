@@ -74,7 +74,18 @@
     [respostaCorreta]="'C'"
     [explicacao]="'Porque tree em inglês significa árvore'"
   ></app-choices>
-  <app-book></app-book>
+  <app-book
+    [palavra1]="'fogo'"
+    [palavra2]="'dinossauro'"
+    [palavra3]="'água'"
+    [palavra4]="'pedra'"
+    [palavra5]="'árvore'"
+    [word1]="'fire'"
+    [word2]="'dinosaur'"
+    [word3]="'water'"
+    [word4]="'stone'"
+    [word5]="'tree'"
+  ></app-book>
   <app-settings></app-settings>
   <app-conclusion *ngIf="todasPerguntasRespondidas()"></app-conclusion>
 </ion-content>

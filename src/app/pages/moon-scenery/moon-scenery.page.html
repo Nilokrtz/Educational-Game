@@ -74,7 +74,18 @@
     [respostaCorreta]="'D'"
     [explicacao]="'Porque astronaut em inglês significa astronauta'"
   ></app-choices>
-  <app-book></app-book>
+  <app-book
+    [palavra1]="'lua'"
+    [palavra2]="'sol'"
+    [palavra3]="'estrela'"
+    [palavra4]="'espaço'"
+    [palavra5]="'astronauta'"
+    [word1]="'moon'"
+    [word2]="'sun'"
+    [word3]="'star'"
+    [word4]="'space'"
+    [word5]="'astronaut'"
+  ></app-book>
   <app-settings></app-settings>
   <app-conclusion *ngIf="todasPerguntasRespondidas()"></app-conclusion>
 </ion-content>

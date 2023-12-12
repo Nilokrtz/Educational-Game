@@ -1,9 +1,9 @@
-
 ion-content {
   position: relative;
   left: 0vw;
   top: 22vh;
-  --background: center /100% 100% no-repeat url('../../../assets/conclusionAssets/FULL-BG.png');
+  --background: center / 100% 100% no-repeat
+    url("../../../assets/conclusionAssets/FULL-BG.png");
   width: 340px;
   height: 343px;
 }
@@ -28,13 +28,12 @@ ion-content {
   }
 }
 
-
 ion-content ion-toolbar {
   --color: white;
   text-align: center;
   --background: transparent;
   text-transform: uppercase;
-  font-family: fantasy, cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: fantasy, cursive, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bolder;
   color: #232125;
   position: fixed;
@@ -44,10 +43,8 @@ ion-content ion-toolbar {
   ion-title {
     font-size: x-large;
     letter-spacing: 0.25em;
-    
   }
 }
-
 
 @media screen and (min-width: 360px) {
   ion-content ion-toolbar {
@@ -61,17 +58,16 @@ ion-content ion-toolbar {
   }
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 400px) {
   ion-content ion-toolbar {
     top: 29.5vh;
     left: 2vw;
   }
-    #pontuacao {
-      position: fixed;
-      top: 54.5vh;
+  #pontuacao {
+    position: fixed;
+    top: 54.5vh;
   }
 }
-
 
 @media screen and (min-width: 400px) {
   ion-content ion-toolbar {
@@ -93,7 +89,6 @@ ion-content ion-toolbar {
   letter-spacing: 0.25em;
 }
 
-
 @media screen and (min-width: 360px) {
   #pontuacao {
     position: fixed;
@@ -102,7 +97,6 @@ ion-content ion-toolbar {
     font-size: 18px;
     letter-spacing: 0.25em;
   }
-
 }
 
 @media screen and (min-width: 400px) {
@@ -115,83 +109,93 @@ ion-content ion-toolbar {
   }
 }
 
-.estrelas{
+.estrelas {
   width: 340px;
   display: flex;
   justify-content: center;
 }
 
-.estrela1{
+.estrela1 {
   position: absolute;
   width: 340px;
 }
 
-.estrela2{
+.estrela2 {
   position: absolute;
   width: 340px;
 }
 
-.estrela3{
+.estrela3 {
   position: absolute;
   width: 340px;
 }
-
 
 @media screen and (min-width: 360px) {
-.estrelas{
-  width: 350px;
-  display: flex;
-  justify-content: center;
-}
+  .estrelas {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+  }
 
-.estrela1{
-  position: absolute;
-  width: 350px;
-}
+  .estrela1 {
+    position: absolute;
+    width: 350px;
+  }
 
-.estrela2{
-  position: absolute;
-  width: 350px;
-}
+  .estrela2 {
+    position: absolute;
+    width: 350px;
+  }
 
-.estrela3{
-  position: absolute;
-  width: 350px;
-}
+  .estrela3 {
+    position: absolute;
+    width: 350px;
+  }
 }
 
 @media screen and (min-width: 400px) {
-.estrelas{
-  width: 390px;
-  display: flex;
-  justify-content: center;
+  .estrelas {
+    width: 390px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .estrela1 {
+    position: absolute;
+    width: 390px;
+  }
+
+  .estrela2 {
+    position: absolute;
+    width: 390px;
+  }
+
+  .estrela3 {
+    position: absolute;
+    width: 390px;
+  }
 }
 
-.estrela1{
-  position: absolute;
-  width: 390px;
-}
-
-.estrela2{
-  position: absolute;
-  width: 390px;
-}
-
-.estrela3{
-  position: absolute;
-  width: 390px;
-}
-
-}
-
-#buttons{
-  width: 80vw;
-  height: 10vh;
-  display: flex;
-}
-#play-button{
-  --background: center /100% 100% no-repeat url('../../../assets/conclusionAssets/NEXT-BUTTON.png.png');    
-}
-#reset-button{
-  --background: center /100% 100% no-repeat url('../../../assets/conclusionAssets/RESTART-BUTTON.png');
+ion-label {
+  &:last-of-type {
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 41vh;
+    gap: 2em;
+    #play-button {
+      --background: center / 100% 100% no-repeat
+        url("../../../assets/settignsAssets/play-button.png");
+      position: relative;
+      --box-shadow: none;
+      width: 13vw;
+    }
+    #reset-button {
+      --background: center / 100% 100% no-repeat
+        url("../../../assets/settignsAssets/reset-button.png");
+        --box-shadow: none;
+        width: 13vw;
+    }
+  }
 }
