@@ -1,9 +1,5 @@
 // middle-age-scenery.page.ts
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/services/AudioService/AudioService';
 import * as Phaser from 'phaser';
 import { MyScene } from './scene';
@@ -17,7 +13,8 @@ import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoSer
 })
 export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunication{
   private game!: Phaser.Game;
-  totalPerguntas = 5;  
+  totalPerguntas = 5;
+
   interactionVisible1 = false;
   interactionVisible2 = false;
   interactionVisible3 = false;
@@ -53,7 +50,7 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
   showInteraction1() {
     this.interactionVisible1 = true;
   }
-  
+
   showInteraction2() {
     this.interactionVisible2 = true;
   }
@@ -73,16 +70,11 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
   todasPerguntasRespondidas(): boolean {
     return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
   }
-  
-  constructor(private audioService: AudioService, private pontuacaoService: PontuacaoService,) {}
 
-  ionViewDidEnter() {
-    this.audioService.playMusic('../../../assets/music/middle-age.ogg');
-  }
-
-  ionViewWillLeave() {
-    this.audioService.stopMusic();
-  }
+  constructor(
+    private audioService: AudioService,
+    private pontuacaoService: PontuacaoService
+  ) {}
 
   ngOnInit() {
     const communication: SceneCommunication = this;
@@ -96,10 +88,17 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
           gravity: { y: 0 },
         },
       },
-      scene: [new MyScene(communication)], 
+      scene: [new MyScene(communication)],
     });
   }
-  
+
+  ionViewDidEnter() {
+    this.audioService.playMusic('../../../assets/music/middle-age.ogg');
+  }
+
+  ionViewWillLeave() {
+    this.audioService.stopMusic();
+  }
 
   ngOnDestroy() {
     this.game.destroy(true);

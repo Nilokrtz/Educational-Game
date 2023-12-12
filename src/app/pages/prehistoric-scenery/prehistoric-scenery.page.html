@@ -1,80 +1,80 @@
 <ion-content>
-    <app-interaction
-      [style.display]="interactionVisible1 ? 'flex' : 'none'"
-      [message]="'Tchau mundo'"
-      [image]="'../../../assets/Reactions/interaction1.png'"
-    ></app-interaction>
-    <app-interaction
-      [style.display]="interactionVisible2 ? 'flex' : 'none'"
-      [message]="'Tchau mundo'"
-      [image]="'../../../assets/Reactions/interaction1.png'"
-    ></app-interaction>
-    <app-interaction
-      [style.display]="interactionVisible3 ? 'flex' : 'none'"
-      [message]="'Tchau mundo'"
-      [image]="'../../../assets/Reactions/interaction2.png'"
-    ></app-interaction>
-    <app-interaction
-      [style.display]="interactionVisible4 ? 'flex' : 'none'"
-      [message]="'Tchau mundo'"
-      [image]="'../../../assets/Reactions/interaction3.png'"
-    ></app-interaction>
-    <app-interaction
-      [style.display]="interactionVisible5 ? 'flex' : 'none'"
-      [message]="'Tchau mundo'"
-      [image]="'../../../assets/Reactions/interaction4.png'"
-    ></app-interaction>
-    <app-choices
-      [style.display]="choicesVisible1 ? 'flex' : 'none'"
-      [escolha1]="'200'"
-      [escolha2]="'150'"
-      [escolha3]="'100'"
-      [escolha4]="'50'"
-      [pergunta]="'Quantos anos tem um bicentenário?'"
-      [respostaCorreta]="'A'"
-      [explicacao]="'Um bicentenário tem 200 anos.'"
-    ></app-choices>
-    <app-choices
-      [style.display]="choicesVisible2 ? 'flex' : 'none'"
-      [escolha1]="'200'"
-      [escolha2]="'150'"
-      [escolha3]="'100'"
-      [escolha4]="'50'"
-      [pergunta]="'Quantos anos tem um bicentenário?'"
-      [respostaCorreta]="'A'"
-      [explicacao]="'Um bicentenário tem 200 anos.'"
-    ></app-choices>
-    <app-choices
-      [style.display]="choicesVisible3 ? 'flex' : 'none'"
-      [escolha1]="'200'"
-      [escolha2]="'150'"
-      [escolha3]="'100'"
-      [escolha4]="'50'"
-      [pergunta]="'Quantos anos tem um bicentenário?'"
-      [respostaCorreta]="'A'"
-      [explicacao]="'Um bicentenário tem 200 anos.'"
-    ></app-choices>
-    <app-choices
-      [style.display]="choicesVisible4 ? 'flex' : 'none'"
-      [escolha1]="'200'"
-      [escolha2]="'150'"
-      [escolha3]="'100'"
-      [escolha4]="'50'"
-      [pergunta]="'Quantos anos tem um bicentenário?'"
-      [respostaCorreta]="'A'"
-      [explicacao]="'Um bicentenário tem 200 anos.'"
-    ></app-choices>
-    <app-choices
-      [style.display]="choicesVisible5 ? 'flex' : 'none'"
-      [escolha1]="'200'"
-      [escolha2]="'150'"
-      [escolha3]="'100'"
-      [escolha4]="'50'"
-      [pergunta]="'Quantos anos tem um bicentenário?'"
-      [respostaCorreta]="'A'"
-      [explicacao]="'Um bicentenário tem 200 anos.'"
-    ></app-choices>
-    <app-book></app-book>
-    <app-settings></app-settings>
-  </ion-content>
-  
+  <app-interaction
+    [style.display]="interactionVisible1 ? 'flex' : 'none'"
+    [message]="'Tchau mundo'"
+    [image]="'../../../assets/interactionAssets/interaction1.png'"
+  ></app-interaction>
+  <app-interaction
+    [style.display]="interactionVisible2 ? 'flex' : 'none'"
+    [message]="'Tchau mundo'"
+    [image]="'../../../assets/interactionAssets/interaction1.png'"
+  ></app-interaction>
+  <app-interaction
+    [style.display]="interactionVisible3 ? 'flex' : 'none'"
+    [message]="'Tchau mundo'"
+    [image]="'../../../assets/interactionAssets/interaction2.png'"
+  ></app-interaction>
+  <app-interaction
+    [style.display]="interactionVisible4 ? 'flex' : 'none'"
+    [message]="'Tchau mundo'"
+    [image]="'../../../assets/interactionAssets/interaction3.png'"
+  ></app-interaction>
+  <app-interaction
+    [style.display]="interactionVisible5 ? 'flex' : 'none'"
+    [message]="'Tchau mundo'"
+    [image]="'../../../assets/interactionAssets/interaction4.png'"
+  ></app-interaction>
+  <app-choices
+    [style.display]="choicesVisible1 ? 'flex' : 'none'"
+    [escolha1]="'Water'"
+    [escolha2]="'Earth'"
+    [escolha3]="'Stone'"
+    [escolha4]="'Fire'"
+    [pergunta]="'Como se escreve fogo em inglês'"
+    [respostaCorreta]="'D'"
+    [explicacao]="'Porque fire em inglês significa fogo'"
+  ></app-choices>
+  <app-choices
+    [style.display]="choicesVisible2 ? 'flex' : 'none'"
+    [escolha1]="'Dragon'"
+    [escolha2]="'Rabbit'"
+    [escolha3]="'Snake'"
+    [escolha4]="'Dinosaur'"
+    [pergunta]="'Como se escreve dinossauro em inglês?'"
+    [respostaCorreta]="'D'"
+    [explicacao]="'Porque dinosaur em inglês significa dinossauro'"
+  ></app-choices>
+  <app-choices
+    [style.display]="choicesVisible3 ? 'flex' : 'none'"
+    [escolha1]="'Fire '"
+    [escolha2]="'Stone'"
+    [escolha3]="'Black'"
+    [escolha4]="'Water'"
+    [pergunta]="'Como se escreve água em inglês?'"
+    [respostaCorreta]="'D'"
+    [explicacao]="'Porque water em inglês significa água'"
+  ></app-choices>
+  <app-choices
+    [style.display]="choicesVisible4 ? 'flex' : 'none'"
+    [escolha1]="'Water'"
+    [escolha2]="'Stone'"
+    [escolha3]="'Black'"
+    [escolha4]="'Earth'"
+    [pergunta]="'Como se escreve pedra em inglês?'"
+    [respostaCorreta]="'B'"
+    [explicacao]="'Porque stone em inglês significa pedra'"
+  ></app-choices>
+  <app-choices
+    [style.display]="choicesVisible5 ? 'flex' : 'none'"
+    [escolha1]="'Three'"
+    [escolha2]="'Fire'"
+    [escolha3]="'Tree'"
+    [escolha4]="'Stone'"
+    [pergunta]="'Como se escreve árvore em inglês?'"
+    [respostaCorreta]="'C'"
+    [explicacao]="'Porque tree em inglês significa árvore'"
+  ></app-choices>
+  <app-book></app-book>
+  <app-settings></app-settings>
+  <app-conclusion *ngIf="todasPerguntasRespondidas()"></app-conclusion>
+</ion-content>

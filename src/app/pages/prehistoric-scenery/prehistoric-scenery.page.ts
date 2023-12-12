@@ -3,7 +3,7 @@ import { MyScene } from './scene';
 import { Component, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/services/AudioService/AudioService';
 import { SceneCommunication } from './comunication.interface';
-
+import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoService';
 
 @Component({
   selector: 'app-prehistoric-scenery',
@@ -11,9 +11,8 @@ import { SceneCommunication } from './comunication.interface';
   styleUrls: ['./prehistoric-scenery.page.scss'],
 })
 export class PrehistoricSceneryPage implements  OnInit, SceneCommunication{
-  constructor(private audioService: AudioService) {}
-  
   private game!: Phaser.Game;
+  totalPerguntas = 5;  
 
   interactionVisible1 = false;
   interactionVisible2 = false;
@@ -67,6 +66,12 @@ export class PrehistoricSceneryPage implements  OnInit, SceneCommunication{
     this.interactionVisible5 = true;
   }
 
+  todasPerguntasRespondidas(): boolean {
+    return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
+  }
+
+  constructor(private audioService: AudioService,private pontuacaoService: PontuacaoService) {}
+  
   ngOnInit() {
     const communication: SceneCommunication = this;
     this.game = new Phaser.Game({

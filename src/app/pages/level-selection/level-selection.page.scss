@@ -9,6 +9,9 @@ ion-content::part(background){
   .level-card {
     max-width: 300px;
     border-radius: 1em;
+    ion-card-title{
+      margin-bottom: 0.5em;
+    }
   }
   
   .level-image {
@@ -17,7 +20,7 @@ ion-content::part(background){
   }
   
   .level-description {
-    font-size: 9px;
+    font-size: 1em;
   }
 
 

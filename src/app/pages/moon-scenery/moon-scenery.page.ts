@@ -10,7 +10,7 @@ import { SceneCommunication } from './comunication.interface';
   templateUrl: './moon-scenery.page.html',
   styleUrls: ['./moon-scenery.page.scss'],
 })
-export class MoonSceneryPage implements OnInit, SceneCommunication{
+export class MoonSceneryPage implements OnInit, SceneCommunication {
   private game!: Phaser.Game;
   totalPerguntas = 5;
 
@@ -49,7 +49,7 @@ export class MoonSceneryPage implements OnInit, SceneCommunication{
   showInteraction1() {
     this.interactionVisible1 = true;
   }
-  
+
   showInteraction2() {
     this.interactionVisible2 = true;
   }
@@ -66,12 +66,16 @@ export class MoonSceneryPage implements OnInit, SceneCommunication{
     this.interactionVisible5 = true;
   }
 
+  todasPerguntasRespondidas(): boolean {
+    return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
+  }
+
   constructor(
     private pontuacaoService: PontuacaoService,
     private audioService: AudioService
   ) {}
 
- ngOnInit() {
+  ngOnInit() {
     const communication: SceneCommunication = this;
     this.game = new Phaser.Game({
       type: Phaser.AUTO,
@@ -83,7 +87,7 @@ export class MoonSceneryPage implements OnInit, SceneCommunication{
           gravity: { y: 0 },
         },
       },
-      scene: [new MyScene(communication)], 
+      scene: [new MyScene(communication)],
     });
   }
 
@@ -93,9 +97,5 @@ export class MoonSceneryPage implements OnInit, SceneCommunication{
 
   ionViewWillLeave() {
     this.audioService.stopMusic();
-  }
-
-  todasPerguntasRespondidas(): boolean {
-    return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
   }
 }

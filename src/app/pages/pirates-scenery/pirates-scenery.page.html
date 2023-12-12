@@ -1,80 +1,80 @@
 <ion-content>
-    <app-interaction
-      [style.display]="interactionVisible1 ? 'flex' : 'none'"
-      [message]="'Tchau mundo'"
-      [image]="'../../../assets/Reactions/interaction1.png'"
-    ></app-interaction>
-    <app-interaction
-      [style.display]="interactionVisible2 ? 'flex' : 'none'"
-      [message]="'Tchau mundo'"
-      [image]="'../../../assets/Reactions/interaction1.png'"
-    ></app-interaction>
-    <app-interaction
-      [style.display]="interactionVisible3 ? 'flex' : 'none'"
-      [message]="'Tchau mundo'"
-      [image]="'../../../assets/Reactions/interaction2.png'"
-    ></app-interaction>
-    <app-interaction
-      [style.display]="interactionVisible4 ? 'flex' : 'none'"
-      [message]="'Tchau mundo'"
-      [image]="'../../../assets/Reactions/interaction3.png'"
-    ></app-interaction>
-    <app-interaction
-      [style.display]="interactionVisible5 ? 'flex' : 'none'"
-      [message]="'Tchau mundo'"
-      [image]="'../../../assets/Reactions/interaction4.png'"
-    ></app-interaction>
-    <app-choices
-      [style.display]="choicesVisible1 ? 'flex' : 'none'"
-      [escolha1]="'200'"
-      [escolha2]="'150'"
-      [escolha3]="'100'"
-      [escolha4]="'50'"
-      [pergunta]="'Quantos anos tem um bicentenário?'"
-      [respostaCorreta]="'A'"
-      [explicacao]="'Um bicentenário tem 200 anos.'"
-    ></app-choices>
-    <app-choices
-      [style.display]="choicesVisible2 ? 'flex' : 'none'"
-      [escolha1]="'200'"
-      [escolha2]="'150'"
-      [escolha3]="'100'"
-      [escolha4]="'50'"
-      [pergunta]="'Quantos anos tem um bicentenário?'"
-      [respostaCorreta]="'A'"
-      [explicacao]="'Um bicentenário tem 200 anos.'"
-    ></app-choices>
-    <app-choices
-      [style.display]="choicesVisible3 ? 'flex' : 'none'"
-      [escolha1]="'200'"
-      [escolha2]="'150'"
-      [escolha3]="'100'"
-      [escolha4]="'50'"
-      [pergunta]="'Quantos anos tem um bicentenário?'"
-      [respostaCorreta]="'A'"
-      [explicacao]="'Um bicentenário tem 200 anos.'"
-    ></app-choices>
-    <app-choices
-      [style.display]="choicesVisible4 ? 'flex' : 'none'"
-      [escolha1]="'200'"
-      [escolha2]="'150'"
-      [escolha3]="'100'"
-      [escolha4]="'50'"
-      [pergunta]="'Quantos anos tem um bicentenário?'"
-      [respostaCorreta]="'A'"
-      [explicacao]="'Um bicentenário tem 200 anos.'"
-    ></app-choices>
-    <app-choices
-      [style.display]="choicesVisible5 ? 'flex' : 'none'"
-      [escolha1]="'200'"
-      [escolha2]="'150'"
-      [escolha3]="'100'"
-      [escolha4]="'50'"
-      [pergunta]="'Quantos anos tem um bicentenário?'"
-      [respostaCorreta]="'A'"
-      [explicacao]="'Um bicentenário tem 200 anos.'"
-    ></app-choices>
-    <app-book></app-book>
-    <app-settings></app-settings>
-  </ion-content>
-  
+  <app-interaction
+    [style.display]="interactionVisible1 ? 'flex' : 'none'"
+    [message]="'Tchau mundo'"
+    [image]="'../../../assets/interactionAssets/interaction1.png'"
+  ></app-interaction>
+  <app-interaction
+    [style.display]="interactionVisible2 ? 'flex' : 'none'"
+    [message]="'Tchau mundo'"
+    [image]="'../../../assets/interactionAssets/interaction1.png'"
+  ></app-interaction>
+  <app-interaction
+    [style.display]="interactionVisible3 ? 'flex' : 'none'"
+    [message]="'Tchau mundo'"
+    [image]="'../../../assets/interactionAssets/interaction2.png'"
+  ></app-interaction>
+  <app-interaction
+    [style.display]="interactionVisible4 ? 'flex' : 'none'"
+    [message]="'Tchau mundo'"
+    [image]="'../../../assets/interactionAssets/interaction3.png'"
+  ></app-interaction>
+  <app-interaction
+    [style.display]="interactionVisible5 ? 'flex' : 'none'"
+    [message]="'Tchau mundo'"
+    [image]="'../../../assets/interactionAssets/interaction4.png'"
+  ></app-interaction>
+  <app-choices
+    [style.display]="choicesVisible1 ? 'flex' : 'none'"
+    [escolha1]="'Ocean'"
+    [escolha2]="'Sea'"
+    [escolha3]="'Water'"
+    [escolha4]="'Fire'"
+    [pergunta]="'Como é a palavra oceano em inglês?'"
+    [respostaCorreta]="'A'"
+    [explicacao]="'Porque ocean em inglês significa oceano'"
+  ></app-choices>
+  <app-choices
+    [style.display]="choicesVisible2 ? 'flex' : 'none'"
+    [escolha1]="'Sword'"
+    [escolha2]="'Link'"
+    [escolha3]="'Axe'"
+    [escolha4]="'Whip'"
+    [pergunta]="'Como se diz espada em inglês?'"
+    [respostaCorreta]="'A'"
+    [explicacao]="'Porque sword em inglês significa espada'"
+  ></app-choices>
+  <app-choices
+    [style.display]="choicesVisible3 ? 'flex' : 'none'"
+    [escolha1]="'Board'"
+    [escolha2]="'Snow'"
+    [escolha3]="'Sword'"
+    [escolha4]="'Ship'"
+    [pergunta]="'Como se escreve Navio em inglês?'"
+    [respostaCorreta]="'D'"
+    [explicacao]="'Porque ship em inglês significa navio'"
+  ></app-choices>
+  <app-choices
+    [style.display]="choicesVisible4 ? 'flex' : 'none'"
+    [escolha1]="'Human'"
+    [escolha2]="'Woman'"
+    [escolha3]="'Pirate'"
+    [escolha4]="'Vase'"
+    [pergunta]="'Como se diz pirata em inglês?'"
+    [respostaCorreta]="'C'"
+    [explicacao]="'Porque pirate em inglês significa pirata'"
+  ></app-choices>
+  <app-choices
+    [style.display]="choicesVisible5 ? 'flex' : 'none'"
+    [escolha1]="'Sword'"
+    [escolha2]="'Pirate'"
+    [escolha3]="'Captain'"
+    [escolha4]="'Cowboy'"
+    [pergunta]="'Como se diz capitão em inglês?'"
+    [respostaCorreta]="'C'"
+    [explicacao]="'Porque captain em inglês significa capitão'"
+  ></app-choices>
+  <app-book></app-book>
+  <app-settings></app-settings>
+  <app-conclusion *ngIf="todasPerguntasRespondidas()"></app-conclusion>
+</ion-content>

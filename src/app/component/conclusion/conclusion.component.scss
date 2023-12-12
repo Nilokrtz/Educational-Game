@@ -183,3 +183,15 @@ ion-content ion-toolbar {
 }
 
 }
+
+#buttons{
+  width: 80vw;
+  height: 10vh;
+  display: flex;
+}
+#play-button{
+  --background: center /100% 100% no-repeat url('../../../assets/conclusionAssets/NEXT-BUTTON.png.png');    
+}
+#reset-button{
+  --background: center /100% 100% no-repeat url('../../../assets/conclusionAssets/RESTART-BUTTON.png');
+}

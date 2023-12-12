@@ -3,6 +3,7 @@ import { MyScene } from './scene';
 import { Component, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/services/AudioService/AudioService';
 import { SceneCommunication } from './comunication.interface';
+import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoService';
 
 @Component({
   selector: 'app-pirates-scenery',
@@ -11,6 +12,7 @@ import { SceneCommunication } from './comunication.interface';
 })
 export class PiratesSceneryPage implements OnInit, SceneCommunication{
   private game!: Phaser.Game;
+  totalPerguntas = 5;  
 
   interactionVisible1 = false;
   interactionVisible2 = false;
@@ -64,7 +66,11 @@ export class PiratesSceneryPage implements OnInit, SceneCommunication{
     this.interactionVisible5 = true;
   }
 
-  constructor(private audioService: AudioService) {}
+  todasPerguntasRespondidas(): boolean {
+    return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
+  }
+
+  constructor(private audioService: AudioService,private pontuacaoService: PontuacaoService) {}
 
   ngOnInit() {
     const communication: SceneCommunication = this;

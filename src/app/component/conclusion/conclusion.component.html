@@ -14,5 +14,11 @@
 <ion-label>
   <h2 id="pontuacao">Pontuação: {{ pontuacao }}</h2>
 </ion-label>
+
+<ion-label id="buttons" >
+  <ion-button id="play-button" href="/level-selection"></ion-button>          
+  <ion-button id="reset-button" (click)="refreshPage()"></ion-button>
+</ion-label>
+
 </div>          
 </ion-content>

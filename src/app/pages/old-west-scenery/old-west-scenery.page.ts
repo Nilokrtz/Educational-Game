@@ -3,14 +3,16 @@ import { AudioService } from 'src/app/services/AudioService/AudioService';
 import * as Phaser from 'phaser';
 import { MyScene } from './scene';
 import { SceneCommunication } from './comunication.interface';
+import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoService';
 
 @Component({
   selector: 'app-old-west-scenery',
   templateUrl: './old-west-scenery.page.html',
   styleUrls: ['./old-west-scenery.page.scss'],
 })
-export class OldWestSceneryPage implements OnInit, SceneCommunication{
+export class OldWestSceneryPage implements OnInit, SceneCommunication {
   private game!: Phaser.Game;
+  totalPerguntas = 5;
 
   interactionVisible1 = false;
   interactionVisible2 = false;
@@ -47,7 +49,7 @@ export class OldWestSceneryPage implements OnInit, SceneCommunication{
   showInteraction1() {
     this.interactionVisible1 = true;
   }
-  
+
   showInteraction2() {
     this.interactionVisible2 = true;
   }
@@ -64,7 +66,14 @@ export class OldWestSceneryPage implements OnInit, SceneCommunication{
     this.interactionVisible5 = true;
   }
 
-  constructor(private audioService: AudioService) {}
+  todasPerguntasRespondidas(): boolean {
+    return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
+  }
+
+  constructor(
+    private audioService: AudioService,
+    private pontuacaoService: PontuacaoService
+  ) {}
 
   ngOnInit() {
     const communication: SceneCommunication = this;
@@ -78,10 +87,9 @@ export class OldWestSceneryPage implements OnInit, SceneCommunication{
           gravity: { y: 0 },
         },
       },
-      scene: [new MyScene(communication)], 
+      scene: [new MyScene(communication)],
     });
   }
-  
 
   ionViewDidEnter() {
     this.audioService.playMusic('../../../assets/music/old-west.ogg');

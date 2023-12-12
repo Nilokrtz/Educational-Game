@@ -1,134 +1,80 @@
 <ion-content>
-  <app-choices
-  [escolha1]="'1'"
-  [escolha2]="'2'"
-  [escolha3]="'3'"
-  [escolha4]="'4'"
-  [pergunta]="'Qual é o número primo?'"
-  [respostaCorreta]="'B'"
-  [explicacao]="'Porque os números 1, 3 e 4 não são primos'"
-  ></app-choices>
-  <app-choices
-  [escolha1]="'Moon'"
-  [escolha2]="'Sun'"
-  [escolha3]="'Marth'"
-  [escolha4]="'Earth'"
-  [pergunta]="'Qual é o nome da lua em inglês?'"
-  [respostaCorreta]="'A'"
-  [explicacao]="'moon significa lua.'"
-></app-choices>
-<app-choices
-  [escolha1]="'Moon'"
-  [escolha2]="'Solar'"
-  [escolha3]="'Sun'"
-  [escolha4]="'Earth'"
-  [pergunta]="'Qual é a forma correta de falar sol em inglês?'"
-  [respostaCorreta]="'C'"
-  [explicacao]="'sun significa sol.'"
-></app-choices>
-<app-choices
-  [escolha1]="'Paris'"
-  [escolha2]="'Berlin'"
-  [escolha3]="'Roma'"
-  [escolha4]="'Londres'"
-  [pergunta]="'Qual é a capital da França?'"
-  [respostaCorreta]="'A'"
-  [explicacao]="'Paris é a capital da França.'"
-></app-choices>
-<app-choices
-  [escolha1]="'200'"
-  [escolha2]="'150'"
-  [escolha3]="'100'"
-  [escolha4]="'50'"
-  [pergunta]="'Quantos anos tem um bicentenário?'"
-  [respostaCorreta]="'A'"
-  [explicacao]="'Um bicentenário tem 200 anos.'"
-></app-choices>
-  <app-book></app-book>
-  <app-settings></app-settings>
-  <app-conclusion *ngIf="todasPerguntasRespondidas()"></app-conclusion>
-</ion-content>
-
-
-<!-- codigo certo botar ao fim -->
-
-<!-- <ion-content>
   <app-interaction
     [style.display]="interactionVisible1 ? 'flex' : 'none'"
     [message]="'Tchau mundo'"
-    [image]="'../../../assets/Reactions/interaction1.png'"
+    [image]="'../../../assets/interactionAssets/interaction1.png'"
   ></app-interaction>
   <app-interaction
     [style.display]="interactionVisible2 ? 'flex' : 'none'"
     [message]="'Tchau mundo'"
-    [image]="'../../../assets/Reactions/interaction1.png'"
+    [image]="'../../../assets/interactionAssets/interaction1.png'"
   ></app-interaction>
   <app-interaction
     [style.display]="interactionVisible3 ? 'flex' : 'none'"
     [message]="'Tchau mundo'"
-    [image]="'../../../assets/Reactions/interaction2.png'"
+    [image]="'../../../assets/interactionAssets/interaction2.png'"
   ></app-interaction>
   <app-interaction
     [style.display]="interactionVisible4 ? 'flex' : 'none'"
     [message]="'Tchau mundo'"
-    [image]="'../../../assets/Reactions/interaction3.png'"
+    [image]="'../../../assets/interactionAssets/interaction3.png'"
   ></app-interaction>
   <app-interaction
     [style.display]="interactionVisible5 ? 'flex' : 'none'"
     [message]="'Tchau mundo'"
-    [image]="'../../../assets/Reactions/interaction4.png'"
+    [image]="'../../../assets/interactionAssets/interaction4.png'"
   ></app-interaction>
   <app-choices
     [style.display]="choicesVisible1 ? 'flex' : 'none'"
-    [escolha1]="'200'"
-    [escolha2]="'150'"
-    [escolha3]="'100'"
-    [escolha4]="'50'"
-    [pergunta]="'Quantos anos tem um bicentenário?'"
-    [respostaCorreta]="'A'"
-    [explicacao]="'Um bicentenário tem 200 anos.'"
+    [escolha1]="'Sun'"
+    [escolha2]="'Star'"
+    [escolha3]="'Planets'"
+    [escolha4]="'Moon'"
+    [pergunta]="'Como se diz Lua me inglês ?'"
+    [respostaCorreta]="'D'"
+    [explicacao]="'Porque moon em inglês significa lua'"
   ></app-choices>
   <app-choices
     [style.display]="choicesVisible2 ? 'flex' : 'none'"
-    [escolha1]="'200'"
-    [escolha2]="'150'"
-    [escolha3]="'100'"
-    [escolha4]="'50'"
-    [pergunta]="'Quantos anos tem um bicentenário?'"
-    [respostaCorreta]="'A'"
-    [explicacao]="'Um bicentenário tem 200 anos.'"
+    [escolha1]="'Astronaut'"
+    [escolha2]="'Star'"
+    [escolha3]="'Sun'"
+    [escolha4]="'Moon'"
+    [pergunta]="'Como se diz sol em inglês ?'"
+    [respostaCorreta]="'C'"
+    [explicacao]="'Porque sun em inglês significa sol'"
   ></app-choices>
   <app-choices
     [style.display]="choicesVisible3 ? 'flex' : 'none'"
-    [escolha1]="'200'"
-    [escolha2]="'150'"
-    [escolha3]="'100'"
-    [escolha4]="'50'"
-    [pergunta]="'Quantos anos tem um bicentenário?'"
+    [escolha1]="'Star'"
+    [escolha2]="'Sun'"
+    [escolha3]="'Moon'"
+    [escolha4]="'Planets'"
+    [pergunta]="'Como se diz estrelas em inglês ?'"
     [respostaCorreta]="'A'"
-    [explicacao]="'Um bicentenário tem 200 anos.'"
+    [explicacao]="'Porque star em inglês significa estrela'"
   ></app-choices>
   <app-choices
     [style.display]="choicesVisible4 ? 'flex' : 'none'"
-    [escolha1]="'200'"
-    [escolha2]="'150'"
-    [escolha3]="'100'"
-    [escolha4]="'50'"
-    [pergunta]="'Quantos anos tem um bicentenário?'"
-    [respostaCorreta]="'A'"
-    [explicacao]="'Um bicentenário tem 200 anos.'"
+    [escolha1]="'Star'"
+    [escolha2]="'Sun'"
+    [escolha3]="'Moon'"
+    [escolha4]="'Space'"
+    [pergunta]="'Como se diz espaço em inglês ?'"
+    [respostaCorreta]="'D'"
+    [explicacao]="'Porque space em inglês significa espaço'"
   ></app-choices>
   <app-choices
     [style.display]="choicesVisible5 ? 'flex' : 'none'"
-    [escolha1]="'200'"
-    [escolha2]="'150'"
-    [escolha3]="'100'"
-    [escolha4]="'50'"
-    [pergunta]="'Quantos anos tem um bicentenário?'"
-    [respostaCorreta]="'A'"
-    [explicacao]="'Um bicentenário tem 200 anos.'"
+    [escolha1]="'Star'"
+    [escolha2]="'Sun'"
+    [escolha3]="'Space'"
+    [escolha4]="'Astronaut'"
+    [pergunta]="'Como se diz astronauta em inglês ?'"
+    [respostaCorreta]="'D'"
+    [explicacao]="'Porque astronaut em inglês significa astronauta'"
   ></app-choices>
   <app-book></app-book>
   <app-settings></app-settings>
+  <app-conclusion *ngIf="todasPerguntasRespondidas()"></app-conclusion>
 </ion-content>
- -->

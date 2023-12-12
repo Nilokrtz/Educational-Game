@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoService';
 
 @Component({
@@ -13,7 +14,7 @@ export class ConclusionComponent implements OnInit {
   mostrarDuasEstrelas: boolean = false;
   mostrarTresEstrelas: boolean = false;
 
-  constructor(private pontuacaoService: PontuacaoService) {}
+  constructor(private platform: Platform, private pontuacaoService: PontuacaoService) {}
 
   ngOnInit() {
     this.pontuacaoService.pontuacao$.subscribe(pontuacao => {
@@ -39,5 +40,13 @@ export class ConclusionComponent implements OnInit {
     this.mostrarUmaEstrela = estrelas >= 1;
     this.mostrarDuasEstrelas = estrelas >= 2;
     this.mostrarTresEstrelas = estrelas >= 3;
+  }
+
+  refreshPage() {
+    if (this.platform.is('cordova')) {
+      window.location.reload();
+    } else {
+      window.location.reload();
+    }
   }
 }
