@@ -315,11 +315,11 @@ export class MyScene extends Phaser.Scene {
       this.player.setVelocityX(0);
 
       if (this.currentPart === 3) {
-        this.communication.showChoices1();
+        /* this.communication.showChoices1();
         this.communication.showChoices2();
         this.communication.showChoices3();
         this.communication.showChoices4();
-        this.communication.showChoices5();
+        this.communication.showChoices5(); */
         if (
           this.sharedDataService &&
           this.sharedDataService.playerAnswer &&
@@ -408,18 +408,23 @@ export class MyScene extends Phaser.Scene {
       this.boss.setScale(2.5);
       this.boss.play('staticBossAnimation');
       /* this.time.delayedCall(1000, () => {
-        this.boss.play('attack2BossAnimation');
+        this.boss.play('attackBossAnimation');
         this.time.delayedCall(1000, () => {
-          this.boss.play('staticBossAnimation');
           this.time.delayedCall(1000, () => {
-            this.boss.play('hurtBossAnimation');
+          this.boss.play('attack2BossAnimation');
             this.time.delayedCall(1000, () => {
-              this.boss.play('deathBossAnimation');
+            this.boss.play('staticBossAnimation');
+              this.time.delayedCall(1000, () => {
+              this.boss.play('hurtBossAnimation');
+                this.time.delayedCall(1000, () => {
+                this.boss.play('deathBossAnimation');
             });
           });
         });
-      }); */
-    }
+      });
+      });
+    }); */
+  }
 
     this.player.x = 50;
     /* 

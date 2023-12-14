@@ -25,6 +25,11 @@ export class MoonSceneryPage implements OnInit, SceneCommunication {
   choicesVisible3 = false;
   choicesVisible4 = false;
   choicesVisible5 = false;
+  x = true;
+
+  setTimeoutZero(callback: () => void): void {
+    setTimeout(callback, 0);
+  }
 
   showChoices1() {
     this.choicesVisible1 = true;
@@ -46,24 +51,26 @@ export class MoonSceneryPage implements OnInit, SceneCommunication {
     this.choicesVisible5 = true;
   }
 
-  showInteraction1() {
+  showInteraction1(): void{
     this.interactionVisible1 = true;
   }
 
-  showInteraction2() {
+  showInteraction2(): void{
     this.interactionVisible2 = true;
   }
-
-  showInteraction3() {
+  showInteraction3(): void{
     this.interactionVisible3 = true;
   }
-
-  showInteraction4() {
+  showInteraction4(): void{
     this.interactionVisible4 = true;
   }
-
-  showInteraction5() {
+  showInteraction5(): void{
     this.interactionVisible5 = true;
+  }
+  
+  handleInteractionClick() :void{
+    console.log("Foi");
+    this.x = false
   }
 
   todasPerguntasRespondidas(): boolean {
