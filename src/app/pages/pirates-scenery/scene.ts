@@ -386,18 +386,18 @@ export class MyScene extends Phaser.Scene {
         };
 
         // Adicione um atraso antes de mostrar Interaction6
-        await new Promise((innerResolve) => setTimeout(innerResolve, 2000));
+        await new Promise((innerResolve) => setTimeout(innerResolve, 6000));
         
           this.communication.showInteraction7();
-          this.time.delayedCall(2000, () => {
+          this.time.delayedCall(15000, () => {
             this.communication.showChoices1();
-            this.time.delayedCall(2000, () => {
+            this.time.delayedCall(15000, () => {
               this.communication.showChoices2();
-              this.time.delayedCall(2000, () => {
+              this.time.delayedCall(15000, () => {
                 this.communication.showChoices3();
-                this.time.delayedCall(2000, () => {
+                this.time.delayedCall(15000, () => {
                   this.communication.showChoices4();
-                  this.time.delayedCall(2000, () => {
+                  this.time.delayedCall(15000, () => {
                     this.communication.showChoices5();
                   });
                 });

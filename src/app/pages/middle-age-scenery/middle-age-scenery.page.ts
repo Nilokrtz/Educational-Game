@@ -77,14 +77,23 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
   getPontuacao(): number {
      return this.pontuacaoService.getPontuacao();
   }
-
-  getEstrelas(): number {
-    return this.pontuacaoService.getEstrelas();
-  }
-
   aumentarPontuacao(pontos: number): void {
     this.pontuacao += pontos;
-    
+  }
+  closeComponent1() {
+    this.choicesVisible1 = false;
+  }
+  closeComponent2() {
+    this.choicesVisible2 = false;
+  }
+  closeComponent3() {
+    this.choicesVisible3 = false;
+  }
+  closeComponent4() {
+    this.choicesVisible4 = false;
+  }
+  closeComponent5() {
+    this.choicesVisible5 = false;
   }
   
   handleInteractionClick() :void{

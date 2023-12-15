@@ -2,7 +2,6 @@
 import * as Phaser from 'phaser';
 import { SceneCommunication } from './comunication.interface';
 import { SharedDataService } from '../../services/answerSharedService/shared-data.service';
-import { delay } from 'rxjs';
 
 export class MyScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
@@ -204,7 +203,7 @@ export class MyScene extends Phaser.Scene {
         end: 5,
       }),
       frameRate: 15,
-      repeat: 0,
+      repeat: 2,
     });
 
     // Create npcs animations
@@ -408,55 +407,55 @@ export class MyScene extends Phaser.Scene {
         this.communication.showInteraction6();
         this.time.delayedCall(5000, () => {
           this.communication.showChoices1();
-          this.communication.aumentarPontuacao(1); // Adjust the score increase as needed
-          console.log('Current Pontuacao:', this.communication.getPontuacao());
-          this.communication.showChoices1();
+          var pontuacaoAnterior = this.communication.getPontuacao();
+          this.communication.aumentarPontuacao(1);
+          var novaPontuacao = this.communication.getPontuacao();
+          this.time.delayedCall(3000, () => {
+            if (novaPontuacao == pontuacaoAnterior) {
+              this.EnemyAttack();
+            } else {
+              this.protagonistaAttack();
+            }
+          });
           this.time.delayedCall(5000, () => {
             this.communication.showChoices2();
-            this.communication.aumentarPontuacao(1); // Adjust the score increase as needed
-            console.log(
-              'Current Pontuacao:',
-              this.communication.getPontuacao()
-            );
+            var pontuacaoAnterior = this.communication.getPontuacao();
+            this.communication.aumentarPontuacao(1);
+            var novaPontuacao = this.communication.getPontuacao();
+            this.time.delayedCall(3000, () => {
+              if (novaPontuacao== pontuacaoAnterior) {
+                this.EnemyAttack();
+              } else {
+                this.protagonistaAttack();
+              }
+            });
             this.time.delayedCall(5000, () => {
               this.communication.showChoices3();
-              this.communication.aumentarPontuacao(1); // Adjust the score increase as needed
-              console.log(
-                'Current Pontuacao:',
-                this.communication.getPontuacao()
-              );
+              this.communication.aumentarPontuacao(1);
+              
               this.time.delayedCall(5000, () => {
                 this.communication.showChoices4();
-                this.communication.aumentarPontuacao(1); // Adjust the score increase as needed
-                console.log(
-                  'Current Pontuacao:',
-                  this.communication.getPontuacao()
-                );
+                this.communication.aumentarPontuacao(1);
+                
                 this.time.delayedCall(5000, () => {
-                  console.log(
-                    'Current Pontuacao:',
-                    this.communication.getPontuacao()
-                  );
                   this.communication.showChoices5();
-                  this.communication.aumentarPontuacao(1); // Adjust the score increase as needed
-                  console.log(
-                    'Current Pontuacao:',
-                    this.communication.getPontuacao()
-                  );
+                  
+                  this.communication.aumentarPontuacao(1);
+                  
                 });
               });
             });
           });
-          console.log(
-            'Current Pontuacao:',
-            this.communication.getPontuacao()
-          );
         });
 
         this.communication.x = false;
 
-        await new Promise((innerResolve) => setTimeout(innerResolve, 600000));
+        await new Promise((innerResolve) => setTimeout(innerResolve, 6000000));
         this.communication.showInteraction1();
+        console.log(
+          'After All Choices - Current Pontuacao:',
+          this.communication.getPontuacao()
+        );
       }
     } /* fim */
 
@@ -574,39 +573,76 @@ export class MyScene extends Phaser.Scene {
   }
 
   playerAttack() {
-    this.player.play('attackPlayerAnimation');
-    this.time.delayedCall(1000, () => {
-      this.player.play('staticPlayerAnimation');
-    });
-  }
-  playerHurt(){
-    this.player.play('hurtPlayerAnimation');
-    this.time.delayedCall(1000, () => {
-      this.player.play('staticPlayerAnimation');
-    });
-  }
-  playerDeath() {
-    this.player.play('deathPlayerAnimation');
-  }
-  bossAttack() {
-    this.time.delayedCall(1000, () => {
-      this.boss.play('attackBossAnimation');
-      this.time.delayedCall(1000, () => {
-        this.boss.play('attack2BossAnimation');
-          this.time.delayedCall(1000, () => {
-          this.boss.play('staticBossAnimation');
+    return new Promise<void>((resolve) => {
+      this.player.play('attackPlayerAnimation');
+      this.player.once('animationcomplete', () => {
+        this.player.play('staticPlayerAnimation');
+        this.player.once('animationcomplete', () => {
+          resolve();
         });
       });
     });
   }
-  bossHurt() {
-    this.boss.play('hurtBossAnimation');
-    this.time.delayedCall(1000, () => {
-      this.boss.play('staticBossAnimation');
+
+  playerHurt() {
+    return new Promise<void>((resolve) => {
+      this.player.play('hurtPlayerAnimation');
+      this.player.once('animationcomplete', () => {
+        this.player.play('staticPlayerAnimation');
+        this.player.once('animationcomplete', () => {
+          this.player.play('hurtPlayerAnimation');
+          this.player.once('animationcomplete', () => {
+            this.player.play('staticPlayerAnimation');
+            this.player.once('animationcomplete', () => {
+            
+            resolve();
+          });
+        });
+        });
+      });
     });
   }
+
+  playerDeath() {
+    this.player.play('deathPlayerAnimation');
+  }
+
+  bossAttack() {
+    return new Promise<void>((resolve) => {
+      this.boss.play('attackBossAnimation');
+      this.boss.once('animationcomplete', () => {
+        this.boss.play('attack2BossAnimation');
+        this.boss.once('animationcomplete', () => {
+          this.boss.play('staticBossAnimation');
+          this.boss.once('animationcomplete', () => {
+            resolve();
+          });
+        });
+      });
+    });
+  }
+
+  bossHurt() {
+    return new Promise<void>((resolve) => {
+      this.boss.play('hurtBossAnimation');
+      this.boss.once('animationcomplete', () => {
+        this.boss.play('staticBossAnimation');
+        this.boss.once('animationcomplete', () => {
+          resolve();
+        });
+      });
+    });
+  }
+
   bossDeath() {
     this.boss.play('deathBossAnimation');
   }
-}
 
+  async EnemyAttack() {
+    await Promise.all([this.bossAttack(), this.playerHurt()]);
+  }
+
+  async protagonistaAttack() {
+    await Promise.all([this.playerAttack(), this.bossHurt()]);
+  }
+}
