@@ -19,12 +19,15 @@ export class PiratesSceneryPage implements OnInit, SceneCommunication{
   interactionVisible3 = false;
   interactionVisible4 = false;
   interactionVisible5 = false;
-
+  interactionVisible6 = false;
+  interactionVisible7 = false;
+  
   choicesVisible1 = false;
   choicesVisible2 = false;
   choicesVisible3 = false;
   choicesVisible4 = false;
   choicesVisible5 = false;
+  x = true;
 
   showChoices1() {
     this.choicesVisible1 = true;
@@ -61,11 +64,21 @@ export class PiratesSceneryPage implements OnInit, SceneCommunication{
   showInteraction4() {
     this.interactionVisible4 = true;
   }
-
   showInteraction5() {
     this.interactionVisible5 = true;
   }
+  showInteraction6() {
+    this.interactionVisible6 = true;
+  }
+  showInteraction7() {
+    this.interactionVisible7 = true;
+  }
 
+
+  handleInteractionClick() :void{
+    console.log("Foi");
+    this.x = false;
+  }
   todasPerguntasRespondidas(): boolean {
     return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
   }

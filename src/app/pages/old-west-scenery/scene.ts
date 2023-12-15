@@ -290,44 +290,124 @@ export class MyScene extends Phaser.Scene {
     this.background.displayWidth = this.game.canvas.width;
     this.background.displayHeight = this.game.canvas.height;
   }
-  private changeBackground() {
+  /* começo */
+
+  private HandleClick() {
+    this.communication.handleInteractionClick();
+  }
+  private async changeBackground() {
     if (this.player && this.player.body && this.player.body.velocity.x !== 0) {
       this.player.anims.stop();
       this.player.play('staticPlayerAnimation');
       this.player.setVelocityX(0);
 
-      if (this.currentPart === 3) {
-        this.communication.showChoices1();
-        this.communication.showChoices2();
-        this.communication.showChoices3();
-        this.communication.showChoices4();
-        this.communication.showChoices5();
-        if (
-          this.sharedDataService &&
-          this.sharedDataService.playerAnswer &&
-          this.sharedDataService.correctAnswer
-        ) {
-          var playerAnswer = this.sharedDataService.playerAnswer;
-          var correctAnswer = this.sharedDataService.correctAnswer;
-          if (playerAnswer === correctAnswer) {
-            this.player.play('attackPlayerAnimation');
-            this.boss.play('hurtBossAnimation');
-          } else {
-            this.boss.play('attackBossAnimation');
-            this.player.play('hurtPlayerAnimation');
-          }
-          this.sharedDataService.clearAnswers();
-        }
+      if (this.player.x == 50 && this.currentPart == 3) {
+        this.player.x = 100;
+        this.player.play('staticPlayerAnimation');
+        this.player.setVelocityX(0);
+
+        await new Promise<void>((resolve) => {
+          const intervalId = setInterval(() => {
+            if (!this.communication.x) {
+              clearInterval(intervalId);
+              resolve();
+            }
+          }, 10);
+        });
+        this.HandleClick();
       }
 
-      if (this.player.x !== 50 && this.currentPart < 3) {
-        /*         this.communication.showInteraction1();
-         */ this.time.delayedCall(2000, () => {
-          this.player.setVelocityX(150);
-          this.player.play('walkPlayerAnimation');
+      if (this.player.x !== 50 && this.currentPart == 1) {
+        if ((this.player.x = 50)) {
+          this.npc1 = this.physics.add.sprite(
+            200,
+            this.game.canvas.height / 1.22,
+            'npc1'
+          );
+          this.npc1.setScale(3.5);
+          this.npc1.play('staticNpc1Animation');
+        }
+        await this.communication.showInteraction1();
+        await this.communication.showInteraction2();
+        await this.communication.showInteraction3();
+
+        await new Promise<void>((resolve) => {
+          const intervalId = setInterval(() => {
+            if (!this.communication.x) {
+              clearInterval(intervalId);
+              resolve();
+            }
+          }, 10);
         });
+        this.HandleClick();
+
+        console.log(this.communication.x);
+        this.communication.x = true;
+        this.player.play('walkPlayerAnimation');
+        this.player.setVelocityX(150);
       }
-    }
+      if (this.player.x !== 50 && this.currentPart == 2) {
+        await this.communication.showInteraction4();
+        await this.communication.showInteraction5();
+
+        this.communication.x = true;
+        await new Promise<void>((resolve) => {
+          const waitForX = () => {
+            if (!this.communication.x) {
+              resolve();
+            } else {
+              requestAnimationFrame(waitForX);
+            }
+          };
+          waitForX();
+        });
+
+        console.log(this.communication.x);
+        this.player.play('walkPlayerAnimation');
+        this.player.setVelocityX(150);
+
+        this.communication.x = true;
+        this.HandleClick();
+
+        const waitForX = async () => {
+          return new Promise<void>((resolve) => {
+            const checkInterval = setInterval(() => {
+              if (!this.communication.x) {
+                this.HandleClick();
+                this.communication.x = true;
+                clearInterval(checkInterval);
+                resolve();
+              }
+            }, 100); // Ajuste conforme necessário
+          });
+        };
+
+        // Adicione um atraso antes de mostrar Interaction6
+        await new Promise((innerResolve) => setTimeout(innerResolve, 2000));
+        
+          this.communication.showInteraction6();
+          this.time.delayedCall(2000, () => {
+            this.communication.showChoices1();
+            this.time.delayedCall(2000, () => {
+              this.communication.showChoices2();
+              this.time.delayedCall(2000, () => {
+                this.communication.showChoices3();
+                this.time.delayedCall(2000, () => {
+                  this.communication.showChoices4();
+                  this.time.delayedCall(2000, () => {
+                    this.communication.showChoices5();
+                  });
+                });
+              });
+            });
+          });
+
+        this.communication.x = false;
+
+        await new Promise((innerResolve) => setTimeout(innerResolve, 600000));
+        this.communication.showInteraction1();
+      }
+    } /* fim */
 
     // Load and display the next part of the background
     this.currentPart++;

@@ -1,29 +1,46 @@
 <ion-content>
   <app-interaction (click)="handleInteractionClick()"
-    [style.display]="interactionVisible1 ? 'flex' : 'none'"
-    [message]="'Bem-vindo a Tacoma Viajante, uma comunidade de robôs que estudam o Espaço(Space) na lua(Moon) do planeta Azul. Eles Parecem ter algum problema, Que tal perguntar um pouco?'"
-    [image]="'../../../assets/interactionAssets/interaction1.png'"
-  ></app-interaction>
-  <app-interaction
-    [style.display]="interactionVisible2 ? 'flex' : 'none'"
-    [message]="'Olá, viajante! Eu estudo o Sol(Sun), você sabia que a maior parte das estrelas são maiores que o Sol? Seria fascinante falar mais detalhes mas precisamos de ajuda, Fale com meu Amigo.'"
-    [image]="'../../../assets/interactionAssets/interaction1.png'"
-  ></app-interaction>
-  <app-interaction (click) = "handleInteractionClick()"
-    [style.display]="interactionVisible3 ? 'flex' : 'none'"
-    [message]="'Viajante, eu estudo as Estrelas(Stars) e tive muita sorte pois uma estrela cadente caiu aqui na nossa base, nela veio o golem que causa problemas, Ele está logo ali, Poderia nos defender ?'"
-    [image]="'../../../assets/interactionAssets/interaction2.png'"
-  ></app-interaction>
-  <app-interaction
-    [style.display]="interactionVisible4 ? 'flex' : 'none'"
-    [message]="'Esse golem deve ser um astronauta pela vestimenta dele, Mas ele está atacando os robôs e vamos testar sua capacidade derrotando ele!'"
-    [image]="'../../../assets/interactionAssets/interaction3.png'"
-  ></app-interaction>
-  <app-interaction
-    [style.display]="interactionVisible5 ? 'flex' : 'none'"
-    [message]="'Tchau mundo'"
-    [image]="'../../../assets/interactionAssets/interaction4.png'"
-  ></app-interaction>
+  [style.display]="interactionVisible7 ? 'flex' : 'none'"
+  [message]="'Esse golem deve ser um astronauta pela vestimenta dele, Mas ele está atacando os robôs e vamos testar sua capacidade derrotando ele!'"
+  [image]="'../../../assets/interactionAssets/interaction4.png'"
+></app-interaction>
+
+<app-interaction (click)="handleInteractionClick()"
+  [style.display]="interactionVisible6 ? 'flex' : 'none'"
+  [message]="'Nela veio o golem que causa problemas, Ele está logo ali, Poderia nos defender?'"
+  [image]="'../../../assets/interactionAssets/interaction4.png'"
+></app-interaction>
+
+<app-interaction
+  [style.display]="interactionVisible5 ? 'flex' : 'none'"
+  [message]="'Viajante, eu estudo as Estrelas(Stars) e tive muita sorte pois uma estrela cadente caiu aqui na nossa base,-'"
+  [image]="'../../../assets/interactionAssets/interaction3.png'"
+></app-interaction>
+
+<app-interaction (click)="handleInteractionClick()"
+  [style.display]="interactionVisible4 ? 'flex' : 'none'"
+  [message]="'Seria fascinante falar mais detalhes mas precisamos de ajuda, Fale com meu Amigo.'"
+  [image]="'../../../assets/interactionAssets/interaction2.png'"
+></app-interaction>
+
+<app-interaction
+  [style.display]="interactionVisible3 ? 'flex' : 'none'"
+  [message]="'Olá, viajante! Eu estudo o Sol(Sun), você sabia que a maior parte das estrelas são maiores que o Sol?-'"
+  [image]="'../../../assets/interactionAssets/interaction1.png'"
+></app-interaction>
+
+<app-interaction 
+  [style.display]="interactionVisible2 ? 'flex' : 'none'"
+  [message]="'Eles Parecem ter algum problema, Que tal perguntar um pouco?'"
+  [image]="'../../../assets/interactionAssets/interaction1.png'"
+></app-interaction>
+
+<app-interaction
+  [style.display]="interactionVisible1 ? 'flex' : 'none'"
+  [message]="'Bem-vindo a Tacoma Viajante, uma comunidade de robôs que estudam o Espaço(Space) na lua(Moon) do planeta Azul.-'"
+  [image]="'../../../assets/interactionAssets/interaction1.png'"
+></app-interaction>
+
   <app-choices
     [style.display]="choicesVisible1 ? 'flex' : 'none'"
     [escolha1]="'Sun'"

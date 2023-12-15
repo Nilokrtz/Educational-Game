@@ -2,6 +2,7 @@
 import * as Phaser from 'phaser';
 import { SceneCommunication } from './comunication.interface';
 import { SharedDataService } from '../../services/answerSharedService/shared-data.service';
+import { delay } from 'rxjs';
 
 export class MyScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
@@ -348,6 +349,7 @@ export class MyScene extends Phaser.Scene {
         }
         await this.communication.showInteraction1();
         await this.communication.showInteraction2();
+        await this.communication.showInteraction3();
 
         await new Promise<void>((resolve) => {
           const intervalId = setInterval(() => {
@@ -365,8 +367,8 @@ export class MyScene extends Phaser.Scene {
         this.player.setVelocityX(150);
       }
       if (this.player.x !== 50 && this.currentPart == 2) {
-        await this.communication.showInteraction3();
         await this.communication.showInteraction4();
+        await this.communication.showInteraction5();
 
         this.communication.x = true;
         await new Promise<void>((resolve) => {
@@ -399,10 +401,6 @@ export class MyScene extends Phaser.Scene {
             }, 100); // Ajuste conforme necessário
           });
         };
-
-        await new Promise((innerResolve) => setTimeout(innerResolve, 2000));
-
-        this.communication.showInteraction5();
 
         // Adicione um atraso antes de mostrar Interaction6
         await new Promise((innerResolve) => setTimeout(innerResolve, 2000));
@@ -611,3 +609,4 @@ export class MyScene extends Phaser.Scene {
     this.boss.play('deathBossAnimation');
   }
 }
+
