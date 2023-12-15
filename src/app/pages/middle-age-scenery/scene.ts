@@ -282,7 +282,7 @@ export class MyScene extends Phaser.Scene {
       x: this.game.canvas.width,
       ease: 'Power',
       onComplete: () => {
-        this.player.setVelocityX(200);
+        this.player.setVelocityX(150);
         this.changeBackground();
       },
     });
@@ -362,7 +362,7 @@ export class MyScene extends Phaser.Scene {
         console.log(this.communication.x);
         this.communication.x = true;
         this.player.play('walkPlayerAnimation');
-        this.player.setVelocityX(200);
+        this.player.setVelocityX(150);
       }
       if (this.player.x !== 50 && this.currentPart == 2) {
         await this.communication.showInteraction3();
@@ -370,40 +370,46 @@ export class MyScene extends Phaser.Scene {
 
         this.communication.x = true;
         await new Promise<void>((resolve) => {
-          const intervalId = setInterval(() => {
+          const waitForX = () => {
             if (!this.communication.x) {
-              clearInterval(intervalId);
               resolve();
+            } else {
+              requestAnimationFrame(waitForX);
             }
-          }, 10);
+          };
+          waitForX();
         });
 
         console.log(this.communication.x);
-        this.player.play('staticlayerAnimation');
-        this.player.setVelocityX(0);
-        this.communication.showInteraction6();
-        this.communication.showInteraction5();
+        this.player.play('walkPlayerAnimation');
+        this.player.setVelocityX(150);
+        
 
-        this.time.delayedCall(5000, () => {       /* acerto */
-          this.communication.showChoices1();
-          this.time.delayedCall(2000, () => { 
-          this.player.play("attackPlayerAnimation");
-          this.boss.play("hurtBossAnimation")
-          this.time.delayedCall(1000, () => { 
-          this.player.play("staticPlayerAnimation")
-          this.boss.play("staticBossAnimation")
-        })});
-          this.time.delayedCall(10000, () => {       /* erro */
-            this.communication.showChoices2();
-            this.time.delayedCall(20000, () => {
+        // Aguarde até que this.communication.x seja false novamente
+        await new Promise<void>(async () => {
+          await new Promise<void>((resolve) => {
+            const showChoicesManually = async () => {
+              this.communication.showChoices1();
+              await new Promise((innerResolve) =>
+                setTimeout(innerResolve, 5000)
+              );
+              this.communication.showChoices2();
+              await new Promise((innerResolve) =>
+                setTimeout(innerResolve, 5000)
+              );
               this.communication.showChoices3();
-              this.time.delayedCall(50000, () => {
-                this.communication.showChoices4();
-                this.time.delayedCall(50000, () => {
-                  this.communication.showChoices5();
-                });
-              });
-            });
+              await new Promise((innerResolve) =>
+                setTimeout(innerResolve, 5000)
+              );
+              this.communication.showChoices4();
+              await new Promise((innerResolve) =>
+                setTimeout(innerResolve, 5000)
+              );
+              this.communication.showChoices5();
+              resolve();
+            };
+
+            showChoicesManually();
           });
         });
       }

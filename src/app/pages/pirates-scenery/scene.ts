@@ -265,7 +265,7 @@ export class MyScene extends Phaser.Scene {
       x: this.game.canvas.width,
       ease: 'Power',
       onComplete: () => {
-        this.player.setVelocityX(200);
+        this.player.setVelocityX(150);
         this.changeBackground();
       },
     });
@@ -324,7 +324,7 @@ export class MyScene extends Phaser.Scene {
       if (this.player.x !== 50 && this.currentPart < 3) {
         /*         this.communication.showInteraction1();
          */ this.time.delayedCall(2000, () => {
-          this.player.setVelocityX(200);
+          this.player.setVelocityX(150);
           this.player.play('walkPlayerAnimation');
         });
       }

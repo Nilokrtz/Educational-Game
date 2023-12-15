@@ -264,7 +264,7 @@ export class MyScene extends Phaser.Scene {
       x: this.game.canvas.width,
       ease: 'Power',
       onComplete: () => {
-        this.player.setVelocityX(200);
+        this.player.setVelocityX(150);
         this.changeBackground();
       },
     });
@@ -323,7 +323,7 @@ export class MyScene extends Phaser.Scene {
         await this.communication.showInteraction1();
         await this.communication.showInteraction2();
          this.time.delayedCall(8000, () => {
-          this.player.setVelocityX(200);
+          this.player.setVelocityX(150);
           this.player.play('walkPlayerAnimation');
         });
       }
@@ -332,7 +332,7 @@ export class MyScene extends Phaser.Scene {
       await this.communication.showInteraction4();
       await this.communication.showInteraction5();
       this.time.delayedCall(8000, () => {
-        this.player.setVelocityX(200);
+        this.player.setVelocityX(150);
         this.player.play('walkPlayerAnimation');
         });
       }
