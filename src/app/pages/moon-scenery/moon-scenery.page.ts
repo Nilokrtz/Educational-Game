@@ -19,6 +19,8 @@ export class MoonSceneryPage implements OnInit, SceneCommunication {
   interactionVisible3 = false;
   interactionVisible4 = false;
   interactionVisible5 = false;
+  interactionVisible6 = false;
+  interactionVisible7 = false;
 
   choicesVisible1 = false;
   choicesVisible2 = false;
@@ -47,23 +49,34 @@ export class MoonSceneryPage implements OnInit, SceneCommunication {
     this.choicesVisible5 = true;
   }
 
-  async showInteraction1(): Promise<void>{
+  showInteraction1() {
     this.interactionVisible1 = true;
   }
 
-  async showInteraction2(): Promise<void>{
+  showInteraction2() {
     this.interactionVisible2 = true;
   }
-  async showInteraction3(): Promise<void>{
+
+  showInteraction3() {
     this.interactionVisible3 = true;
   }
-  async showInteraction4(): Promise<void>{
+
+  showInteraction4() {
     this.interactionVisible4 = true;
   }
-  async showInteraction5(): Promise<void>{
+
+  showInteraction5() {
     this.interactionVisible5 = true;
   }
-  
+
+  showInteraction6() {
+    this.interactionVisible6 = true;
+  }
+
+  showInteraction7() {
+    this.interactionVisible7 = true;
+  }
+
   handleInteractionClick() :void{
     console.log("Foi");
     this.x = false;

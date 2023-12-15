@@ -1,29 +1,34 @@
 <ion-content>
-  <app-interaction
-    [style.display]="interactionVisible1 ? 'flex' : 'none'"
-    [message]="'Bem-vindo, viajante! Juarez, aqui eles ainda vivem no estilo do Velho Oeste. Montados seus cavalos(horses) e caçando Bandidos!'"
-    [image]="'../../../assets/interactionAssets/interaction1.png'"
-  ></app-interaction>
-  <app-interaction
-    [style.display]="interactionVisible2 ? 'flex' : 'none'"
-    [message]="'Saudações Viajante! Espero que esteja bem, Eu sou a dona do salão(saloon) mas não posso fazer nada, por conta de um grande verme atacando a cidade, O Xerife(sheriff) pode te contar mais.'"
-    [image]="'../../../assets/interactionAssets/interaction1.png'"
-  ></app-interaction>
-  <app-interaction
-    [style.display]="interactionVisible3 ? 'flex' : 'none'"
-    [message]="'Viajante! Espero que você não tenha vindo a cavalo(horse) porque o verme tem fome deles, Meus homens estão feridos por conta dos bandidos(bandits) vagando então estamos precisando de ajuda!'"
-    [image]="'../../../assets/interactionAssets/interaction2.png'"
-  ></app-interaction>
+  <app-interaction (click)="handleInteractionClick()"
+  [style.display]="interactionVisible6 ? 'flex' : 'none'"
+  [message]="'Pelo jeito todos conhecem você Viajante, Nenhum verme é forte demais para nós e com sorte você pode ganhar um pouco de ouro(gold)!!'"
+  [image]="'../../../assets/interactionAssets/interaction4.png'"
+></app-interaction>
+  <app-interaction (click)="handleInteractionClick()"
+  [style.display]="interactionVisible5 ? 'flex' : 'none'"
+  [message]="'Meus homens estão feridos por conta dos bandidos(bandits) vagando por ai, então estamos precisando de ajuda!'"
+  [image]="'../../../assets/interactionAssets/interaction4.png'"
+></app-interaction>
   <app-interaction
     [style.display]="interactionVisible4 ? 'flex' : 'none'"
-    [message]="'Pelo jeito todos conhecem você Viajante, Nenhum verme é forte demais para nós e com sorte você pode ganhar um pouco de ouro(gold)!!'"
+    [message]="'Viajante! Espero que você não tenha vindo a cavalo porque o verme tem fome deles,-'"
     [image]="'../../../assets/interactionAssets/interaction3.png'"
   ></app-interaction>
+  <app-interaction (click)="handleInteractionClick()"
+  [style.display]="interactionVisible3 ? 'flex' : 'none'"
+  [message]="'O Xerife(sheriff) pode te contar mais.'"
+  [image]="'../../../assets/interactionAssets/interaction2.png'"
+></app-interaction>
+  <app-interaction 
+  [style.display]="interactionVisible2 ? 'flex' : 'none'"
+  [message]="'Saudações Viajante! Espero que esteja bem. Eu sou a dona do salão(saloon) mas não posso trabalhar, por conta de um grande verme atacando a cidade.-'"
+  [image]="'../../../assets/interactionAssets/interaction1.png'"
+></app-interaction>
   <app-interaction
-    [style.display]="interactionVisible5 ? 'flex' : 'none'"
-    [message]="'Tchau mundo'"
-    [image]="'../../../assets/interactionAssets/interaction4.png'"
-  ></app-interaction>
+  [style.display]="interactionVisible1 ? 'flex' : 'none'"
+  [message]="'Bem-vindo, viajante! Juarez, aqui eles ainda vivem no estilo do Velho Oeste. Montados seus cavalos(horses) e caçando Bandidos!'"
+  [image]="'../../../assets/interactionAssets/interaction1.png'"
+></app-interaction>
 <app-choices
     [style.display]="choicesVisible1 ? 'flex' : 'none'"
     [escolha1]="'Saloon'"

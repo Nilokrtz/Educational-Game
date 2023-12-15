@@ -2,6 +2,7 @@
 import * as Phaser from 'phaser';
 import { SceneCommunication } from './comunication.interface';
 import { SharedDataService } from '../../services/answerSharedService/shared-data.service';
+import { delay } from 'rxjs';
 
 export class MyScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
@@ -282,7 +283,7 @@ export class MyScene extends Phaser.Scene {
       x: this.game.canvas.width,
       ease: 'Power',
       onComplete: () => {
-        this.player.setVelocityX(200);
+        this.player.setVelocityX(150);
         this.changeBackground();
       },
     });
@@ -348,6 +349,7 @@ export class MyScene extends Phaser.Scene {
         }
         await this.communication.showInteraction1();
         await this.communication.showInteraction2();
+        await this.communication.showInteraction3();
 
         await new Promise<void>((resolve) => {
           const intervalId = setInterval(() => {
@@ -362,50 +364,68 @@ export class MyScene extends Phaser.Scene {
         console.log(this.communication.x);
         this.communication.x = true;
         this.player.play('walkPlayerAnimation');
-        this.player.setVelocityX(200);
+        this.player.setVelocityX(150);
       }
       if (this.player.x !== 50 && this.currentPart == 2) {
-        await this.communication.showInteraction3();
         await this.communication.showInteraction4();
+        await this.communication.showInteraction5();
 
         this.communication.x = true;
         await new Promise<void>((resolve) => {
-          const intervalId = setInterval(() => {
+          const waitForX = () => {
             if (!this.communication.x) {
-              clearInterval(intervalId);
               resolve();
+            } else {
+              requestAnimationFrame(waitForX);
             }
-          }, 10);
+          };
+          waitForX();
         });
 
         console.log(this.communication.x);
-        this.player.play('staticlayerAnimation');
-        this.player.setVelocityX(0);
-        this.communication.showInteraction6();
-        this.communication.showInteraction5();
+        this.player.play('walkPlayerAnimation');
+        this.player.setVelocityX(150);
 
-        this.time.delayedCall(5000, () => {       /* acerto */
-          this.communication.showChoices1();
-          this.time.delayedCall(2000, () => { 
-          this.player.play("attackPlayerAnimation");
-          this.boss.play("hurtBossAnimation")
-          this.time.delayedCall(1000, () => { 
-          this.player.play("staticPlayerAnimation")
-          this.boss.play("staticBossAnimation")
-        })});
-          this.time.delayedCall(10000, () => {       /* erro */
-            this.communication.showChoices2();
-            this.time.delayedCall(20000, () => {
-              this.communication.showChoices3();
-              this.time.delayedCall(50000, () => {
-                this.communication.showChoices4();
-                this.time.delayedCall(50000, () => {
-                  this.communication.showChoices5();
+        this.communication.x = true;
+        this.HandleClick();
+
+        const waitForX = async () => {
+          return new Promise<void>((resolve) => {
+            const checkInterval = setInterval(() => {
+              if (!this.communication.x) {
+                this.HandleClick();
+                this.communication.x = true;
+                clearInterval(checkInterval);
+                resolve();
+              }
+            }, 100); // Ajuste conforme necessário
+          });
+        };
+
+        // Adicione um atraso antes de mostrar Interaction6
+        await new Promise((innerResolve) => setTimeout(innerResolve, 2000));
+        
+          this.communication.showInteraction6();
+          this.time.delayedCall(2000, () => {
+            this.communication.showChoices1();
+            this.time.delayedCall(2000, () => {
+              this.communication.showChoices2();
+              this.time.delayedCall(2000, () => {
+                this.communication.showChoices3();
+                this.time.delayedCall(2000, () => {
+                  this.communication.showChoices4();
+                  this.time.delayedCall(2000, () => {
+                    this.communication.showChoices5();
+                  });
                 });
               });
             });
           });
-        });
+
+        this.communication.x = false;
+
+        await new Promise((innerResolve) => setTimeout(innerResolve, 600000));
+        this.communication.showInteraction1();
       }
     } /* fim */
 
@@ -522,3 +542,4 @@ export class MyScene extends Phaser.Scene {
     background.destroy(); // Remove a imagem temporária
   }
 }
+

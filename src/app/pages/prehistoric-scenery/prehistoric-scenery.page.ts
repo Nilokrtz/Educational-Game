@@ -25,6 +25,7 @@ export class PrehistoricSceneryPage implements  OnInit, SceneCommunication{
   choicesVisible3 = false;
   choicesVisible4 = false;
   choicesVisible5 = false;
+  x = true;
 
   showChoices1() {
     this.choicesVisible1 = true;
@@ -66,6 +67,11 @@ export class PrehistoricSceneryPage implements  OnInit, SceneCommunication{
     this.interactionVisible5 = true;
   }
 
+  handleInteractionClick() :void{
+    console.log("Foi");
+    this.x = false;
+  }
+
   todasPerguntasRespondidas(): boolean {
     return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
   }
@@ -89,7 +95,7 @@ export class PrehistoricSceneryPage implements  OnInit, SceneCommunication{
   }
 
   ionViewDidEnter() {
-    this.audioService.playMusic('../../../assets/music/pre-historic.ogg');
+    this.audioService.playMusic('../../../assets/music/prehistoric.ogg');
   }
 
   ionViewWillLeave() {
