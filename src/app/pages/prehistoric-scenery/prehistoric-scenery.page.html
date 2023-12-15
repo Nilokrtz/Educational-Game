@@ -19,7 +19,7 @@
   [message]="'Bem-vindo, viajante, A minha parte favorita desse planeta, Paleo Pines o único lugar com dinossauros(dinosaur) inteligentes ainda. Que tal achar um deles ?'"
   [image]="'../../../assets/interactionAssets/interaction1.png'"
 ></app-interaction>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible1 ? 'flex' : 'none'"
     [escolha1]="'Water'"
     [escolha2]="'Earth'"
@@ -29,7 +29,7 @@
     [respostaCorreta]="'D'"
     [explicacao]="'Porque fire em inglês significa fogo'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible2 ? 'flex' : 'none'"
     [escolha1]="'Dragon'"
     [escolha2]="'Rabbit'"
@@ -39,7 +39,7 @@
     [respostaCorreta]="'D'"
     [explicacao]="'Porque dinosaur em inglês significa dinossauro'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible3 ? 'flex' : 'none'"
     [escolha1]="'Fire '"
     [escolha2]="'Stone'"
@@ -49,7 +49,7 @@
     [respostaCorreta]="'D'"
     [explicacao]="'Porque water em inglês significa água'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible4 ? 'flex' : 'none'"
     [escolha1]="'Water'"
     [escolha2]="'Stone'"
@@ -59,7 +59,7 @@
     [respostaCorreta]="'B'"
     [explicacao]="'Porque stone em inglês significa pedra'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible5 ? 'flex' : 'none'"
     [escolha1]="'Three'"
     [escolha2]="'Fire'"

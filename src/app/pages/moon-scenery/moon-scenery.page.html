@@ -41,7 +41,7 @@
   [image]="'../../../assets/interactionAssets/interaction1.png'"
 ></app-interaction>
 
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible1 ? 'flex' : 'none'"
     [escolha1]="'Sun'"
     [escolha2]="'Star'"
@@ -51,7 +51,7 @@
     [respostaCorreta]="'D'"
     [explicacao]="'Porque moon em inglês significa lua'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible2 ? 'flex' : 'none'"
     [escolha1]="'Astronaut'"
     [escolha2]="'Star'"
@@ -61,7 +61,7 @@
     [respostaCorreta]="'C'"
     [explicacao]="'Porque sun em inglês significa sol'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible3 ? 'flex' : 'none'"
     [escolha1]="'Star'"
     [escolha2]="'Sun'"
@@ -71,7 +71,7 @@
     [respostaCorreta]="'A'"
     [explicacao]="'Porque star em inglês significa estrela'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible4 ? 'flex' : 'none'"
     [escolha1]="'Star'"
     [escolha2]="'Sun'"
@@ -81,7 +81,7 @@
     [respostaCorreta]="'D'"
     [explicacao]="'Porque space em inglês significa espaço'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible5 ? 'flex' : 'none'"
     [escolha1]="'Star'"
     [escolha2]="'Sun'"

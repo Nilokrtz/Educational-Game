@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/services/AudioService/AudioService';
 import * as Phaser from 'phaser';
 import { MyScene } from './scene';
@@ -10,7 +10,7 @@ import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoSer
   templateUrl: './old-west-scenery.page.html',
   styleUrls: ['./old-west-scenery.page.scss'],
 })
-export class OldWestSceneryPage implements OnInit, SceneCommunication {
+export class OldWestSceneryPage implements OnInit, OnDestroy, SceneCommunication {
   private game!: Phaser.Game;
   totalPerguntas = 5;
 
@@ -27,6 +27,8 @@ export class OldWestSceneryPage implements OnInit, SceneCommunication {
   choicesVisible4 = false;
   choicesVisible5 = false;
   x = true;
+  pontuacao = 0;
+  estrelas = 0;
 
   showChoices1() {
     this.choicesVisible1 = true;
@@ -72,14 +74,39 @@ export class OldWestSceneryPage implements OnInit, SceneCommunication {
     this.interactionVisible6 = true;
   }
  
-  todasPerguntasRespondidas(): boolean {
-    return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
-  }
+  getPontuacao(): number {
+    return this.pontuacaoService.getPontuacao();
+ }
+ getEstrelas(): number {
+   return this.estrelas;
+ }
+ aumentarPontuacao(pontos: number): void {
+   this.pontuacao += pontos;
+ }
+ closeComponent1() {
+   this.choicesVisible1 = false;
+ }
+ closeComponent2() {
+   this.choicesVisible2 = false;
+ }
+ closeComponent3() {
+   this.choicesVisible3 = false;
+ }
+ closeComponent4() {
+   this.choicesVisible4 = false;
+ }
+ closeComponent5() {
+   this.choicesVisible5 = false;
+ }
+ 
+ handleInteractionClick() :void{
+   console.log("Foi");
+   this.x = false;
+ }
 
-  handleInteractionClick() :void{
-    console.log("Foi");
-    this.x = false;
-  }
+ todasPerguntasRespondidas(): boolean {
+   return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
+ }
 
   constructor(
     private audioService: AudioService,
@@ -88,6 +115,9 @@ export class OldWestSceneryPage implements OnInit, SceneCommunication {
 
   ngOnInit() {
     const communication: SceneCommunication = this;
+    this.pontuacaoService.pontuacao$.subscribe(pontuacao => {
+      this.pontuacao = pontuacao;
+    });
     this.game = new Phaser.Game({
       type: Phaser.AUTO,
       width: window.innerWidth,
@@ -108,5 +138,9 @@ export class OldWestSceneryPage implements OnInit, SceneCommunication {
 
   ionViewWillLeave() {
     this.audioService.stopMusic();
+  }
+
+  ngOnDestroy() {
+    this.game.destroy(true);
   }
 }

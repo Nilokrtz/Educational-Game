@@ -29,7 +29,7 @@
   [message]="'Bem-vindo, viajante! Juarez, aqui eles ainda vivem no estilo do Velho Oeste. Montados seus cavalos(horses) e caçando Bandidos!'"
   [image]="'../../../assets/interactionAssets/interaction1.png'"
 ></app-interaction>
-<app-choices
+<app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible1 ? 'flex' : 'none'"
     [escolha1]="'Saloon'"
     [escolha2]="'Bandit'"
@@ -40,7 +40,7 @@
     [explicacao]="'Porque sheriff em inglês significa xerife'"
 ></app-choices>
 
-<app-choices
+<app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible2 ? 'flex' : 'none'"
     [escolha1]="'Sheriff'"
     [escolha2]="'Gold'"
@@ -51,7 +51,7 @@
     [explicacao]="'Porque gold em inglês significa ouro'"
 ></app-choices>
 
-<app-choices
+<app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible3 ? 'flex' : 'none'"
     [escolha1]="'Horse'"
     [escolha2]="'Bandit'"
@@ -62,7 +62,7 @@
     [explicacao]="'Porque saloon em inglês significa salão'"
 ></app-choices>
 
-<app-choices
+<app-choices  (click)="handleInteractionClick()"
     [style.display]="choicesVisible4 ? 'flex' : 'none'"
     [escolha1]="'Bandit'"
     [escolha2]="'Horse'"
@@ -73,7 +73,7 @@
     [explicacao]="'Porque bandit em inglês significa bandido'"
 ></app-choices>
 
-<app-choices
+<app-choices  (click)="handleInteractionClick()"
     [style.display]="choicesVisible5 ? 'flex' : 'none'"
     [escolha1]="'Bandit'"
     [escolha2]="'Saloon'"
@@ -84,7 +84,7 @@
     [explicacao]="'Porque horse em inglês significa cavalo'"
 ></app-choices>
 
-<app-book
+<app-book  (click)="handleInteractionClick()"
     [palavra1]="'xerife'"
     [palavra2]="'ouro'"
     [palavra3]="'salão'"
