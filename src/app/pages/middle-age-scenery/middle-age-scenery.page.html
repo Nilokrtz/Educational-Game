@@ -29,7 +29,7 @@
   [message]="'Então parece que o Mago está impedindo que o rei abra a porta(Door) do castelo para pegar sua armadura mágica, bom já sabemos como isso vai terminar.'"
   [image]="'../../../assets/interactionAssets/interaction4.png'"
 ></app-interaction>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()" 
     [style.display]="choicesVisible1 ? 'flex' : 'none'"
     [escolha1]="'Sword'"
     [escolha2]="'Space'"
@@ -39,7 +39,7 @@
     [respostaCorreta]="'A'"
     [explicacao]="'Porque sword em inglês significa espada'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()" 
     [style.display]="choicesVisible2 ? 'flex' : 'none'"
     [escolha1]="'Armor'"
     [escolha2]="'Sword'"
@@ -49,7 +49,7 @@
     [respostaCorreta]="'A'"
     [explicacao]="'Porque armor em inglês significa armadura'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()" 
     [style.display]="choicesVisible3 ? 'flex' : 'none'"
     [escolha1]="'Three '"
     [escolha2]="'Magic'"
@@ -59,7 +59,7 @@
     [respostaCorreta]="'D'"
     [explicacao]="'Porque castle em inglês significa castelo'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()" 
     [style.display]="choicesVisible4 ? 'flex' : 'none'"
     [escolha1]="'Open'"
     [escolha2]="'Tree'"
@@ -69,7 +69,7 @@
     [respostaCorreta]="'D'"
     [explicacao]="'Porque door em inglês significa porta'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()" 
     [style.display]="choicesVisible5 ? 'flex' : 'none'"
     [escolha1]="'Castle'"
     [escolha2]="'Key'"

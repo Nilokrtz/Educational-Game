@@ -11,6 +11,9 @@ export interface SceneCommunication {
     showChoices3() : void;
     showChoices4() : void;
     showChoices5() : void;
+    getEstrelas(): number;
+    getPontuacao(): number;
+    aumentarPontuacao(pontos: number): void ;
     interactionVisible1: boolean;
     handleInteractionClick() :void;
     x :boolean;

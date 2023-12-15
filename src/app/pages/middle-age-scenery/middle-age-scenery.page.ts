@@ -28,6 +28,8 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
   choicesVisible4 = false;
   choicesVisible5 = false;
   x = true;
+  pontuacao = 0;
+
 
   showChoices1() {
     this.choicesVisible1 = true;
@@ -70,6 +72,19 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
   }
   showInteraction6() {
     this.interactionVisible6 = true;
+  }
+
+  getPontuacao(): number {
+     return this.pontuacaoService.getPontuacao();
+  }
+
+  getEstrelas(): number {
+    return this.pontuacaoService.getEstrelas();
+  }
+
+  aumentarPontuacao(pontos: number): void {
+    this.pontuacao += pontos;
+    
   }
   
   handleInteractionClick() :void{

@@ -32,6 +32,11 @@ export class PontuacaoService {
     getEstrelas(): number {
       return this.estrelas;
     }
+    
+    aumentarPontuacao(pontos: number): void {
+      this.pontuacao += pontos;
+      // Add any additional logic as needed
+    }
 
     getRespondido(): number{
       return this.respondido;
