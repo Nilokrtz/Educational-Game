@@ -400,70 +400,90 @@ export class MyScene extends Phaser.Scene {
             }, 100); // Ajuste conforme necessário
           });
         };
-        
+
         // Adicione um atraso antes de mostrar Interaction6
         await waitForX();
         await new Promise((innerResolve) => setTimeout(innerResolve, 2000));
         this.communication.showInteraction6();
-        
+
         await waitForX();
         this.communication.showChoices1();
         var pontuacaoAnterior = 0;
         var novaPontuacao = this.communication.getPontuacao();
-        
+
         await waitForX();
-        if (pontuacaoAnterior != novaPontuacao) {
-          this.protagonistaAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        if (pontuacaoAnterior < novaPontuacao) {
+          this.protagonistaAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
         } else {
-          this.EnemyAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+          this.EnemyAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
         }
-        
+
         await waitForX();
         this.communication.showChoices2();
-        var pontuacaoAnterior = novaPontuacao;
-        var novaPontuacao = this.communication.getPontuacao();
-        
+        pontuacaoAnterior = novaPontuacao;
+        novaPontuacao = this.communication.getPontuacao();
+
         await waitForX();
-        if (pontuacaoAnterior != novaPontuacao) {
-          this.protagonistaAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        if (pontuacaoAnterior < novaPontuacao) {
+          this.protagonistaAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
         } else {
-          this.EnemyAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+          this.EnemyAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
         }
-        
+
         await waitForX();
         this.communication.showChoices3();
-        var pontuacaoAnterior = novaPontuacao;
-        var novaPontuacao = this.communication.getPontuacao();
-        
+        pontuacaoAnterior = novaPontuacao;
+        novaPontuacao = this.communication.getPontuacao();
+
         await waitForX();
-        if (pontuacaoAnterior != novaPontuacao) {
-          this.protagonistaAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        if (pontuacaoAnterior < novaPontuacao) {
+          this.protagonistaAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
         } else {
-          this.EnemyAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+          this.EnemyAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
         }
-        
+
         await waitForX();
         this.communication.showChoices4();
-        var pontuacaoAnterior = novaPontuacao;
-        var novaPontuacao = this.communication.getPontuacao();
-        
+        pontuacaoAnterior = novaPontuacao;
+        novaPontuacao = this.communication.getPontuacao();
+
         await waitForX();
-        if (pontuacaoAnterior != novaPontuacao) {
-          this.protagonistaAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        if (pontuacaoAnterior < novaPontuacao) {
+          this.protagonistaAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
         } else {
-          this.EnemyAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+          this.EnemyAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
         }
-        
+
         await waitForX();
         this.communication.showChoices5();
-        var pontuacaoAnterior = novaPontuacao;
-        var novaPontuacao = this.communication.getPontuacao();
-        
+        pontuacaoAnterior = novaPontuacao;
+        novaPontuacao = this.communication.getPontuacao();
+
         await waitForX();
-        if (pontuacaoAnterior != novaPontuacao) {
-          this.protagonistaAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        if (pontuacaoAnterior < novaPontuacao) {
+          this.bossDeath();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
         } else {
-          this.EnemyAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+          this.playerDeath();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
         }
 
         this.communication.x = false;
@@ -579,17 +599,30 @@ export class MyScene extends Phaser.Scene {
           this.player.once('animationcomplete', () => {
             this.player.play('staticPlayerAnimation');
             this.player.once('animationcomplete', () => {
-            
-            resolve();
+              resolve();
+            });
           });
-        });
         });
       });
     });
   }
 
   playerDeath() {
-    this.player.play('deathPlayerAnimation');
+    return new Promise<void>((resolve) => {
+      this.player.play('deathPlayerAnimation');
+      this.player.once('animationcomplete', () => {
+        this.boss.play('attackBossAnimation');
+        this.boss.once('animationcomplete', () => {
+          this.boss.play('attack2BossAnimation');
+          this.boss.once('animationcomplete', () => {
+            this.boss.play('staticBossAnimation');
+            this.boss.once('animationcomplete', () => {
+              resolve();
+            });
+          });
+        });
+      });
+    });
   }
 
   bossAttack() {
@@ -620,7 +653,18 @@ export class MyScene extends Phaser.Scene {
   }
 
   bossDeath() {
-    this.boss.play('deathBossAnimation');
+    return new Promise<void>((resolve) => {
+      this.boss.play('deathBossAnimation');
+      this.boss.once('animationcomplete', () => {
+        this.player.play('attackPlayerAnimation');
+        this.player.once('animationcomplete', () => {
+          this.player.play('staticPlayerAnimation');
+          this.player.once('animationcomplete', () => {
+            resolve();
+          });
+        });
+      });
+    });
   }
 
   async EnemyAttack() {
