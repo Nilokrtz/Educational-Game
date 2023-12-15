@@ -29,6 +29,7 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
   choicesVisible5 = false;
   x = true;
   pontuacao = 0;
+  estrelas = 0;
 
 
   showChoices1() {
@@ -77,6 +78,9 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
   getPontuacao(): number {
      return this.pontuacaoService.getPontuacao();
   }
+  getEstrelas(): number {
+    return this.estrelas;
+  }
   aumentarPontuacao(pontos: number): void {
     this.pontuacao += pontos;
   }
@@ -112,6 +116,9 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
 
   ngOnInit() {
     const communication: SceneCommunication = this;
+    this.pontuacaoService.pontuacao$.subscribe(pontuacao => {
+      this.pontuacao = pontuacao;
+    });
     this.game = new Phaser.Game({
       type: Phaser.AUTO,
       width: window.innerWidth,

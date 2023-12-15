@@ -400,53 +400,71 @@ export class MyScene extends Phaser.Scene {
             }, 100); // Ajuste conforme necessário
           });
         };
-
+        
         // Adicione um atraso antes de mostrar Interaction6
+        await waitForX();
         await new Promise((innerResolve) => setTimeout(innerResolve, 2000));
-
         this.communication.showInteraction6();
-        this.time.delayedCall(5000, () => {
-          this.communication.showChoices1();
-          var pontuacaoAnterior = this.communication.getPontuacao();
-          this.communication.aumentarPontuacao(1);
-          var novaPontuacao = this.communication.getPontuacao();
-          this.time.delayedCall(3000, () => {
-            if (novaPontuacao == pontuacaoAnterior) {
-              this.EnemyAttack();
-            } else {
-              this.protagonistaAttack();
-            }
-          });
-          this.time.delayedCall(5000, () => {
-            this.communication.showChoices2();
-            var pontuacaoAnterior = this.communication.getPontuacao();
-            this.communication.aumentarPontuacao(1);
-            var novaPontuacao = this.communication.getPontuacao();
-            this.time.delayedCall(3000, () => {
-              if (novaPontuacao== pontuacaoAnterior) {
-                this.EnemyAttack();
-              } else {
-                this.protagonistaAttack();
-              }
-            });
-            this.time.delayedCall(5000, () => {
-              this.communication.showChoices3();
-              this.communication.aumentarPontuacao(1);
-              
-              this.time.delayedCall(5000, () => {
-                this.communication.showChoices4();
-                this.communication.aumentarPontuacao(1);
-                
-                this.time.delayedCall(5000, () => {
-                  this.communication.showChoices5();
-                  
-                  this.communication.aumentarPontuacao(1);
-                  
-                });
-              });
-            });
-          });
-        });
+        
+        await waitForX();
+        this.communication.showChoices1();
+        var pontuacaoAnterior = 0;
+        var novaPontuacao = this.communication.getPontuacao();
+        
+        await waitForX();
+        if (pontuacaoAnterior != novaPontuacao) {
+          this.protagonistaAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        } else {
+          this.EnemyAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        }
+        
+        await waitForX();
+        this.communication.showChoices2();
+        var pontuacaoAnterior = novaPontuacao;
+        var novaPontuacao = this.communication.getPontuacao();
+        
+        await waitForX();
+        if (pontuacaoAnterior != novaPontuacao) {
+          this.protagonistaAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        } else {
+          this.EnemyAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        }
+        
+        await waitForX();
+        this.communication.showChoices3();
+        var pontuacaoAnterior = novaPontuacao;
+        var novaPontuacao = this.communication.getPontuacao();
+        
+        await waitForX();
+        if (pontuacaoAnterior != novaPontuacao) {
+          this.protagonistaAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        } else {
+          this.EnemyAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        }
+        
+        await waitForX();
+        this.communication.showChoices4();
+        var pontuacaoAnterior = novaPontuacao;
+        var novaPontuacao = this.communication.getPontuacao();
+        
+        await waitForX();
+        if (pontuacaoAnterior != novaPontuacao) {
+          this.protagonistaAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        } else {
+          this.EnemyAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        }
+        
+        await waitForX();
+        this.communication.showChoices5();
+        var pontuacaoAnterior = novaPontuacao;
+        var novaPontuacao = this.communication.getPontuacao();
+        
+        await waitForX();
+        if (pontuacaoAnterior != novaPontuacao) {
+          this.protagonistaAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        } else {
+          this.EnemyAttack(); console.log('pontuação nova:' + novaPontuacao); console.log('pontuação anterior:' + pontuacaoAnterior);
+        }
 
         this.communication.x = false;
 
@@ -519,42 +537,9 @@ export class MyScene extends Phaser.Scene {
       this.boss.setFlipX(true);
       this.boss.setScale(2.5);
       this.boss.play('staticBossAnimation');
-      /* this.time.delayedCall(1000, () => {
-        this.boss.play('attackBossAnimation');
-        this.time.delayedCall(1000, () => {
-          this.time.delayedCall(1000, () => {
-          this.boss.play('attack2BossAnimation');
-            this.time.delayedCall(1000, () => {
-            this.boss.play('staticBossAnimation');
-              this.time.delayedCall(1000, () => {
-              this.boss.play('hurtBossAnimation');
-                this.time.delayedCall(1000, () => {
-                this.boss.play('deathBossAnimation');
-            });
-          });
-        });
-      });
-      });
-    }); */
     }
 
     this.player.x = 50;
-    /* 
-          if (this.currentPart === 4) {
-            // Acesse as respostas do jogador e correta usando o serviço
-            
-            
-            // Realize a lógica desejada aqui com as respostas
-            
-            // ...
-            
-            // Limpe as respostas quando necessário
-            
-          } */
-    /* this.communication.showChoices2();
-      this.communication.showChoices3();
-      this.communication.showChoices4();
-      this.communication.showChoices5(); */
   }
 
   private handleResize() {

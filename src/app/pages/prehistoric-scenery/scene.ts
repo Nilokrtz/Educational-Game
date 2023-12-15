@@ -66,7 +66,7 @@ export class MyScene extends Phaser.Scene {
         frameWidth: 32,
         frameHeight: 32,
         startFrame: 0,
-        endFrame: 2,
+        endFrame: 4,
       }
     );
     this.load.spritesheet(
@@ -191,10 +191,10 @@ export class MyScene extends Phaser.Scene {
       key: 'hurtPlayerAnimation',
       frames: this.anims.generateFrameNumbers('hurtPlayerSheet', {
         start: 0,
-        end: 2,
+        end: 5,
       }),
-      frameRate: 3,
-      repeat: 1,
+      frameRate: 15,
+      repeat: 2,
     });
 
     // Create npcs animations
@@ -497,4 +497,70 @@ export class MyScene extends Phaser.Scene {
     background.displayHeight = this.game.canvas.height;
     background.destroy(); // Remove a imagem temporária
   }
+
+  playerAttack() {
+    return new Promise<void>((resolve) => {
+      this.player.play('attackPlayerAnimation');
+      this.player.once('animationcomplete', () => {
+        this.player.play('staticPlayerAnimation');
+        this.player.once('animationcomplete', () => {
+          resolve();
+        });
+      });
+    });
+  }
+
+  playerHurt() {
+    return new Promise<void>((resolve) => {
+      this.player.play('hurtPlayerAnimation');
+      this.player.once('animationcomplete', () => {
+        this.player.play('staticPlayerAnimation');
+        this.player.once('animationcomplete', () => {
+            
+            resolve();
+          });
+      });
+    });
+  }
+
+  playerDeath() {
+    this.player.play('deathPlayerAnimation');
+  }
+
+  bossAttack() {
+    return new Promise<void>((resolve) => {
+      this.boss.play('attackBossAnimation');
+      this.boss.once('animationcomplete', () => {
+          this.boss.play('staticBossAnimation');
+          this.boss.once('animationcomplete', () => {
+            resolve();
+          });
+      });
+    });
+  }
+
+  bossHurt() {
+    return new Promise<void>((resolve) => {
+      this.boss.play('hurtBossAnimation');
+      this.boss.once('animationcomplete', () => {
+        this.boss.play('staticBossAnimation');
+        this.boss.once('animationcomplete', () => {
+          resolve();
+        });
+      });
+    });
+  }
+
+  bossDeath() {
+    this.boss.play('deathBossAnimation');
+  }
+
+  async EnemyAttack() {
+    await Promise.all([this.bossAttack(), this.playerHurt()]);
+  }
+
+  async protagonistaAttack() {
+    await Promise.all([this.playerAttack(), this.bossHurt()]);
+  }
+  
 }

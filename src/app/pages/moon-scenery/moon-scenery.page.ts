@@ -28,6 +28,8 @@ export class MoonSceneryPage implements OnInit, SceneCommunication {
   choicesVisible4 = false;
   choicesVisible5 = false;
   x = true;
+  pontuacao = 0;
+  estrelas = 0;
 
   showChoices1() {
     this.choicesVisible1 = true;
@@ -77,10 +79,19 @@ export class MoonSceneryPage implements OnInit, SceneCommunication {
     this.interactionVisible7 = true;
   }
 
-  handleInteractionClick() :void{
-    console.log("Foi");
+  handleInteractionClick(): void {
+    console.log('Foi');
     this.x = false;
   }
+  /* getPontuacao(): number {
+    return this.pontuacaoService.getPontuacao();
+  }
+  getEstrelas(): number {
+    return this.estrelas;
+  }
+  aumentarPontuacao(pontos: number): void {
+    this.pontuacao += pontos;
+  } */
 
   todasPerguntasRespondidas(): boolean {
     return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);

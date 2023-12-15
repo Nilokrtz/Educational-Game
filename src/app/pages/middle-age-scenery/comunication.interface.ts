@@ -16,6 +16,7 @@ export interface SceneCommunication {
   closeComponent4():void;
   closeComponent5():void;
   getPontuacao(): number;
+  getEstrelas(): number;
   aumentarPontuacao(pontos: number): void;
   interactionVisible1: boolean;
   handleInteractionClick(): void;
