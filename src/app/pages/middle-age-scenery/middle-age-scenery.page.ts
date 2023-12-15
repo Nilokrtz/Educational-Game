@@ -20,12 +20,14 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
   interactionVisible3 = false;
   interactionVisible4 = false;
   interactionVisible5 = false;
+  interactionVisible6 = false;
 
   choicesVisible1 = false;
   choicesVisible2 = false;
   choicesVisible3 = false;
   choicesVisible4 = false;
   choicesVisible5 = false;
+  x = true;
 
   showChoices1() {
     this.choicesVisible1 = true;
@@ -65,6 +67,14 @@ export class MiddleAgeSceneryPage implements OnInit, OnDestroy, SceneCommunicati
 
   showInteraction5() {
     this.interactionVisible5 = true;
+  }
+  showInteraction6() {
+    this.interactionVisible6 = true;
+  }
+  
+  handleInteractionClick() :void{
+    console.log("Foi");
+    this.x = false;
   }
 
   todasPerguntasRespondidas(): boolean {

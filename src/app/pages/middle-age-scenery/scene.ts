@@ -308,44 +308,106 @@ export class MyScene extends Phaser.Scene {
     this.background.displayWidth = this.game.canvas.width;
     this.background.displayHeight = this.game.canvas.height;
   }
-  private changeBackground() {
+
+  /* começo */
+
+  private HandleClick() {
+    this.communication.handleInteractionClick();
+  }
+  private async changeBackground() {
     if (this.player && this.player.body && this.player.body.velocity.x !== 0) {
       this.player.anims.stop();
       this.player.play('staticPlayerAnimation');
       this.player.setVelocityX(0);
 
-      if (this.currentPart === 3) {
-        /* this.communication.showChoices1();
-        this.communication.showChoices2();
-        this.communication.showChoices3();
-        this.communication.showChoices4();
-        this.communication.showChoices5(); */
-        if (
-          this.sharedDataService &&
-          this.sharedDataService.playerAnswer &&
-          this.sharedDataService.correctAnswer
-        ) {
-          var playerAnswer = this.sharedDataService.playerAnswer;
-          var correctAnswer = this.sharedDataService.correctAnswer;
-          if (playerAnswer === correctAnswer) {
-            this.player.play('attackPlayerAnimation');
-            this.boss.play('hurtBossAnimation');
-          } else {
-            this.boss.play('attackBossAnimation');
-            this.player.play('hurtPlayerAnimation');
-          }
-          this.sharedDataService.clearAnswers();
-        }
+      if (this.player.x == 50 && this.currentPart == 3) {
+        this.player.x = 100;
+        this.player.play('staticPlayerAnimation');
+        this.player.setVelocityX(0);
+
+        await new Promise<void>((resolve) => {
+          const intervalId = setInterval(() => {
+            if (!this.communication.x) {
+              clearInterval(intervalId);
+              resolve();
+            }
+          }, 10);
+        });
+        this.HandleClick();
       }
 
-      if (this.player.x !== 50 && this.currentPart < 3) {
-        /*         this.communication.showInteraction1();
-         */ this.time.delayedCall(2000, () => {
-          this.player.setVelocityX(200);
-          this.player.play('walkPlayerAnimation');
+      if (this.player.x !== 50 && this.currentPart == 1) {
+        if ((this.player.x = 50)) {
+          this.npc1 = this.physics.add.sprite(
+            200,
+            this.game.canvas.height / 1.64,
+            'npc1'
+          );
+          this.npc1.setScale(2.5);
+          this.npc1.play('staticNpc1Animation');
+        }
+        await this.communication.showInteraction1();
+        await this.communication.showInteraction2();
+
+        await new Promise<void>((resolve) => {
+          const intervalId = setInterval(() => {
+            if (!this.communication.x) {
+              clearInterval(intervalId);
+              resolve();
+            }
+          }, 10);
+        });
+        this.HandleClick();
+
+        console.log(this.communication.x);
+        this.communication.x = true;
+        this.player.play('walkPlayerAnimation');
+        this.player.setVelocityX(200);
+      }
+      if (this.player.x !== 50 && this.currentPart == 2) {
+        await this.communication.showInteraction3();
+        await this.communication.showInteraction4();
+
+        this.communication.x = true;
+        await new Promise<void>((resolve) => {
+          const intervalId = setInterval(() => {
+            if (!this.communication.x) {
+              clearInterval(intervalId);
+              resolve();
+            }
+          }, 10);
+        });
+
+        console.log(this.communication.x);
+        this.player.play('staticlayerAnimation');
+        this.player.setVelocityX(0);
+        this.communication.showInteraction6();
+        this.communication.showInteraction5();
+
+        this.time.delayedCall(5000, () => {       /* acerto */
+          this.communication.showChoices1();
+          this.time.delayedCall(2000, () => { 
+          this.player.play("attackPlayerAnimation");
+          this.boss.play("hurtBossAnimation")
+          this.time.delayedCall(1000, () => { 
+          this.player.play("staticPlayerAnimation")
+          this.boss.play("staticBossAnimation")
+        })});
+          this.time.delayedCall(10000, () => {       /* erro */
+            this.communication.showChoices2();
+            this.time.delayedCall(20000, () => {
+              this.communication.showChoices3();
+              this.time.delayedCall(50000, () => {
+                this.communication.showChoices4();
+                this.time.delayedCall(50000, () => {
+                  this.communication.showChoices5();
+                });
+              });
+            });
+          });
         });
       }
-    }
+    } /* fim */
 
     // Load and display the next part of the background
     this.currentPart++;
@@ -424,7 +486,7 @@ export class MyScene extends Phaser.Scene {
       });
       });
     }); */
-  }
+    }
 
     this.player.x = 50;
     /* 

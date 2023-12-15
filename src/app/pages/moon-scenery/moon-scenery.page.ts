@@ -27,10 +27,6 @@ export class MoonSceneryPage implements OnInit, SceneCommunication {
   choicesVisible5 = false;
   x = true;
 
-  setTimeoutZero(callback: () => void): void {
-    setTimeout(callback, 0);
-  }
-
   showChoices1() {
     this.choicesVisible1 = true;
   }
@@ -51,26 +47,26 @@ export class MoonSceneryPage implements OnInit, SceneCommunication {
     this.choicesVisible5 = true;
   }
 
-  showInteraction1(): void{
+  async showInteraction1(): Promise<void>{
     this.interactionVisible1 = true;
   }
 
-  showInteraction2(): void{
+  async showInteraction2(): Promise<void>{
     this.interactionVisible2 = true;
   }
-  showInteraction3(): void{
+  async showInteraction3(): Promise<void>{
     this.interactionVisible3 = true;
   }
-  showInteraction4(): void{
+  async showInteraction4(): Promise<void>{
     this.interactionVisible4 = true;
   }
-  showInteraction5(): void{
+  async showInteraction5(): Promise<void>{
     this.interactionVisible5 = true;
   }
   
   handleInteractionClick() :void{
     console.log("Foi");
-    this.x = false
+    this.x = false;
   }
 
   todasPerguntasRespondidas(): boolean {

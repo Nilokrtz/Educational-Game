@@ -2,25 +2,16 @@
 import * as Phaser from 'phaser';
 import { SceneCommunication } from './comunication.interface';
 import { SharedDataService } from '../../services/answerSharedService/shared-data.service';
-import { InteractionComponent } from 'src/app/component/interaction/interaction.component';
-import { ChoicesComponent } from 'src/app/component/choices/choices.component';
-import { ResultComponent } from 'src/app/component/result/result.component';
-import { MoonSceneryPage } from './moon-scenery.page';
 
 export class MyScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
   private currentPart = 1; // A parte inicial do cenário
-  private questions = 0;
   private background!: Phaser.GameObjects.Image; // Adicione esta linha para manter a referência ao plano de fundo
   private npc1!: Phaser.Physics.Arcade.Sprite;
   private npc2!: Phaser.Physics.Arcade.Sprite;
   private boss!: Phaser.Physics.Arcade.Sprite;
   private communication: SceneCommunication;
   private sharedDataService!: SharedDataService;
-  private interactionComponent!: InteractionComponent;
-  private moonSceneryPage!: MoonSceneryPage;
-  private choicesComponent!: ChoicesComponent;
-  private resultComponent!: ResultComponent;
 
   constructor(communication: SceneCommunication) {
     super({ key: 'my-scene' });
@@ -273,8 +264,8 @@ export class MyScene extends Phaser.Scene {
       x: this.game.canvas.width,
       ease: 'Power',
       onComplete: () => {
-        this.changeBackground();
         this.player.setVelocityX(200);
+        this.changeBackground();
       },
     });
 
@@ -299,11 +290,6 @@ export class MyScene extends Phaser.Scene {
     this.background.displayWidth = this.game.canvas.width;
     this.background.displayHeight = this.game.canvas.height;
   }
-
-  private HandleClick() {
-    this.communication.handleInteractionClick();
-  }
-
   private async changeBackground() {
     if (this.player && this.player.body && this.player.body.velocity.x !== 0) {
       this.player.anims.stop();
@@ -311,20 +297,6 @@ export class MyScene extends Phaser.Scene {
       this.player.setVelocityX(0);
 
       if (this.currentPart === 3) {
-        
-        /* switch(this.questions){
-          case 1:
-            this.communication.showChoices1();
-            await new Promise<void>((resolve) => {
-              const intervalId = setInterval(() => {
-                if (this.resultComponent.closeComponent()) {
-                  clearInterval(intervalId);
-                  resolve();
-                }
-              }, 10);
-            });
-        } */
-
         /* this.communication.showChoices2();
         this.communication.showChoices3();
         this.communication.showChoices4();
@@ -336,99 +308,38 @@ export class MyScene extends Phaser.Scene {
         ) {
           const playerAnswer = this.sharedDataService.playerAnswer;
           const correctAnswer = this.sharedDataService.correctAnswer;
-          if (playerAnswer === correctAnswer) {
+          /* if (playerAnswer === correctAnswer) {
             this.player.play('attackPlayerAnimation');
             this.boss.play('hurtBossAnimation');
           } else {
             this.boss.play('attackBossAnimation');
             this.player.play('hurtPlayerAnimation');
-          }
+          } */
           this.sharedDataService.clearAnswers();
         }
       }
 
-      switch (this.currentPart) {
-        case 0:
-          if (this.player.x !== 50) {
-            await this.communication.showInteraction2();
-            await this.communication.showInteraction1();
-            // Wait until this.communication.x is false
-            await new Promise<void>((resolve) => {
-              const intervalId = setInterval(() => {
-                if (!this.communication.x) {
-                  clearInterval(intervalId);
-                  resolve();
-                }
-              }, 10);
-            });
-            // Execute this.HandleClick() after this.communication.x is false
-            this.HandleClick();
-            console.log(this.communication.x);
-            // Play walk animation and set velocity
-            this.player.play('walkPlayerAnimation');
-            this.player.setVelocityX(200);
-          }
-          break;
-  
-        case 1:
-          this.communication.x = true;
-          if (this.player.x !== 50) {
-            await this.communication.showInteraction5();
-            await this.communication.showInteraction3();
-            await this.communication.showInteraction4();
-            // Wait until this.communication.x is false
-            await new Promise<void>((resolve) => {
-              const intervalId = setInterval(() => {
-                if (!this.communication.x) {
-                  clearInterval(intervalId);
-                  resolve();
-                }
-              }, 10);
-            });
-            // Execute this.HandleClick() after this.communication.x is false
-            this.HandleClick();
-            console.log(this.communication.x);
-            // Play walk animation and set velocity
-            this.player.play('walkPlayerAnimation');
-            this.player.setVelocityX(200);
-          }
-          break;
-        
-          case 2:
-            this.communication.x = true;
-          if (this.player.x !== 50) {
-            await this.communication.showInteraction3();
-            await this.communication.showInteraction4();
-            await this.communication.showInteraction5();
-            // Wait until this.communication.x is false
-            await new Promise<void>((resolve) => {
-              const intervalId = setInterval(() => {
-                if (!this.communication.x) {
-                  clearInterval(intervalId);
-                  resolve();
-                }
-              }, 10);
-            });
-            // Execute this.HandleClick() after this.communication.x is false
-            this.HandleClick();
-            console.log(this.communication.x);
-            // Play walk animation and set velocity
-            this.player.play('walkPlayerAnimation');
-            this.player.setVelocityX(200);
-          }
-          break;
-  
-        // Add additional cases for other game parts if needed
-  
-        default:
-          break;
+      if (this.player.x !== 50 && this.currentPart == 1) {
+        await this.communication.showInteraction1();
+        await this.communication.showInteraction2();
+         this.time.delayedCall(8000, () => {
+          this.player.setVelocityX(200);
+          this.player.play('walkPlayerAnimation');
+        });
+      }
+      if (this.player.x !== 50 && this.currentPart == 2) {
+      await this.communication.showInteraction3();
+      await this.communication.showInteraction4();
+      await this.communication.showInteraction5();
+      this.time.delayedCall(8000, () => {
+        this.player.setVelocityX(200);
+        this.player.play('walkPlayerAnimation');
+        });
       }
     }
 
     // Load and display the next part of the background
-    console.log(this.currentPart);
     this.currentPart++;
-    console.log(this.currentPart);
 
     // Verifique se há uma parte de cenário correspondente
     this.textures.exists(`background${this.currentPart}`);
@@ -487,7 +398,7 @@ export class MyScene extends Phaser.Scene {
       );
       this.boss.setScale(2.5);
       this.boss.play('staticBossAnimation');
-      /* this.time.delayedCall(1000, () => {
+      this.time.delayedCall(1000, () => {
           this.boss.play('staticBossAnimation');
           this.time.delayedCall(1000, () => {
             this.boss.play('hurtBossAnimation');
@@ -495,7 +406,7 @@ export class MyScene extends Phaser.Scene {
               this.boss.play('deathBossAnimation');
             });
           });
-        }); */
+        });
     }
 
     // Keep the player centered vertically and horizontally
