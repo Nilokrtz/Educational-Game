@@ -34,7 +34,7 @@
     [message]="'Bem-vindo, viajante, à misteriosa Treasure Island. Parece que algo extraordinário aconteceu,-'"
     [image]="'../../../assets/interactionAssets/interaction1.png'"
 ></app-interaction>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible1 ? 'flex' : 'none'"
     [escolha1]="'Ocean'"
     [escolha2]="'Sea'"
@@ -44,7 +44,7 @@
     [respostaCorreta]="'A'"
     [explicacao]="'Porque ocean em inglês significa oceano'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible2 ? 'flex' : 'none'"
     [escolha1]="'Sword'"
     [escolha2]="'Link'"
@@ -54,7 +54,7 @@
     [respostaCorreta]="'A'"
     [explicacao]="'Porque sword em inglês significa espada'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible3 ? 'flex' : 'none'"
     [escolha1]="'Board'"
     [escolha2]="'Snow'"
@@ -64,7 +64,7 @@
     [respostaCorreta]="'D'"
     [explicacao]="'Porque ship em inglês significa navio'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible4 ? 'flex' : 'none'"
     [escolha1]="'Human'"
     [escolha2]="'Woman'"
@@ -74,7 +74,7 @@
     [respostaCorreta]="'C'"
     [explicacao]="'Porque pirate em inglês significa pirata'"
   ></app-choices>
-  <app-choices
+  <app-choices (click)="handleInteractionClick()"
     [style.display]="choicesVisible5 ? 'flex' : 'none'"
     [escolha1]="'Sword'"
     [escolha2]="'Pirate'"

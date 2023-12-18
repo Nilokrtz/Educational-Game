@@ -1,6 +1,6 @@
 import * as Phaser from 'phaser';
 import { MyScene } from './scene';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/services/AudioService/AudioService';
 import { SceneCommunication } from './comunication.interface';
 import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoService';
@@ -10,7 +10,7 @@ import { PontuacaoService } from 'src/app/services/PontuacaoService/PontuacaoSer
   templateUrl: './prehistoric-scenery.page.html',
   styleUrls: ['./prehistoric-scenery.page.scss'],
 })
-export class PrehistoricSceneryPage implements  OnInit, SceneCommunication{
+export class PrehistoricSceneryPage implements  OnInit, OnDestroy, SceneCommunication{
   private game!: Phaser.Game;
   totalPerguntas = 5;  
 
@@ -26,6 +26,8 @@ export class PrehistoricSceneryPage implements  OnInit, SceneCommunication{
   choicesVisible4 = false;
   choicesVisible5 = false;
   x = true;
+  pontuacao = 0;
+  estrelas = 0;
 
   showChoices1() {
     this.choicesVisible1 = true;
@@ -67,14 +69,39 @@ export class PrehistoricSceneryPage implements  OnInit, SceneCommunication{
     this.interactionVisible5 = true;
   }
 
-  handleInteractionClick() :void{
-    console.log("Foi");
-    this.x = false;
-  }
+  getPontuacao(): number {
+    return this.pontuacaoService.getPontuacao();
+ }
+ getEstrelas(): number {
+   return this.estrelas;
+ }
+ aumentarPontuacao(pontos: number): void {
+   this.pontuacao += pontos;
+ }
+ closeComponent1() {
+   this.choicesVisible1 = false;
+ }
+ closeComponent2() {
+   this.choicesVisible2 = false;
+ }
+ closeComponent3() {
+   this.choicesVisible3 = false;
+ }
+ closeComponent4() {
+   this.choicesVisible4 = false;
+ }
+ closeComponent5() {
+   this.choicesVisible5 = false;
+ }
+ 
+ handleInteractionClick() :void{
+   console.log("Foi");
+   this.x = false;
+ }
 
-  todasPerguntasRespondidas(): boolean {
-    return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
-  }
+ todasPerguntasRespondidas(): boolean {
+   return this.pontuacaoService.todasPerguntasRespondidas(this.totalPerguntas);
+ }
 
   constructor(private audioService: AudioService,private pontuacaoService: PontuacaoService) {}
   
@@ -100,5 +127,9 @@ export class PrehistoricSceneryPage implements  OnInit, SceneCommunication{
 
   ionViewWillLeave() {
     this.audioService.stopMusic();
+  }
+  
+  ngOnDestroy() {
+    this.game.destroy(true);
   }
 }

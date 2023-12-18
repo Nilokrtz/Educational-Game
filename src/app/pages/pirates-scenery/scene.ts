@@ -386,29 +386,98 @@ export class MyScene extends Phaser.Scene {
         };
 
         // Adicione um atraso antes de mostrar Interaction6
-        await new Promise((innerResolve) => setTimeout(innerResolve, 6000));
-        
-          this.communication.showInteraction7();
-          this.time.delayedCall(15000, () => {
-            this.communication.showChoices1();
-            this.time.delayedCall(15000, () => {
-              this.communication.showChoices2();
-              this.time.delayedCall(15000, () => {
-                this.communication.showChoices3();
-                this.time.delayedCall(15000, () => {
-                  this.communication.showChoices4();
-                  this.time.delayedCall(15000, () => {
-                    this.communication.showChoices5();
-                  });
-                });
-              });
-            });
-          });
+        await waitForX();
+        await new Promise((innerResolve) => setTimeout(innerResolve, 2000));
+        this.communication.showInteraction7();
+
+        await waitForX();
+        this.communication.showChoices1();
+        var pontuacaoAnterior = 0;
+        var novaPontuacao = this.communication.getPontuacao();
+
+        await waitForX();
+        if (pontuacaoAnterior < novaPontuacao) {
+          this.protagonistaAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
+        } else {
+          this.EnemyAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
+        }
+
+        await waitForX();
+        this.communication.showChoices2();
+        pontuacaoAnterior = novaPontuacao;
+        novaPontuacao = this.communication.getPontuacao();
+
+        await waitForX();
+        if (pontuacaoAnterior < novaPontuacao) {
+          this.protagonistaAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
+        } else {
+          this.EnemyAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
+        }
+
+        await waitForX();
+        this.communication.showChoices3();
+        pontuacaoAnterior = novaPontuacao;
+        novaPontuacao = this.communication.getPontuacao();
+
+        await waitForX();
+        if (pontuacaoAnterior < novaPontuacao) {
+          this.protagonistaAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
+        } else {
+          this.EnemyAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
+        }
+
+        await waitForX();
+        this.communication.showChoices4();
+        pontuacaoAnterior = novaPontuacao;
+        novaPontuacao = this.communication.getPontuacao();
+
+        await waitForX();
+        if (pontuacaoAnterior < novaPontuacao) {
+          this.protagonistaAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
+        } else {
+          this.EnemyAttack();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
+        }
+
+        await waitForX();
+        this.communication.showChoices5();
+        pontuacaoAnterior = novaPontuacao;
+        novaPontuacao = this.communication.getPontuacao();
+
+        await waitForX();
+        if (pontuacaoAnterior < novaPontuacao) {
+          this.bossDeath();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
+        } else {
+          this.playerDeath();
+          console.log('pontuação nova:' + novaPontuacao);
+          console.log('pontuação anterior:' + pontuacaoAnterior);
+        }
 
         this.communication.x = false;
 
-        await new Promise((innerResolve) => setTimeout(innerResolve, 600000));
+        await new Promise((innerResolve) => setTimeout(innerResolve, 6000000));
         this.communication.showInteraction1();
+        console.log(
+          'After All Choices - Current Pontuacao:',
+          this.communication.getPontuacao()
+        );
       }
     } /* fim */
 
