@@ -1,4 +1,6 @@
 # Educational-Game
+<br>
+
 # Português
 
 Visão Geral:
@@ -34,6 +36,8 @@ ionic serve
 
 Abrirá no http://localhost:8100 do navegador, depois disso aperte F12 e ponha em uma resolução de mobile, pois o jogo foi feito para ser um aplicativo.
 
+<br>
+
 # English
 
 Overview:
@@ -63,3 +67,9 @@ ionic serve
 ```
 
 The application will be available at http://localhost:8100 in your browser. After that, press F12 and adjust to a mobile device resolution, as the game was designed to be used as a mobile application.
+<br>
+<br>
+<div text-align:center>
+<img src="src/assets/fotosGame/home.png">
+<img src="src/assets/fotosGame/worlds.png">
+</div>
